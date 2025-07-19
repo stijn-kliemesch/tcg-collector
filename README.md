@@ -66,33 +66,18 @@ tcg-collector/
 
 ## Development Workflow
 
-1. Edit TypeScript files in the `src/` directory
-2. Run `npm run dev` to watch for changes and auto-compile
-3. Open `dist/index.html` in your browser or use `npm run serve`
-4. The compiled JavaScript will be generated in the `dist/` directory
-
-## TypeScript Features Demonstrated
-
-- Classes with private/public methods
-- Type annotations and interfaces
-- Namespaces for utility functions
-- Generic functions
-- Strict null checks
-- DOM manipulation with proper typing
-- Error handling
+1. Run `npm run dev` to start the development server
+2. Make changes to files in the `src/` directory
+3. Changes will be automatically reflected in the browser
 
 ## Browser Compatibility
 
-This project uses ES2020 features and requires a modern browser that supports:
-- ES modules
-- Arrow functions
-- Classes
+This project requires a modern browser that supports ES2020 features.
 - Template literals
 - Async/await
 
 ## Customization
 
-- Modify `src/index.ts` to add your application logic
-- Update `dist/styles.css` for styling changes
-- Edit `dist/index.html` for structure modifications
-- Adjust `tsconfig.json` for TypeScript compiler options
+- Add components in the `src/components/` directory
+- Add static assets to the `public/` directory
+- Modify `src/App.vue` for application-wide changes
