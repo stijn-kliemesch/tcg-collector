@@ -20,12 +20,14 @@ typescript-web-project/
 │   └── index.ts          # Main TypeScript source file
 ├── dist/
 │   ├── index.html        # Main HTML file
-│   ├── styles.css        # CSS styles
-│   └── index.js          # Compiled JavaScript (generated)
+│   └── styles.css        # CSS styles
 ├── package.json          # Project dependencies and scripts
 ├── tsconfig.json         # TypeScript configuration
+├── .gitignore           # Git ignore file (excludes compiled JS)
 └── README.md            # This file
 ```
+
+**Note:** Compiled JavaScript files (`*.js`, `*.js.map`, `*.d.ts`) are generated during build and excluded from version control via `.gitignore`.
 
 ## Getting Started
 
