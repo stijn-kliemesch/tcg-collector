@@ -28,6 +28,9 @@ build/
 *~
 
 # OS generated files
+
+# Database files
+src/data/*.json
 .DS_Store
 .DS_Store?
 ._*
