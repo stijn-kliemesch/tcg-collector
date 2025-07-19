@@ -1,20 +1,25 @@
 {
-  "name": "typescript-web-project",
+  "name": "tcg-collector",
   "version": "1.0.0",
-  "description": "A TypeScript web project",
-  "main": "dist/index.js",
+  "description": "A Vue 3 TypeScript TCG collector application",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "serve": "npx http-server dist",
-    "start": "npm run build && npm run serve"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/tsconfig": "^0.4.0",
     "typescript": "^5.0.0",
     "@types/node": "^20.0.0",
-    "http-server": "^14.1.1"
+    "vite": "^4.4.0",
+    "vue-tsc": "^1.8.3"
   },
-  "keywords": ["typescript", "web", "frontend"],
+  "keywords": ["vue", "typescript", "web", "frontend"],
   "author": "",
   "license": "MIT"
 }
