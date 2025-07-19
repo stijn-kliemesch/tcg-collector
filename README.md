@@ -1,51 +1,56 @@
-# TypeScript Web Project
+# TCG Collector
 
-A modern TypeScript web application with a clean project structure and development workflow.
+A Vue 3 + TypeScript application for collecting and managing trading cards.
 
 ## Features
 
-- TypeScript with strict type checking
-- Modern ES2020 modules
-- CSS styling with gradients and animations
-- Interactive button with click counter
-- Utility functions and namespaces
-- Source maps for debugging
-- Hot reload development workflow
+- Built with Vue 3 and TypeScript
+- Vite for fast development and building
+- Type-safe components and state management
+- Modern ES modules
+- Hot Module Replacement (HMR)
+- Component-based architecture
 
 ## Project Structure
 
 ```
-typescript-web-project/
+tcg-collector/
 ├── src/
-│   └── index.ts          # Main TypeScript source file
-├── dist/
-│   ├── index.html        # Main HTML file
-│   └── styles.css        # CSS styles
-├── package.json          # Project dependencies and scripts
-├── tsconfig.json         # TypeScript configuration
-├── .gitignore           # Git ignore file (excludes compiled JS)
-└── README.md            # This file
+│   ├── assets/          # Static assets (images, fonts, etc.)
+│   ├── components/      # Vue components
+│   ├── App.vue         # Root Vue component
+│   ├── main.ts         # Application entry point
+│   └── env.d.ts        # TypeScript declarations
+├── public/             # Public static assets
+├── index.html          # Entry HTML file
+├── package.json        # Project dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── tsconfig.config.json # TypeScript config for config files
+├── vite.config.ts     # Vite configuration
+└── README.md          # This file
 ```
-
-**Note:** Compiled JavaScript files (`*.js`, `*.js.map`, `*.d.ts`) are generated during build and excluded from version control via `.gitignore`.
 
 ## Getting Started
 
 1. **Install dependencies:**
    ```bash
-   cd typescript-web-project
    npm install
    ```
 
-2. **Development mode (with file watching):**
+2. **Start development server:**
    ```bash
    npm run dev
    ```
-   This will compile TypeScript files automatically when you make changes.
+   This will start the Vite dev server with hot module replacement.
 
-3. **Build the project:**
+3. **Build for production:**
    ```bash
    npm run build
+   ```
+
+4. **Preview production build:**
+   ```bash
+   npm run preview
    ```
 
 4. **Serve the application:**
