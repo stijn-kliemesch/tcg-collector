@@ -1,0 +1,10 @@
+{
+  "name": "tcg-collector-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  }
+}

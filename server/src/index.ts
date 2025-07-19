@@ -1,7 +1,11 @@
 import express from 'express'
 import cors from 'cors'
-import { join } from 'path'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 import cardsRouter from './routes/cards'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const app = express()
 const port = process.env.PORT || 3000

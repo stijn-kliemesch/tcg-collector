@@ -52,7 +52,7 @@ router.delete('/:id', async (req, res) => {
 // Load example data
 router.post('/load-example', async (req, res) => {
   try {
-    const { exampleCards } = require('../data/example-cards')
+    const { exampleCards } = await import('../data/example-cards')
     for (const card of exampleCards) {
       await db.addCard(card)
     }
