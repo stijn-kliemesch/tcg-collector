@@ -1,8 +1,15 @@
 <template>
-  <div class="app">
-    <h1>TCG Collector</h1>
-    <!-- Add your components here -->
-  </div>
+  <v-app>
+    <v-app-bar color="primary">
+      <v-app-bar-title>TCG Collector</v-app-bar-title>
+    </v-app-bar>
+
+    <v-main>
+      <v-container>
+        <!-- Add your components here -->
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -14,8 +21,5 @@ export default defineComponent({
 </script>
 
 <style>
-.app {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
+/* Global styles can be added here */
 </style>
