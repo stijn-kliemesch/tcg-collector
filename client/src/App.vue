@@ -195,6 +195,7 @@
                 <v-card-text>
                   <p class="text-h6 mb-4">Color Theme</p>
                   <v-radio-group v-model="selectedPalette" @change="applyPalette">
+                    <p class="text-subtitle-2 mb-4">Standard Themes</p>
                     <v-radio
                       label="Professional & Modern"
                       value="professional"
@@ -245,6 +246,63 @@
                         </div>
                       </template>
                     </v-radio>
+
+                    <v-divider class="my-4"></v-divider>
+                    <p class="text-subtitle-2 mb-4">Colorblind-Friendly Themes</p>
+
+                    <v-radio
+                      label="High Contrast"
+                      value="highContrast"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          High Contrast
+                          <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#0077C2">Primary</v-chip>
+                            <v-chip size="small" color="#424242">Secondary</v-chip>
+                            <v-chip size="small" color="#FF8800">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
+
+                    <v-radio
+                      label="Safe Distinction"
+                      value="safeDistinction"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          Safe Distinction
+                          <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#006BA6">Primary</v-chip>
+                            <v-chip size="small" color="#595959">Secondary</v-chip>
+                            <v-chip size="small" color="#FF8C00">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
+
+                    <v-radio
+                      label="Universal"
+                      value="universal"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          Universal
+                          <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#2E5C8A">Primary</v-chip>
+                            <v-chip size="small" color="#4F4F4F">Secondary</v-chip>
+                            <v-chip size="small" color="#D55E00">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
                   </v-radio-group>
                 </v-card-text>
               </v-card>
@@ -284,11 +342,12 @@ export default defineComponent({
     const currentPage = ref('collection') // Default to collection page
     const selectedPalette = ref('professional') // Default palette
 
-    type PaletteType = 'professional' | 'premium' | 'clean'
+    type PaletteType = 'professional' | 'premium' | 'clean' | 'highContrast' | 'safeDistinction' | 'universal'
     type Palette = {
       primary: string
       secondary: string
       accent: string
+      isColorblindFriendly?: boolean
     }
     
     const palettes: Record<PaletteType, Palette> = {
@@ -306,6 +365,24 @@ export default defineComponent({
         primary: '#2196F3',
         secondary: '#F5F5F5',
         accent: '#4CAF50'
+      },
+      highContrast: {
+        primary: '#0077C2',
+        secondary: '#424242',
+        accent: '#FF8800',
+        isColorblindFriendly: true
+      },
+      safeDistinction: {
+        primary: '#006BA6',
+        secondary: '#595959',
+        accent: '#FF8C00',
+        isColorblindFriendly: true
+      },
+      universal: {
+        primary: '#2E5C8A',
+        secondary: '#4F4F4F',
+        accent: '#D55E00',
+        isColorblindFriendly: true
       }
     }
 
