@@ -166,7 +166,7 @@
                   <p class="text-h6">Trading Card Game Collection Manager</p>
                   <p class="mt-4">A modern web application for managing your trading card collection.</p>
                   <p class="mt-4">Features:</p>
-                  <ul>
+                  <ul class="ml-4">
                     <li>Track your card collection</li>
                     <li>Monitor market prices</li>
                     <li>Look up card information</li>
