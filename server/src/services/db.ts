@@ -4,6 +4,8 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const projectRoot = join(__dirname, '..', '..', '..')
+const dataDir = join(projectRoot, 'data')
 
 // Define your database structure
 interface Card {
@@ -31,7 +33,7 @@ class DatabaseService {
   private static instance: DatabaseService
 
   private constructor() {
-    const file = join(__dirname, '../../data/db.json')
+    const file = join(dataDir, 'db.json')
     const adapter = new JSONFile<DB>(file)
     this.db = new Low<DB>(adapter, defaultData)
   }
