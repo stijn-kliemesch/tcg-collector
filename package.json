@@ -1,44 +1,17 @@
 {
   "name": "tcg-collector",
   "version": "1.0.0",
-  "description": "A Vue 3 TypeScript TCG collector application",
-  "type": "module",
+  "description": "Trading Card Game Collection Manager",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "server:dev": "cd server && node --loader ts-node/esm src/index.ts",
-    "server:build": "cd server && tsc",
-    "server:start": "cd server && node dist/index.js"
-  },
-  "dependencies": {
-    "@mdi/font": "^7.4.47",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
-    "@types/lowdb": "^1.0.15",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "lowdb": "^7.0.1",
-    "vue": "^3.3.4",
-    "vuetify": "^3.9.2"
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "server:dev": "cd server && npm run dev",
+    "server:build": "cd server && npm run build",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "build": "concurrently \"npm run server:build\" \"npm run client:build\"",
+    "postinstall": "cd client && npm install && cd ../server && npm install"
   },
   "devDependencies": {
-    "@types/node": "^20.19.9",
-    "@vitejs/plugin-vue": "^6.0.0",
-    "@vue/tsconfig": "^0.7.0",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.5",
-    "vite-plugin-vuetify": "^2.1.1",
-    "vue-tsc": "^3.0.3"
-  },
-  "keywords": [
-    "vue",
-    "typescript",
-    "web",
-    "frontend"
-  ],
-  "author": "",
-  "license": "MIT"
+    "concurrently": "^8.2.0"
+  }
 }
