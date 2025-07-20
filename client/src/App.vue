@@ -1,5 +1,44 @@
 <template>
   <v-app>
+    <v-navigation-drawer v-model="drawer" permanent>
+      <v-list>
+        <v-list-item
+          prepend-icon="mdi-view-grid"
+          title="Collection"
+          value="collection"
+          @click="currentPage = 'collection'"
+        ></v-list-item>
+        
+        <v-list-item
+          prepend-icon="mdi-store"
+          title="Market"
+          value="market"
+          @click="currentPage = 'market'"
+        ></v-list-item>
+
+        <v-list-item
+          prepend-icon="mdi-magnify"
+          title="Lookup"
+          value="lookup"
+          @click="currentPage = 'lookup'"
+        ></v-list-item>
+
+        <v-list-item
+          prepend-icon="mdi-cards"
+          title="Sets"
+          value="sets"
+          @click="currentPage = 'sets'"
+        ></v-list-item>
+
+        <v-list-item
+          prepend-icon="mdi-information"
+          title="About"
+          value="about"
+          @click="currentPage = 'about'"
+        ></v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-app-bar color="primary">
       <v-app-bar-title>TCG Collector</v-app-bar-title>
       <v-spacer></v-spacer>
@@ -16,60 +55,122 @@
 
     <v-main>
       <v-container>
-        <v-row justify="center" align="center" class="mt-4">
-          <v-col cols="12" md="8">
-            <v-card>
-              <v-card-title>Database Actions</v-card-title>
-              <v-card-text>
-                <v-row>
-                  <v-col>
-                    <v-btn
-                      color="success"
-                      block
-                      :loading="loading"
-                      @click="loadExampleData"
-                      :disabled="hasCards"
-                    >
-                      Load Example Cards
-                      <v-icon end icon="mdi-database-plus"></v-icon>
-                    </v-btn>
-                  </v-col>
-                  <v-col>
-                    <v-btn
-                      color="error"
-                      block
-                      :loading="loading"
-                      @click="clearDatabase"
-                      :disabled="!hasCards"
-                    >
-                      Clear Database
-                      <v-icon end icon="mdi-database-remove"></v-icon>
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-              <v-card-text v-if="cards.length > 0">
-                <div class="text-subtitle-1 mb-2">Current Database Contents:</div>
-                <v-list>
-                  <v-list-item
-                    v-for="card in cards"
-                    :key="card.id"
-                    :title="card.name"
-                    :subtitle="card.set"
-                  >
-                    <template v-slot:prepend>
-                      <v-icon icon="mdi-cards"></v-icon>
-                    </template>
-                    <template v-slot:append>
-                      <v-chip size="small">{{ card.condition }}</v-chip>
-                      <v-chip size="small" class="ml-2">Qty: {{ card.quantity }}</v-chip>
-                    </template>
-                  </v-list-item>
-                </v-list>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
+        <!-- Collection Page -->
+        <div v-if="currentPage === 'collection'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>My Collection</v-card-title>
+                <v-card-text>
+                  <v-row>
+                    <v-col>
+                      <v-btn
+                        color="success"
+                        :loading="loading"
+                        @click="loadExampleData"
+                        :disabled="hasCards"
+                      >
+                        Load Example Cards
+                        <v-icon end icon="mdi-database-plus"></v-icon>
+                      </v-btn>
+                      <v-btn
+                        color="error"
+                        class="ml-2"
+                        :loading="loading"
+                        @click="clearDatabase"
+                        :disabled="!hasCards"
+                      >
+                        Clear Database
+                        <v-icon end icon="mdi-database-remove"></v-icon>
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                  <v-row v-if="cards.length > 0">
+                    <v-col>
+                      <v-data-table
+                        :headers="[
+                          { title: 'Name', key: 'name' },
+                          { title: 'Set', key: 'set' },
+                          { title: 'Condition', key: 'condition' },
+                          { title: 'Quantity', key: 'quantity' }
+                        ]"
+                        :items="cards"
+                        :items-per-page="10"
+                      ></v-data-table>
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
+
+        <!-- Market Page -->
+        <div v-else-if="currentPage === 'market'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>Market</v-card-title>
+                <v-card-text>
+                  <p class="text-h6">Coming Soon!</p>
+                  <p>Trade and sell cards with other collectors.</p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
+
+        <!-- Lookup Page -->
+        <div v-else-if="currentPage === 'lookup'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>Card Lookup</v-card-title>
+                <v-card-text>
+                  <p class="text-h6">Coming Soon!</p>
+                  <p>Search and view detailed card information.</p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
+
+        <!-- Sets Page -->
+        <div v-else-if="currentPage === 'sets'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>Card Sets</v-card-title>
+                <v-card-text>
+                  <p class="text-h6">Coming Soon!</p>
+                  <p>Browse and manage card sets.</p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
+
+        <!-- About Page -->
+        <div v-else-if="currentPage === 'about'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>About TCG Collector</v-card-title>
+                <v-card-text>
+                  <p class="text-h6">Trading Card Game Collection Manager</p>
+                  <p class="mt-4">A modern web application for managing your trading card collection.</p>
+                  <p class="mt-4">Features:</p>
+                  <ul>
+                    <li>Track your card collection</li>
+                    <li>Monitor market prices</li>
+                    <li>Look up card information</li>
+                    <li>Manage card sets</li>
+                  </ul>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
       </v-container>
     </v-main>
   </v-app>
@@ -99,6 +200,8 @@ export default defineComponent({
     const loading = ref(false)
     const cards = ref<Card[]>([])
     const hasCards = ref(false)
+    const drawer = ref(true)
+    const currentPage = ref('collection')
 
     const loadCards = async () => {
       try {
@@ -177,7 +280,9 @@ export default defineComponent({
       cards,
       hasCards,
       loadExampleData,
-      clearDatabase
+      clearDatabase,
+      drawer,
+      currentPage
     }
   }
 })
