@@ -107,7 +107,9 @@ export default defineComponent({
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'include',
+          mode: 'cors'
         })
         const data = await response.json()
         cards.value = data
@@ -125,7 +127,9 @@ export default defineComponent({
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'include',
+          mode: 'cors'
         })
         const data = await response.json()
         cards.value = data
@@ -145,7 +149,9 @@ export default defineComponent({
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'include',
+          mode: 'cors'
         })
         cards.value = []
         hasCards.value = false

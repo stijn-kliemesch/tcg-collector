@@ -11,7 +11,20 @@ const app = express()
 const port = process.env.PORT || 3000
 
 const corsOptions = {
-  origin: 'https://literate-eureka-97x56g4wr4ppfpjgp-5173.app.github.dev',
+  origin: function (origin: string | undefined, callback: (error: Error | null, success?: boolean) => void) {
+    // Allow requests with no origin (like mobile apps, curl, postman)
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
+
+    // Check if the origin ends with .app.github.dev or is github.dev
+    if (origin.endsWith('.app.github.dev') || origin === 'https://github.dev') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
   credentials: true,
@@ -19,19 +32,14 @@ const corsOptions = {
   preflightContinue: false
 }
 
-// Apply CORS middleware
+// Apply CORS middleware globally
 app.use(cors(corsOptions));
 
 // Parse JSON bodies
 app.use(express.json())
 
-// Routes with CORS
-app.use('/api/cards', cors({
-  origin: 'https://literate-eureka-97x56g4wr4ppfpjgp-5173.app.github.dev',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  credentials: true
-}), cardsRouter)
+// Mount the cards router
+app.use('/api/cards', cardsRouter)
 
 // Health check endpoint
 app.get('/health', (req, res) => {

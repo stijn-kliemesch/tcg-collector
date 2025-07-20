@@ -1,0 +1,16 @@
+{
+  "name": "TCG Collector",
+  "forwardPorts": [3000, 5173],
+  "portsAttributes": {
+    "3000": {
+      "label": "Backend",
+      "protocol": "http",
+      "visibility": "public"
+    },
+    "5173": {
+      "label": "Frontend",
+      "protocol": "http",
+      "visibility": "public"
+    }
+  }
+}
