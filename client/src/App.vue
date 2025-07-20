@@ -6,6 +6,7 @@
           prepend-icon="mdi-view-grid"
           title="Collection"
           value="collection"
+          :active="currentPage === 'collection'"
           @click="currentPage = 'collection'"
         ></v-list-item>
         
@@ -13,6 +14,7 @@
           prepend-icon="mdi-store"
           title="Market"
           value="market"
+          :active="currentPage === 'market'"
           @click="currentPage = 'market'"
         ></v-list-item>
 
@@ -20,6 +22,7 @@
           prepend-icon="mdi-magnify"
           title="Lookup"
           value="lookup"
+          :active="currentPage === 'lookup'"
           @click="currentPage = 'lookup'"
         ></v-list-item>
 
@@ -27,6 +30,7 @@
           prepend-icon="mdi-cards"
           title="Sets"
           value="sets"
+          :active="currentPage === 'sets'"
           @click="currentPage = 'sets'"
         ></v-list-item>
 
@@ -34,6 +38,7 @@
           prepend-icon="mdi-information"
           title="About"
           value="about"
+          :active="currentPage === 'about'"
           @click="currentPage = 'about'"
         ></v-list-item>
       </v-list>
@@ -202,7 +207,7 @@ export default defineComponent({
     const cards = ref<Card[]>([])
     const hasCards = ref(false)
     const drawer = ref(false)
-    const currentPage = ref('collection')
+    const currentPage = ref('collection') // Default to collection page
 
     const loadCards = async () => {
       try {
