@@ -11,26 +11,18 @@ const app = express()
 const port = process.env.PORT || 3000
 
 const corsOptions = {
-  origin: function (origin: string | undefined, callback: (error: Error | null, success?: boolean) => void) {
-    // Allow requests with no origin (like mobile apps, curl, postman)
-    if (!origin) {
-      callback(null, true);
-      return;
-    }
-
-    // Check if the origin ends with .app.github.dev or is github.dev
-    if (origin.endsWith('.app.github.dev') || origin === 'https://github.dev') {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
-  credentials: true,
-  optionsSuccessStatus: 204,
-  preflightContinue: false
+  origin: true, // Since we're using GitHub Codespaces' port visibility setting
+  credentials: true
 }
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Parse JSON bodies
+app.use(express.json())
+
+// Mount routes
+app.use('/api/cards', cardsRouter)
 
 // Apply CORS middleware globally
 app.use(cors(corsOptions));
