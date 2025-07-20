@@ -1,34 +1,25 @@
 # TCG Collector
 
-A Vue 3 + TypeScript application for collecting and managing trading cards.
+An application for managing your trading card game collection.
 
 ## Features
 
-- Built with Vue 3 and TypeScript
-- Vite for fast development and building
-- Type-safe components and state management
-- Modern ES modules
-- Hot Module Replacement (HMR)
-- Component-based architecture
+- Easy-to-use interface with dark/light theme support
+- Mobile-friendly design with collapsible menu
+- Comprehensive card collection management
+- Data persistence to keep your collection safe
 
-## Project Structure
+### Coming Soon
+- Market price monitoring
+- Card information lookup
+- Set management tools
+- Trading features
 
-```
-tcg-collector/
-├── src/
-│   ├── assets/          # Static assets (images, fonts, etc.)
-│   ├── components/      # Vue components
-│   ├── App.vue         # Root Vue component
-│   ├── main.ts         # Application entry point
-│   └── env.d.ts        # TypeScript declarations
-├── public/             # Public static assets
-├── index.html          # Entry HTML file
-├── package.json        # Project dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-├── tsconfig.config.json # TypeScript config for config files
-├── vite.config.ts     # Vite configuration
-└── README.md          # This file
-```
+## Project Overview
+
+The application consists of two main parts:
+- A web interface where you manage your collection
+- A local server that safely stores your data
 
 ## Getting Started
 
@@ -37,47 +28,35 @@ tcg-collector/
    npm install
    ```
 
-2. **Start development server:**
-   ```bash
-   npm run dev
+2. **Configure local environment:**
+   Create `.env.local` files in both client and server directories:
+   
+   client/.env.local:
    ```
-   This will start the Vite dev server with hot module replacement.
-
-3. **Build for production:**
-   ```bash
-   npm run build
+   VITE_API_URL=http://localhost:3000
    ```
 
-4. **Preview production build:**
-   ```bash
-   npm run preview
+   server/.env.local:
+   ```
+   PORT=3000
    ```
 
-4. **Serve the application:**
-   ```bash
-   npm run serve
-   ```
-   This will start a local server at http://localhost:8080
-
-5. **Build and serve in one command:**
+3. **Start the application:**
    ```bash
    npm start
    ```
+   This will start both the web interface and the data server.
 
-## Development Workflow
+## Current Features
 
-1. Run `npm run dev` to start the development server
-2. Make changes to files in the `src/` directory
-3. Changes will be automatically reflected in the browser
+### Collection Management
+- View your card collection in an organized table
+- Load example cards to see how the system works
+- Clear your collection data when needed
+- All changes are automatically saved
 
-## Browser Compatibility
-
-This project requires a modern browser that supports ES2020 features.
-- Template literals
-- Async/await
-
-## Customization
-
-- Add components in the `src/components/` directory
-- Add static assets to the `public/` directory
-- Modify `src/App.vue` for application-wide changes
+### Coming Soon
+- Card market price tracking
+- Detailed card information lookup
+- Set collection tracking
+- Trading features
