@@ -41,6 +41,14 @@
           :active="currentPage === 'about'"
           @click="currentPage = 'about'"
         ></v-list-item>
+
+        <v-list-item
+          prepend-icon="mdi-cog"
+          title="Settings"
+          value="settings"
+          :active="currentPage === 'settings'"
+          @click="currentPage = 'settings'"
+        ></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -71,7 +79,7 @@
                   <v-row>
                     <v-col>
                       <v-btn
-                        color="success"
+                        color="primary"
                         :loading="loading"
                         @click="loadExampleData"
                         :disabled="hasCards"
@@ -80,7 +88,7 @@
                         <v-icon end icon="mdi-database-plus"></v-icon>
                       </v-btn>
                       <v-btn
-                        color="error"
+                        color="accent"
                         class="ml-2"
                         :loading="loading"
                         @click="clearDatabase"
@@ -177,6 +185,72 @@
             </v-col>
           </v-row>
         </div>
+
+        <!-- Settings Page -->
+        <div v-else-if="currentPage === 'settings'">
+          <v-row justify="center" align="center" class="mt-4">
+            <v-col cols="12">
+              <v-card>
+                <v-card-title>Settings</v-card-title>
+                <v-card-text>
+                  <p class="text-h6 mb-4">Color Theme</p>
+                  <v-radio-group v-model="selectedPalette" @change="applyPalette">
+                    <v-radio
+                      label="Professional & Modern"
+                      value="professional"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          Professional & Modern
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#1976D2">Primary</v-chip>
+                            <v-chip size="small" color="#424242">Secondary</v-chip>
+                            <v-chip size="small" color="#FFC107">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
+                    
+                    <v-radio
+                      label="Collector's Premium"
+                      value="premium"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          Collector's Premium
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#673AB7">Primary</v-chip>
+                            <v-chip size="small" color="#303030">Secondary</v-chip>
+                            <v-chip size="small" color="#FFD700">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
+                    
+                    <v-radio
+                      label="Clean & Accessible"
+                      value="clean"
+                      color="primary"
+                    >
+                      <template v-slot:label>
+                        <div>
+                          Clean & Accessible
+                          <div class="d-flex gap-2 mt-1">
+                            <v-chip size="small" color="#2196F3">Primary</v-chip>
+                            <v-chip size="small" color="#F5F5F5">Secondary</v-chip>
+                            <v-chip size="small" color="#4CAF50">Accent</v-chip>
+                          </div>
+                        </div>
+                      </template>
+                    </v-radio>
+                  </v-radio-group>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </div>
       </v-container>
     </v-main>
   </v-app>
@@ -208,6 +282,54 @@ export default defineComponent({
     const hasCards = ref(false)
     const drawer = ref(false)
     const currentPage = ref('collection') // Default to collection page
+    const selectedPalette = ref('professional') // Default palette
+
+    type PaletteType = 'professional' | 'premium' | 'clean'
+    type Palette = {
+      primary: string
+      secondary: string
+      accent: string
+    }
+    
+    const palettes: Record<PaletteType, Palette> = {
+      professional: {
+        primary: '#1976D2',
+        secondary: '#424242',
+        accent: '#FFC107'
+      },
+      premium: {
+        primary: '#673AB7',
+        secondary: '#303030',
+        accent: '#FFD700'
+      },
+      clean: {
+        primary: '#2196F3',
+        secondary: '#F5F5F5',
+        accent: '#4CAF50'
+      }
+    }
+
+    const applyPalette = () => {
+      const colors = palettes[selectedPalette.value as PaletteType]
+      theme.themes.value.light = {
+        ...theme.themes.value.light,
+        colors: {
+          ...theme.themes.value.light.colors,
+          primary: colors.primary,
+          secondary: colors.secondary,
+          accent: colors.accent
+        }
+      }
+      theme.themes.value.dark = {
+        ...theme.themes.value.dark,
+        colors: {
+          ...theme.themes.value.dark.colors,
+          primary: colors.primary,
+          secondary: colors.secondary,
+          accent: colors.accent
+        }
+      }
+    }
 
     const loadCards = async () => {
       try {
@@ -279,6 +401,12 @@ export default defineComponent({
       await loadCards()
     })
 
+    // Apply default palette on mount
+    onMounted(() => {
+      applyPalette()
+      loadCards()
+    })
+
     return {
       theme: theme.global.name,
       toggleTheme,
@@ -288,7 +416,9 @@ export default defineComponent({
       loadExampleData,
       clearDatabase,
       drawer,
-      currentPage
+      currentPage,
+      selectedPalette,
+      applyPalette
     }
   }
 })
