@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" permanent>
+    <v-navigation-drawer v-model="drawer">
       <v-list>
         <v-list-item
           prepend-icon="mdi-view-grid"
@@ -40,6 +40,7 @@
     </v-navigation-drawer>
 
     <v-app-bar color="primary">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title>TCG Collector</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -200,7 +201,7 @@ export default defineComponent({
     const loading = ref(false)
     const cards = ref<Card[]>([])
     const hasCards = ref(false)
-    const drawer = ref(true)
+    const drawer = ref(false)
     const currentPage = ref('collection')
 
     const loadCards = async () => {
