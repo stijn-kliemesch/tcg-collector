@@ -102,7 +102,13 @@ export default defineComponent({
 
     const loadCards = async () => {
       try {
-        const response = await fetch(`${API_URL}/cards`)
+        const response = await fetch(`${API_URL}/cards`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
         const data = await response.json()
         cards.value = data
         hasCards.value = data.length > 0
@@ -115,7 +121,11 @@ export default defineComponent({
       loading.value = true
       try {
         const response = await fetch(`${API_URL}/cards/load-example`, {
-          method: 'POST'
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         })
         const data = await response.json()
         cards.value = data
@@ -131,7 +141,11 @@ export default defineComponent({
       loading.value = true
       try {
         await fetch(`${API_URL}/cards`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         })
         cards.value = []
         hasCards.value = false
