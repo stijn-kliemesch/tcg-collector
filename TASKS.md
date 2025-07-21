@@ -5,13 +5,13 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
 
 ### Subtasks
 - [x] Install and configure vue-router
-- [ ] Extract each page into its own component:
+- [x] Extract each page into its own component:
   - [x] CollectionPage.vue
   - [x] MarketPage.vue
   - [x] LookupPage.vue
   - [x] SetsPage.vue
   - [x] AboutPage.vue
-  - [ ] SettingsPage.vue
+  - [x] SettingsPage.vue
 - [x] Set up route configurations
 - [x] Update navigation to use router-link
 - [ ] Implement route guards if needed

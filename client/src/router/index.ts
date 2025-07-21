@@ -5,6 +5,7 @@ import MarketPage from '@/pages/MarketPage.vue'
 import LookupPage from '@/pages/LookupPage.vue'
 import SetsPage from '@/pages/SetsPage.vue'
 import AboutPage from '@/pages/AboutPage.vue'
+import SettingsPage from '@/pages/SettingsPage.vue'
 
 // Temporary wrapper components until we create the real page components
 const createTemporaryPage = (content: string) => ({
@@ -44,7 +45,7 @@ const routes = [
   {
     path: '/settings',
     name: 'settings',
-    component: createTemporaryPage('Settings Page Content')
+    component: SettingsPage
   }
 ]
 
