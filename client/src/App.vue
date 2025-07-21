@@ -128,8 +128,7 @@ import SettingsTheme from '@/components/SettingsTheme.vue'
 import CardGrid from '@/components/CardGrid.vue'
 import { palettes, defaultPalette } from '@/config/palettes'
 import type { Card } from '@/types/card'
-
-const API_URL = import.meta.env.VITE_API_URL
+import { fetchCards, loadExampleCards, clearCards } from '@/services/cardService'
 
 export default defineComponent({
   name: 'App',
@@ -149,16 +148,7 @@ export default defineComponent({
 
     const loadCards = async () => {
       try {
-        const response = await fetch(`${API_URL}/cards`, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-          mode: 'cors'
-        })
-        const data = await response.json()
+        const data = await fetchCards()
         cards.value = data
         hasCards.value = data.length > 0
       } catch (error) {
@@ -169,16 +159,7 @@ export default defineComponent({
     const loadExampleData = async () => {
       loading.value = true
       try {
-        const response = await fetch(`${API_URL}/cards/load-example`, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-          mode: 'cors'
-        })
-        const data = await response.json()
+        const data = await loadExampleCards()
         cards.value = data
         hasCards.value = true
       } catch (error) {
@@ -191,15 +172,7 @@ export default defineComponent({
     const clearDatabase = async () => {
       loading.value = true
       try {
-        await fetch(`${API_URL}/cards`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-          mode: 'cors'
-        })
+        await clearCards()
         cards.value = []
         hasCards.value = false
       } catch (error) {
