@@ -9,7 +9,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
   - [x] CollectionPage.vue
   - [x] MarketPage.vue
   - [x] LookupPage.vue
-  - [ ] SetsPage.vue
+  - [x] SetsPage.vue
   - [ ] AboutPage.vue
   - [ ] SettingsPage.vue
 - [x] Set up route configurations
