@@ -45,17 +45,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
-interface Card {
-  id: string
-  name: string
-  set: string
-  condition: string
-  quantity: number
-  tags: string[]
-  notes?: string
-  dateAdded: string
-}
+import type { Card } from '@/types/card'
 
 export default defineComponent({
   name: 'CardGrid',

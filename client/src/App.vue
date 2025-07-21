@@ -127,17 +127,7 @@ import AppNavigation from '@/components/AppNavigation.vue'
 import SettingsTheme from '@/components/SettingsTheme.vue'
 import CardGrid from '@/components/CardGrid.vue'
 import { palettes, defaultPalette } from '@/config/palettes'
-
-interface Card {
-  id: string
-  name: string
-  set: string
-  condition: string
-  quantity: number
-  tags: string[]
-  notes?: string
-  dateAdded: string
-}
+import type { Card } from '@/types/card'
 
 const API_URL = import.meta.env.VITE_API_URL
 
