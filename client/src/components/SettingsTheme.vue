@@ -3,7 +3,7 @@
     <v-card-title>Settings</v-card-title>
     <v-card-text>
       <p class="text-h6 mb-4">Color Theme</p>
-      <v-radio-group v-model="selectedPalette" @change="handleChange">
+      <v-radio-group v-model="selectedPalette">
         <p class="text-subtitle-2 mb-4">Standard Themes</p>
         <v-radio
           label="Professional & Modern"
@@ -144,7 +144,10 @@ export default defineComponent({
 
     const selectedPalette = computed({
       get: () => props.modelValue,
-      set: (value) => emit('update:modelValue', value)
+      set: (value: string) => {
+        emit('update:modelValue', value)
+        applyPalette(value)
+      }
     })
 
     const palettes: Record<PaletteType, Palette> = {
@@ -183,7 +186,7 @@ export default defineComponent({
       }
     }
 
-    const handleChange = (value: string) => {
+    const applyPalette = (value: string) => {
       const colors = palettes[value as PaletteType]
       theme.themes.value.light = {
         ...theme.themes.value.light,
@@ -205,9 +208,11 @@ export default defineComponent({
       }
     }
 
+    // Apply initial theme on mount
+    applyPalette(props.modelValue)
+
     return {
-      selectedPalette,
-      handleChange
+      selectedPalette
     }
   }
 })
