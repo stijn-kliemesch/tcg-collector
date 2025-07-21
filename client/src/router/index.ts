@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { h } from 'vue'
+import CollectionPage from '@/pages/CollectionPage.vue'
 
 // Temporary wrapper components until we create the real page components
 const createTemporaryPage = (content: string) => ({
@@ -14,7 +15,7 @@ const routes = [
   {
     path: '/collection',
     name: 'collection',
-    component: createTemporaryPage('Collection Page Content')
+    component: CollectionPage
   },
   {
     path: '/market',
