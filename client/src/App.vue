@@ -160,6 +160,7 @@ import { defineComponent, ref, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
 import AppNavigation from '@/components/AppNavigation.vue'
 import SettingsTheme from '@/components/SettingsTheme.vue'
+import { palettes, defaultPalette } from '@/config/palettes'
 
 interface Card {
   id: string
@@ -187,7 +188,7 @@ export default defineComponent({
     const hasCards = ref(false)
     const drawer = ref(false)
     const currentPage = ref('collection') // Default to collection page
-    const selectedPalette = ref('professional') // Default palette
+    const selectedPalette = ref(defaultPalette) // Default palette
 
     const loadCards = async () => {
       try {
@@ -263,22 +264,23 @@ export default defineComponent({
     onMounted(() => {
       loadCards()
       // Apply initial theme
+      const defaultColors = palettes[defaultPalette]
       theme.themes.value.light = {
         ...theme.themes.value.light,
         colors: {
           ...theme.themes.value.light.colors,
-          primary: '#1976D2',    // professional theme
-          secondary: '#424242',
-          accent: '#FFC107'
+          primary: defaultColors.primary,
+          secondary: defaultColors.secondary,
+          accent: defaultColors.accent
         }
       }
       theme.themes.value.dark = {
         ...theme.themes.value.dark,
         colors: {
           ...theme.themes.value.dark.colors,
-          primary: '#1976D2',    // professional theme
-          secondary: '#424242',
-          accent: '#FFC107'
+          primary: defaultColors.primary,
+          secondary: defaultColors.secondary,
+          accent: defaultColors.accent
         }
       }
     })
