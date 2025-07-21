@@ -7,7 +7,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
 - [x] Install and configure vue-router
 - [ ] Extract each page into its own component:
   - [x] CollectionPage.vue
-  - [ ] MarketPage.vue
+  - [x] MarketPage.vue
   - [ ] LookupPage.vue
   - [ ] SetsPage.vue
   - [ ] AboutPage.vue

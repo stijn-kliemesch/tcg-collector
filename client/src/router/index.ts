@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { h } from 'vue'
 import CollectionPage from '@/pages/CollectionPage.vue'
+import MarketPage from '@/pages/MarketPage.vue'
 
 // Temporary wrapper components until we create the real page components
 const createTemporaryPage = (content: string) => ({
@@ -20,7 +21,7 @@ const routes = [
   {
     path: '/market',
     name: 'market',
-    component: createTemporaryPage('Market Page Content')
+    component: MarketPage
   },
   {
     path: '/lookup',
