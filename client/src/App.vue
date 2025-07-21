@@ -35,13 +35,12 @@ import { palettes, defaultPalette } from '@/config/palettes'
 
 const theme = useTheme()
 const drawer = ref(false)
-const selectedPalette = ref(defaultPalette)
 
 const toggleTheme = () => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
 
-// Apply initial theme on mount
+// Initialize theme
 onMounted(() => {
   const defaultColors = palettes[defaultPalette]
   theme.themes.value.light = {

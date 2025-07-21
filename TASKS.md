@@ -14,7 +14,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
   - [x] SettingsPage.vue
 - [x] Set up route configurations
 - [x] Update navigation to use router-link
-- [ ] Implement route guards if needed
+- [x] Implement route guards if needed
 
 ## 2. Theme Management
 Theme logic is currently scattered through App.vue and SettingsTheme.vue. This should be centralized and made reusable.

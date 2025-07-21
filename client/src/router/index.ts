@@ -49,7 +49,13 @@ const routes = [
   }
 ]
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+// Import and setup route guards
+import { setupGuards } from './guards'
+setupGuards(router)
+
+export { router }
