@@ -1,15 +1,17 @@
-const pokemonTcg = require('pokemon-tcg-sdk-typescript');
+const { PokemonTCG } = require('pokemon-tcg-sdk-typescript');
 
 export class PokemonTCGService {
     constructor() {
-        // Set the API key from environment variable
-        pokemonTcg.configure({ apiKey: process.env.POKEMON_TCG_API_KEY });
+        // API key is configured globally through environment variable
+        process.env.POKEMONTCG_API_KEY = process.env.POKEMON_TCG_API_KEY;
     }
 
     async searchCards(query: string) {
         try {
-            const cards = await pokemonTcg.card.where([
-                ['name', 'includes', query]
+            // Add wildcard if not already present
+            const searchQuery = query.endsWith('*') ? query : `${query}*`;
+            const cards = await PokemonTCG.findCardsByQueries([
+                { name: searchQuery }
             ]);
             return cards;
         } catch (error) {
@@ -20,7 +22,7 @@ export class PokemonTCGService {
 
     async getSet(setId: string) {
         try {
-            const set = await pokemonTcg.set.find(setId);
+            const set = await PokemonTCG.findSetByID(setId);
             return set;
         } catch (error) {
             console.error('Error getting set:', error);
@@ -30,7 +32,7 @@ export class PokemonTCGService {
 
     async getAllSets() {
         try {
-            const sets = await pokemonTcg.set.all();
+            const sets = await PokemonTCG.getAllSets();
             return sets;
         } catch (error) {
             console.error('Error getting all sets:', error);
@@ -40,7 +42,7 @@ export class PokemonTCGService {
 
     async getCard(cardId: string) {
         try {
-            const card = await pokemonTcg.card.find(cardId);
+            const card = await PokemonTCG.findCardByID(cardId);
             return card;
         } catch (error) {
             console.error('Error getting card:', error);

@@ -6,8 +6,9 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --testPathIgnorePatterns=integration",
+    "test:watch": "jest --watch",
+    "test:integration": "jest --testPathPatterns=integration"
   },
   "dependencies": {
     "cors": "^2.8.5",
