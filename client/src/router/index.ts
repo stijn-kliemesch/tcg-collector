@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { h } from 'vue'
 import CollectionPage from '@/pages/CollectionPage.vue'
 import MarketPage from '@/pages/MarketPage.vue'
+import LookupPage from '@/pages/LookupPage.vue'
 
 // Temporary wrapper components until we create the real page components
 const createTemporaryPage = (content: string) => ({
@@ -26,7 +27,7 @@ const routes = [
   {
     path: '/lookup',
     name: 'lookup',
-    component: createTemporaryPage('Lookup Page Content')
+    component: LookupPage
   },
   {
     path: '/sets',

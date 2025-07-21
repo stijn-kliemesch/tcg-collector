@@ -8,7 +8,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
 - [ ] Extract each page into its own component:
   - [x] CollectionPage.vue
   - [x] MarketPage.vue
-  - [ ] LookupPage.vue
+  - [x] LookupPage.vue
   - [ ] SetsPage.vue
   - [ ] AboutPage.vue
   - [ ] SettingsPage.vue
