@@ -256,13 +256,11 @@ export default defineComponent({
       theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
     }
 
-    onMounted(async () => {
-      await loadCards()
-    })
-
     // Load cards and apply initial theme on mount
-    onMounted(() => {
-      loadCards()
+    onMounted(async () => {
+      // Load cards
+      await loadCards()
+      
       // Apply initial theme
       const defaultColors = palettes[defaultPalette]
       theme.themes.value.light = {
