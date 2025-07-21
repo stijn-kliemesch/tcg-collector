@@ -4,7 +4,7 @@
 Currently, the app uses manual page switching with v-if statements. Moving to a proper routing system would improve code organization and user experience.
 
 ### Subtasks
-- [ ] Install and configure vue-router
+- [x] Install and configure vue-router
 - [ ] Extract each page into its own component:
   - [ ] CollectionPage.vue
   - [ ] MarketPage.vue
@@ -12,8 +12,8 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
   - [ ] SetsPage.vue
   - [ ] AboutPage.vue
   - [ ] SettingsPage.vue
-- [ ] Set up route configurations
-- [ ] Update navigation to use router-link
+- [x] Set up route configurations
+- [x] Update navigation to use router-link
 - [ ] Implement route guards if needed
 
 ## 2. Theme Management

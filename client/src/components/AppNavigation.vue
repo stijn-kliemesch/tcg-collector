@@ -12,48 +12,29 @@
         :prepend-icon="item.icon"
         :title="item.title"
         :value="item.value"
-        :active="currentPage === item.value"
-        @click="handleItemClick(item.value)"
+        :active="$route.name === item.value"
+        :to="{ name: item.value }"
+        @click="$emit('update:modelValue', false)"
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+defineProps<{
+  modelValue: boolean
+}>()
 
-export default defineComponent({
-  name: 'AppNavigation',
-  props: {
-    modelValue: {
-      type: Boolean,
-      required: true
-    },
-    currentPage: {
-      type: String,
-      required: true
-    }
-  },
-  emits: ['update:modelValue', 'update:currentPage'],
-  setup(props, { emit }) {
-    const handleItemClick = (value: string) => {
-      emit('update:currentPage', value)
-      emit('update:modelValue', false)
-    }
+defineEmits<{
+  'update:modelValue': [value: boolean]
+}>()
 
-    const menuItems = [
-      { icon: 'mdi-view-grid', title: 'Collection', value: 'collection' },
-      { icon: 'mdi-store', title: 'Market', value: 'market' },
-      { icon: 'mdi-magnify', title: 'Lookup', value: 'lookup' },
-      { icon: 'mdi-cards', title: 'Sets', value: 'sets' },
-      { icon: 'mdi-information', title: 'About', value: 'about' },
-      { icon: 'mdi-cog', title: 'Settings', value: 'settings' }
-    ]
-
-    return {
-      menuItems,
-      handleItemClick
-    }
-  }
-})
+const menuItems = [
+  { icon: 'mdi-view-grid', title: 'Collection', value: 'collection' },
+  { icon: 'mdi-store', title: 'Market', value: 'market' },
+  { icon: 'mdi-magnify', title: 'Lookup', value: 'lookup' },
+  { icon: 'mdi-cards', title: 'Sets', value: 'sets' },
+  { icon: 'mdi-information', title: 'About', value: 'about' },
+  { icon: 'mdi-cog', title: 'Settings', value: 'settings' }
+]
 </script>
