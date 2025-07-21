@@ -13,7 +13,7 @@
         :title="item.title"
         :value="item.value"
         :active="currentPage === item.value"
-        @click="$emit('update:currentPage', item.value)"
+        @click="handleItemClick(item.value)"
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -35,7 +35,12 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue', 'update:currentPage'],
-  setup() {
+  setup(props, { emit }) {
+    const handleItemClick = (value: string) => {
+      emit('update:currentPage', value)
+      emit('update:modelValue', false)
+    }
+
     const menuItems = [
       { icon: 'mdi-view-grid', title: 'Collection', value: 'collection' },
       { icon: 'mdi-store', title: 'Market', value: 'market' },
@@ -46,7 +51,8 @@ export default defineComponent({
     ]
 
     return {
-      menuItems
+      menuItems,
+      handleItemClick
     }
   }
 })
