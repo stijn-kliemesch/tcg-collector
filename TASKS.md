@@ -75,29 +75,33 @@ While we have a cardService, we can further improve our backend API infrastructu
 - [ ] Add API versioning support
 
 ## 6. Pokémon TCG Integration
-Integrate with the pokemontcg.io API to provide card information and pricing data.
+Integrate with the pokemontcg.io API through our backend to provide card information and pricing data.
 
 ### Subtasks
 - [ ] Initial Setup:
-  - [ ] Register for API key
-  - [ ] Install pokemon-tcg-sdk-typescript
-  - [ ] Set up environment variables for API key
-- [ ] Create Integration Services:
-  - [ ] PokemonTCGService for API communication
-  - [ ] Card search and filtering service
-  - [ ] Set information service
-  - [ ] Price tracking service
+  - [x] Register for API key
+  - [ ] Set up GitHub Codespaces secret for API key
+  - [ ] Install pokemon-tcg-sdk-typescript in server
+  - [ ] Add API key to server environment configuration
+- [ ] Server-Side Integration:
+  - [ ] Create PokemonTCGService class
+  - [ ] Add card search endpoint
+  - [ ] Add set information endpoint
+  - [ ] Add price tracking endpoint
+  - [ ] Implement server-side caching
+- [ ] API Routes:
+  - [ ] POST /api/pokemon/search (card search)
+  - [ ] GET /api/pokemon/sets (list sets)
+  - [ ] GET /api/pokemon/sets/:id (set details)
+  - [ ] GET /api/pokemon/cards/:id (card details)
+  - [ ] GET /api/pokemon/cards/:id/price (price history)
 - [ ] Feature Implementation:
   - [ ] Card lookup by name/number
   - [ ] Set browsing and filtering
   - [ ] Price history tracking
-  - [ ] Card image gallery
-- [ ] Data Management:
-  - [ ] Implement response caching
-  - [ ] Add offline support
-  - [ ] Set up automatic price updates
+  - [ ] Card image proxy
 - [ ] UI Integration:
-  - [ ] Update LookupPage to use Pokémon API
+  - [ ] Update LookupPage to use new endpoints
   - [ ] Add price tracking to MarketPage
   - [ ] Enhance set completion tracking
 
