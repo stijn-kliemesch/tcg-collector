@@ -1,9 +1,9 @@
 # TCG Collector Refactoring Tasks
 
-## 1. Routing Implementation
-Currently, the app uses manual page switching with v-if statements. Moving to a proper routing system would improve code organization and user experience.
+## 1. Routing Implementation ✓
+Completed: Manual page switching replaced with vue-router for improved code organization and user experience.
 
-### Subtasks
+### Completed Subtasks ✓
 - [x] Install and configure vue-router
 - [x] Extract each page into its own component:
   - [x] CollectionPage.vue
@@ -14,7 +14,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
   - [x] SettingsPage.vue
 - [x] Set up route configurations
 - [x] Update navigation to use router-link
-- [x] Implement route guards if needed
+- [x] Implement route guards for title management and future auth
 
 ## 2. Theme Management
 Theme logic is currently scattered through App.vue and SettingsTheme.vue. This should be centralized and made reusable.
@@ -61,18 +61,47 @@ Some components have too many responsibilities and could be broken down further.
 - [ ] Implement proper prop typing for all components
 
 ## 5. API Layer
-While we have a cardService, we can further improve the API layer.
+While we have a cardService, we can further improve our backend API infrastructure.
 
 ### Subtasks
 - [ ] Create base API client with axios:
   - [ ] Request/response interceptors
   - [ ] Error handling
   - [ ] Authentication handling
-- [ ] Implement API response types
+- [ ] Implement API response types for our endpoints
 - [ ] Add request/response logging
 - [ ] Add request caching where appropriate
+- [ ] Standardize API response formats
+- [ ] Add API versioning support
 
-## 6. Error Handling
+## 6. Pokémon TCG Integration
+Integrate with the pokemontcg.io API to provide card information and pricing data.
+
+### Subtasks
+- [ ] Initial Setup:
+  - [ ] Register for API key
+  - [ ] Install pokemon-tcg-sdk-typescript
+  - [ ] Set up environment variables for API key
+- [ ] Create Integration Services:
+  - [ ] PokemonTCGService for API communication
+  - [ ] Card search and filtering service
+  - [ ] Set information service
+  - [ ] Price tracking service
+- [ ] Feature Implementation:
+  - [ ] Card lookup by name/number
+  - [ ] Set browsing and filtering
+  - [ ] Price history tracking
+  - [ ] Card image gallery
+- [ ] Data Management:
+  - [ ] Implement response caching
+  - [ ] Add offline support
+  - [ ] Set up automatic price updates
+- [ ] UI Integration:
+  - [ ] Update LookupPage to use Pokémon API
+  - [ ] Add price tracking to MarketPage
+  - [ ] Enhance set completion tracking
+
+## 7. Error Handling
 Implement a consistent error handling strategy.
 
 ### Subtasks
@@ -82,12 +111,13 @@ Implement a consistent error handling strategy.
 - [ ] Create user-friendly error components
 
 ## Priority Order
-1. Theme Management (most isolated, good starting point)
-2. Routing Implementation (significant impact on code organization)
+1. Theme Management (most isolated, good starting point) 🔜
+2. ~~Routing Implementation~~ ✓ (Completed)
 3. State Management (builds on routing, prepares for future features)
 4. Component Structure (can be done incrementally)
-5. API Layer (enhance existing service)
-6. Error Handling (cross-cutting concern)
+5. API Layer (enhance our backend API infrastructure)
+6. Pokémon TCG Integration (add card lookup and pricing features)
+7. Error Handling (cross-cutting concern)
 
 ## Guidelines
 - Each task should be completed in isolation when possible
