@@ -10,7 +10,7 @@ Currently, the app uses manual page switching with v-if statements. Moving to a 
   - [x] MarketPage.vue
   - [x] LookupPage.vue
   - [x] SetsPage.vue
-  - [ ] AboutPage.vue
+  - [x] AboutPage.vue
   - [ ] SettingsPage.vue
 - [x] Set up route configurations
 - [x] Update navigation to use router-link
