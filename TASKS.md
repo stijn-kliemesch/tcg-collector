@@ -78,13 +78,13 @@ While we have a cardService, we can further improve our backend API infrastructu
 Integrate with the pokemontcg.io API through our backend to provide card information and pricing data.
 
 ### Subtasks
-- [ ] Initial Setup:
+- [x] Initial Setup:
   - [x] Register for API key
-  - [ ] Set up GitHub Codespaces secret for API key
-  - [ ] Install pokemon-tcg-sdk-typescript in server
-  - [ ] Add API key to server environment configuration
+  - [x] Set up GitHub Codespaces secret for API key
+  - [x] Install pokemon-tcg-sdk-typescript in server
+  - [x] Add API key to server environment configuration
 - [ ] Server-Side Integration:
-  - [ ] Create PokemonTCGService class
+  - [x] Create PokemonTCGService class
   - [ ] Add card search endpoint
   - [ ] Add set information endpoint
   - [ ] Add price tracking endpoint
