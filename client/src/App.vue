@@ -1,58 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer">
-      <v-list>
-        <v-list-item
-          prepend-icon="mdi-view-grid"
-          title="Collection"
-          value="collection"
-          :active="currentPage === 'collection'"
-          @click="currentPage = 'collection'"
-        ></v-list-item>
-        
-        <v-list-item
-          prepend-icon="mdi-store"
-          title="Market"
-          value="market"
-          :active="currentPage === 'market'"
-          @click="currentPage = 'market'"
-        ></v-list-item>
+    <v-layout>
+      <app-navigation
+        v-model="drawer"
+        :current-page="currentPage"
+        @update:current-page="currentPage = $event"
+      />
 
-        <v-list-item
-          prepend-icon="mdi-magnify"
-          title="Lookup"
-          value="lookup"
-          :active="currentPage === 'lookup'"
-          @click="currentPage = 'lookup'"
-        ></v-list-item>
-
-        <v-list-item
-          prepend-icon="mdi-cards"
-          title="Sets"
-          value="sets"
-          :active="currentPage === 'sets'"
-          @click="currentPage = 'sets'"
-        ></v-list-item>
-
-        <v-list-item
-          prepend-icon="mdi-information"
-          title="About"
-          value="about"
-          :active="currentPage === 'about'"
-          @click="currentPage = 'about'"
-        ></v-list-item>
-
-        <v-list-item
-          prepend-icon="mdi-cog"
-          title="Settings"
-          value="settings"
-          :active="currentPage === 'settings'"
-          @click="currentPage = 'settings'"
-        ></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-app-bar color="primary">
+      <v-app-bar color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title>TCG Collector</v-app-bar-title>
       <v-spacer></v-spacer>
@@ -311,12 +266,14 @@
         </div>
       </v-container>
     </v-main>
+    </v-layout>
   </v-app>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
+import AppNavigation from '@/components/AppNavigation.vue'
 
 interface Card {
   id: string
@@ -333,6 +290,9 @@ const API_URL = import.meta.env.VITE_API_URL
 
 export default defineComponent({
   name: 'App',
+  components: {
+    AppNavigation
+  },
   setup() {
     const theme = useTheme()
     const loading = ref(false)
