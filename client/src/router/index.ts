@@ -1,16 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { h } from 'vue'
 import CollectionPage from '@/pages/CollectionPage.vue'
 import MarketPage from '@/pages/MarketPage.vue'
 import LookupPage from '@/pages/LookupPage.vue'
 import SetsPage from '@/pages/SetsPage.vue'
 import AboutPage from '@/pages/AboutPage.vue'
 import SettingsPage from '@/pages/SettingsPage.vue'
-
-// Temporary wrapper components until we create the real page components
-const createTemporaryPage = (content: string) => ({
-  render: () => h('div', { class: 'mt-4' }, content)
-})
+import { setupGuards } from './guards'
 
 const routes = [
   {
@@ -54,8 +49,7 @@ const router = createRouter({
   routes
 })
 
-// Import and setup route guards
-import { setupGuards } from './guards'
+// Setup route guards
 setupGuards(router)
 
 export { router }
