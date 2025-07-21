@@ -259,9 +259,28 @@ export default defineComponent({
       await loadCards()
     })
 
-    // Load cards on mount
+    // Load cards and apply initial theme on mount
     onMounted(() => {
       loadCards()
+      // Apply initial theme
+      theme.themes.value.light = {
+        ...theme.themes.value.light,
+        colors: {
+          ...theme.themes.value.light.colors,
+          primary: '#1976D2',    // professional theme
+          secondary: '#424242',
+          accent: '#FFC107'
+        }
+      }
+      theme.themes.value.dark = {
+        ...theme.themes.value.dark,
+        colors: {
+          ...theme.themes.value.dark.colors,
+          primary: '#1976D2',    // professional theme
+          secondary: '#424242',
+          accent: '#FFC107'
+        }
+      }
     })
 
     return {
