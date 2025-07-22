@@ -122,19 +122,19 @@ Restructure the codebase to separate user data from reference data (scraped data
   - [x] Create `server/data/` directory structure
   - [x] Organize services into `user/`, `reference/`, and `external/` folders
   - [x] Move types into domain-specific folders
-  - [ ] Reorganize tests by domain
-- [ ] Create reference data services:
-  - [ ] ReferenceDataService for managing scraped data persistence
-  - [ ] ExpansionDataService for expansion data CRUD operations
-  - [ ] Cache management for scraped content
-- [ ] Implement data persistence:
-  - [ ] JSON storage for expansion data
-  - [ ] Data versioning and migration support
-  - [ ] Bootstrap commands to populate reference data
-- [ ] Update existing services:
-  - [ ] Move user-focused services to user domain
-  - [ ] Update import paths throughout codebase
-  - [ ] Add proper data separation in database services
+  - [x] Reorganize tests by domain
+- [x] Create reference data services:
+  - [x] ReferenceDataService for managing scraped data persistence
+  - [x] ExpansionDataService for expansion data CRUD operations
+  - [x] Cache management for scraped content
+- [x] Implement data persistence:
+  - [x] JSON storage for expansion data
+  - [x] Data versioning and migration support
+  - [x] Bootstrap commands to populate reference data
+- [x] Update existing services:
+  - [x] Move user-focused services to user domain
+  - [x] Update import paths throughout codebase
+  - [x] Add proper data separation in database services
 
 ## Priority Order
 1. Theme Management (most isolated, good starting point) 🔜

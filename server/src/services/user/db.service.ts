@@ -1,11 +1,10 @@
 import { JSONFile } from 'lowdb/node'
 import { Low } from 'lowdb'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const projectRoot = join(__dirname, '..', '..', '..')
-const dataDir = join(projectRoot, 'data')
+// Use process.cwd() for cross-platform path resolution  
+const projectRoot = process.cwd()
+const dataDir = join(projectRoot, 'data', 'user')
 
 // Define your database structure
 interface Card {
@@ -33,7 +32,7 @@ class DatabaseService {
   private static instance: DatabaseService
 
   private constructor() {
-    const file = join(dataDir, 'db.json')
+    const file = join(dataDir, 'collections.json')
     const adapter = new JSONFile<DB>(file)
     this.db = new Low<DB>(adapter, defaultData)
   }

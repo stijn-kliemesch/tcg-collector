@@ -1,4 +1,4 @@
-import { ExpansionService } from '../services/reference/expansion.service';
+import { ExpansionService } from '../../services/reference/expansion.service';
 
 describe('ExpansionService Integration', () => {
   let service: ExpansionService;
