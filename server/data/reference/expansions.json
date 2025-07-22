@@ -1,0 +1,74 @@
+{
+  "expansions": [
+    {
+      "name": "Pocket Monsters Carddass Trading Cards",
+      "languages": [
+        "Japanese"
+      ],
+      "cardSetCount": 3,
+      "promoSetCount": 0
+    },
+    {
+      "name": "Pokémon Card Game",
+      "languages": [
+        "Japanese"
+      ],
+      "cardSetCount": 90,
+      "promoSetCount": 26
+    },
+    {
+      "name": "Pokémon Topsun cards",
+      "languages": [
+        "Japanese"
+      ],
+      "cardSetCount": 3,
+      "promoSetCount": 0
+    },
+    {
+      "name": "Pokémon Trading Card Game",
+      "languages": [
+        "English"
+      ],
+      "cardSetCount": 112,
+      "promoSetCount": 41
+    },
+    {
+      "name": "Pokémon Topps trading cards",
+      "languages": [
+        "English"
+      ],
+      "cardSetCount": 9,
+      "promoSetCount": 2
+    },
+    {
+      "name": "Pokémon Dunkin Boomer cards",
+      "languages": [
+        "English"
+      ],
+      "cardSetCount": 3,
+      "promoSetCount": 0
+    },
+    {
+      "name": "Pokémon Merlin cards",
+      "languages": [
+        "English"
+      ],
+      "cardSetCount": 7,
+      "promoSetCount": 0
+    },
+    {
+      "name": "Pokémon Lamincards",
+      "languages": [
+        "Italian",
+        "Spanish",
+        "French",
+        "German",
+        "English"
+      ],
+      "cardSetCount": 6,
+      "promoSetCount": 0
+    }
+  ],
+  "lastUpdated": "2025-07-22T19:31:40.128Z",
+  "version": "1.0.0"
+}

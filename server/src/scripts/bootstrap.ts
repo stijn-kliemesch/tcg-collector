@@ -5,17 +5,35 @@
  * Usage: npm run bootstrap
  */
 
-import { expansionData } from '../services/reference/index.js'
+import { ExpansionService } from '../services/reference/expansion.service.js'
+import { writeFileSync, mkdirSync } from 'fs'
+import { join } from 'path'
 
 async function bootstrap() {
   console.log('🚀 Starting reference data bootstrap...\n')
 
   try {
+    // Create data directories if they don't exist
+    const dataDir = join(process.cwd(), 'data', 'reference')
+    mkdirSync(dataDir, { recursive: true })
+
     // Bootstrap expansions
     console.log('📦 Fetching expansion data...')
-    const expansions = await expansionData.refreshExpansions()
+    const expansionService = new ExpansionService()
+    const expansions = await expansionService.getExpansions()
+    
+    // Store to JSON file
+    const expansionFile = join(dataDir, 'expansions.json')
+    const referenceData = {
+      expansions,
+      lastUpdated: new Date().toISOString(),
+      version: '1.0.0'
+    }
+    
+    writeFileSync(expansionFile, JSON.stringify(referenceData, null, 2))
     
     console.log(`✅ Successfully bootstrapped ${expansions.length} expansions`)
+    console.log(`📁 Data stored in: ${expansionFile}`)
     
     // Display summary
     console.log('\n📊 Bootstrap Summary:')
@@ -33,6 +51,6 @@ async function bootstrap() {
 }
 
 // Run bootstrap if this file is executed directly
-if (process.argv[1].includes('bootstrap.js')) {
+if (process.argv[1].includes('bootstrap')) {
   bootstrap()
 }
