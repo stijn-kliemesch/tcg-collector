@@ -1,0 +1,9 @@
+# User data should not be committed
+user/
+
+# Cache files should not be committed
+reference/cache/
+
+# Keep reference data files (these are part of the application)
+!reference/*.json
+!reference/.gitkeep

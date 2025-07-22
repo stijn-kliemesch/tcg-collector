@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import type { Expansion } from '../types/expansion';
+import type { Expansion } from '../../types/reference/expansion';
 
 export class ExpansionService {
   private readonly BULBAPEDIA_URL = 'https://bulbapedia.bulbagarden.net/wiki/Pokémon_card';

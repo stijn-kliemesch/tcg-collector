@@ -118,10 +118,10 @@ Implement a consistent error handling strategy.
 Restructure the codebase to separate user data from reference data (scraped datasets) and implement proper data storage for server runtime datasets.
 
 ### Subtasks
-- [ ] Restructure folder organization:
-  - [ ] Create `server/data/` directory structure
-  - [ ] Organize services into `user/`, `reference/`, and `external/` folders
-  - [ ] Move types into domain-specific folders
+- [x] Restructure folder organization:
+  - [x] Create `server/data/` directory structure
+  - [x] Organize services into `user/`, `reference/`, and `external/` folders
+  - [x] Move types into domain-specific folders
   - [ ] Reorganize tests by domain
 - [ ] Create reference data services:
   - [ ] ReferenceDataService for managing scraped data persistence
