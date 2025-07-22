@@ -39,7 +39,7 @@ async function bootstrap() {
     console.log('\n📊 Bootstrap Summary:')
     console.log('─'.repeat(50))
     expansions.forEach((exp, index) => {
-      console.log(`${index + 1}. ${exp.name} (${exp.languages.join(', ')}) - ${exp.cardSetCount} sets`)
+      console.log(`${index + 1}. ${exp.name} (${exp.languages.join(', ')}) - ${exp.cardSetCount+exp.promoSetCount} sets`)
     })
     
     console.log('\n🎉 Bootstrap completed successfully!')

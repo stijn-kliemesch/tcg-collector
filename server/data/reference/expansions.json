@@ -2,6 +2,7 @@
   "expansions": [
     {
       "name": "Pocket Monsters Carddass Trading Cards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pocket_Monsters_Carddass_Trading_Cards",
       "languages": [
         "Japanese"
       ],
@@ -10,6 +11,7 @@
     },
     {
       "name": "Pokémon Card Game",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Trading_Card_Game",
       "languages": [
         "Japanese"
       ],
@@ -18,6 +20,7 @@
     },
     {
       "name": "Pokémon Topsun cards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Topsun_cards",
       "languages": [
         "Japanese"
       ],
@@ -26,6 +29,7 @@
     },
     {
       "name": "Pokémon Trading Card Game",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Trading_Card_Game",
       "languages": [
         "English"
       ],
@@ -34,6 +38,7 @@
     },
     {
       "name": "Pokémon Topps trading cards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Topps",
       "languages": [
         "English"
       ],
@@ -42,6 +47,7 @@
     },
     {
       "name": "Pokémon Dunkin Boomer cards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Dunkin_Boomer_cards",
       "languages": [
         "English"
       ],
@@ -50,6 +56,7 @@
     },
     {
       "name": "Pokémon Merlin cards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Merlin_cards",
       "languages": [
         "English"
       ],
@@ -58,6 +65,7 @@
     },
     {
       "name": "Pokémon Lamincards",
+      "link": "https://bulbapedia.bulbagarden.net/wiki/Pokémon_card/wiki/Pok%C3%A9mon_Lamincards",
       "languages": [
         "Italian",
         "Spanish",
@@ -69,6 +77,6 @@
       "promoSetCount": 0
     }
   ],
-  "lastUpdated": "2025-07-22T19:31:40.128Z",
+  "lastUpdated": "2025-07-22T19:52:26.034Z",
   "version": "1.0.0"
 }

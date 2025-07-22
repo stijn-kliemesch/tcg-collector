@@ -3,11 +3,11 @@ import * as cheerio from 'cheerio';
 import type { Expansion } from '../../types/reference/expansion';
 
 export class ExpansionService {
-  private readonly BULBAPEDIA_URL = 'https://bulbapedia.bulbagarden.net/wiki/Pokémon_card';
+  private static readonly BULBAPEDIA_URL = 'https://bulbapedia.bulbagarden.net/wiki/Pokémon_card';
 
   async getExpansions(): Promise<Expansion[]> {
     try {
-      const { data } = await axios.get(this.BULBAPEDIA_URL, {
+      const { data } = await axios.get(ExpansionService.BULBAPEDIA_URL, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
         }
@@ -36,6 +36,7 @@ export class ExpansionService {
               // Column 1: Name (with link)
               const nameCell = $(cells[1]);
               const name = nameCell.find('a').text().trim() || nameCell.text().trim();
+              const link = nameCell.find('a').attr('href');
               
               // Column 2: Language (1 or multiple)
               const language = $(cells[2]).text().trim();
@@ -54,6 +55,7 @@ export class ExpansionService {
               if (name && language) {
                 expansions.push({
                   name,
+                  link: ExpansionService.BULBAPEDIA_URL+link,
                   languages: language.split(" "), // Use language as shorthand
                   cardSetCount,
                   promoSetCount
