@@ -3,7 +3,8 @@ import * as cheerio from 'cheerio';
 import type { Expansion } from '../../types/reference/expansion';
 
 export class ExpansionService {
-  private static readonly BULBAPEDIA_URL = 'https://bulbapedia.bulbagarden.net/wiki/Pokémon_card';
+  private static readonly BULBAPEDIA_DOMAIN = 'https://bulbapedia.bulbagarden.net';
+  private static readonly BULBAPEDIA_URL = ExpansionService.BULBAPEDIA_DOMAIN + '/wiki/Pokémon_card';
 
   async getExpansions(): Promise<Expansion[]> {
     try {
@@ -55,7 +56,7 @@ export class ExpansionService {
               if (name && language) {
                 expansions.push({
                   name,
-                  link: ExpansionService.BULBAPEDIA_URL+link,
+                  link: ExpansionService.BULBAPEDIA_DOMAIN+link,
                   languages: language.split(" "), // Use language as shorthand
                   cardSetCount,
                   promoSetCount
