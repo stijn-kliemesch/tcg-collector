@@ -12,17 +12,20 @@
     "bootstrap": "tsx src/scripts/bootstrap.ts"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "lowdb": "^6.0.1",
-    "cheerio": "^1.0.0-rc.12",
-    "axios": "^1.4.0"
+    "sharp": "^0.33.5",
+    "tesseract.js": "^5.1.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.4.5",
+    "@types/sharp": "^0.31.1",
     "jest": "^30.0.4",
     "ts-jest": "^29.4.0",
     "tsx": "^4.20.3",
