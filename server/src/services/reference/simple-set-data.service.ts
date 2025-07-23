@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import { SetData, SetGroup, Generation, Set } from './set.service';
+import type { SetData, SetGroup, Generation, Set } from '../../types/reference/set.js';
 
 export interface SetCacheInfo {
   totalSets: number;
