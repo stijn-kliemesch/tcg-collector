@@ -1,13 +1,13 @@
 # TCG Collector Server
 
-A Node.js/TypeScript server for managing Pokemon Trading Card Game collection data. This server provides APIs for the TCG Collector web application and handles reference data scraping from Bulbapedia.
+A Node.js/TypeScript server for managing Pokemon Trading Card Game collection data. This server provides APIs for the TCG Collector web application and handles reference data scraping.
 
 ## Project Structure
 
 ```
 server/
 ├── data/                  # Generated data files and user collections
-│   ├── reference/         # Scraped reference data (expansions, sets)
+│   ├── reference/         # Scraped reference data (expansions, sets, etc.)
 │   └── user/              # User collection data
 ├── src/                   # Source code
 │   ├── data/              # Static data and hardcoded structures
@@ -16,7 +16,7 @@ server/
 │   ├── scripts/           # Utility and bootstrap scripts
 │   ├── services/          # Business logic services
 │   │   ├── external/      # External API integrations
-│   │   ├── reference/     # Reference data services (expansions, sets)
+│   │   ├── reference/     # Reference data services (expansions, sets, etc.)
 │   │   └── user/          # User data services
 │   ├── tests/             # Test files
 │   ├── types/             # TypeScript type definitions
@@ -45,24 +45,47 @@ server/
 ## Code Conventions
 
 ### Naming Conventions
+
+#### Case Conventions
 - **Files**: kebab-case (e.g., `set.service.ts`, `pokemon-tcg-structure.ts`)
 - **Classes**: PascalCase (e.g., `SetService`, `DatabaseService`)
 - **Functions/Variables**: camelCase (e.g., `scrapeSets`, `expansionData`)
 - **Constants**: SCREAMING_SNAKE_CASE (e.g., `POKEMON_TCG_SET_STRUCTURE`)
 - **Types/Interfaces**: PascalCase (e.g., `SetData`, `Generation`)
 
+#### Semantic Naming Conventions
+- **Class Names**: `DomainNoun + TechnicalPurpose`
+  - Examples: `SetService`, `ExpansionService`, `CardExtractor`, `LinkFinder`
+  - Pattern: Entity or concept + what it does technically
+  
+- **Type/Interface Names**: `DomainNoun` or `DomainNoun + Descriptor`
+  - Examples: `Set`, `Generation`, `SetData`, `ServiceConfig`
+  - Pattern: The thing being described, optionally with clarifying descriptor
+  
+- **Function Names (Mutators)**: `verb + Target` 
+  - Examples: `scrapeCards`, `addCard`, `updateExpansion`, `extractSets`
+  - Pattern: Action word + what is being acted upon
+  
+- **Function Names (Queries)**: `get/find/is + Target` or `Target + Predicate`
+  - Examples: `getAllCards`, `findSetLink`, `isValidSet`, `setExists`
+  - Pattern: Query word + target, or target + boolean question
+  
+- **Variable Names**: `target` or `target + Context`
+  - Examples: `card`, `expansionData`, `setIndex`, `responseBody`
+  - Pattern: The thing itself, or the thing with clarifying context
+
 ### Import Conventions
 - **Explicit Imports**: Always import from specific files, never from directory indexes
   ```typescript
   // ✅ Good
-  import { SetService } from './services/reference/set.service.js'
+  import { SetService } from './services/reference/set.service.ts'
   
   // ❌ Avoid
   import { SetService } from './services/reference'
   ```
 - **Type-Only Imports**: Use `import type` for TypeScript types when they're only used for typing
   ```typescript
-  import type { SetData } from '../types/reference/set.js'
+  import type { SetData } from '../types/reference/set.ts'
   ```
 - **ES Module Extensions**: Include `.js` extensions in import paths for ES module compatibility
 
