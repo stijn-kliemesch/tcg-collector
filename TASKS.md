@@ -141,7 +141,7 @@ Implement computer vision capabilities to automatically identify text and icons 
 
 ### Subtasks
 - [ ] Core Infrastructure:
-  - [ ] Install computer vision dependencies (tesseract.js, sharp, multer)
+  - [ ] Install computer vision dependencies (tesseract.js, sharp)
   - [ ] Create CardRecognitionService with OCR and image processing
   - [ ] Define TypeScript interfaces for recognition results
   - [ ] Implement image preprocessing pipeline
@@ -155,6 +155,7 @@ Implement computer vision capabilities to automatically identify text and icons 
   - [ ] Icon confidence thresholds and positioning
   - [ ] Expandable icon template system
 - [ ] API Implementation:
+  - [ ] Install file upload middleware (multer)
   - [ ] POST /api/vision/recognize-card (full recognition)
   - [ ] POST /api/vision/recognize-text-only (OCR only, faster)
   - [ ] GET /api/vision/supported-languages
