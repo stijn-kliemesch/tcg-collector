@@ -35,12 +35,12 @@ export class CardRecognitionService {
     defaultOptions: {
       languages: ['eng', 'jpn'],
       ocrMode: 'auto',
-      confidenceThreshold: 60,
+      confidenceThreshold: 35, // Lower threshold to catch more text
       iconMatchThreshold: 0.8,
       enableIconDetection: true,
       enhanceContrast: true,
       denoise: true,
-      sharpen: false,
+      sharpen: true, // Enable sharpening by default
       maxImageSize: 2048
     },
     preloadLanguages: false
@@ -85,22 +85,54 @@ export class CardRecognitionService {
    */
   private async initializeOCRWorker(): Promise<void> {
     console.log('📝 Setting up OCR worker...');
+    console.log('🔧 [DEBUG] Using RADICALLY DIFFERENT OCR configuration');
     
+    // Create basic worker first
     this.ocrWorker = await createWorker();
     
     // Load language packs
     const languageString = this.config.defaultLanguages.join('+');
+    // @ts-ignore - Using deprecated but functional methods
     await this.ocrWorker.loadLanguage(languageString);
+    // @ts-ignore - Using deprecated but functional methods  
     await this.ocrWorker.initialize(languageString);
     
-    // Configure OCR parameters for better card text recognition
+    // Apply EXTREME settings that should definitely change confidence
+    console.log('🔧 [DEBUG] Applying EXTREME OCR settings for testing...');
     await this.ocrWorker.setParameters({
-      tessedit_pageseg_mode: '6', // Uniform block of text (good for card text)
-      tessedit_ocr_engine_mode: '1', // Neural nets LSTM only
-      preserve_interword_spaces: '1' // Keep spaces between words
+      // Use completely different segmentation mode
+      tessedit_pageseg_mode: 8 as any, // Single word mode (vs default 3)
+      
+      // Make OCR extremely permissive
+      textord_tobias_threshold: '0.1', // EXTREMELY low (vs default 0.7)
+      textord_min_linesize: '1.0', // Very low minimum line size
+      
+      // Disable ALL correction mechanisms
+      tessedit_enable_dict_correction: '0',
+      tessedit_enable_bigram_correction: '0', 
+      tessedit_enable_doc_dict: '0',
+      
+      // Make character recognition very loose
+      classify_char_norm_adj_midpoint: '32', // Very different from default 96
+      classify_char_norm_adj_curl: '8', // Very different from default 2
+      
+      // Extremely permissive thresholds
+      edges_max_children_per_outline: '100', // Much higher than default
+      textord_noise_area_ratio: '0.9', // Very high noise tolerance
+      
+      // Character whitelist (this should definitely work)
+      tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ./,-:()',
+      
+      // Preserve spaces
+      preserve_interword_spaces: '1',
+      
+      // Don't auto-invert or write images
+      tessedit_do_invert: '0',
+      tessedit_write_images: '0'
     });
     
-    console.log(`📝 OCR worker ready with languages: ${this.config.defaultLanguages.join(', ')}`);
+    console.log(`📝 OCR worker ready with EXTREME settings`);
+    console.log('🎯 [DEBUG] If confidence STILL doesn\'t change, something else is going on');
   }
 
   /**
@@ -140,10 +172,18 @@ export class CardRecognitionService {
     const startTime = Date.now();
     
     try {
-      // Merge options with defaults
+      // Merge options with defaults - ensure all required properties are present
+      const baseOptions = this.config.defaultOptions;
       const opts: Required<RecognitionOptions> = {
-        ...this.config.defaultOptions,
-        ...options
+        languages: options.languages || baseOptions.languages || ['eng'],
+        ocrMode: options.ocrMode || baseOptions.ocrMode || 'auto',
+        confidenceThreshold: options.confidenceThreshold ?? baseOptions.confidenceThreshold ?? 35,
+        iconMatchThreshold: options.iconMatchThreshold ?? baseOptions.iconMatchThreshold ?? 0.8,
+        enableIconDetection: options.enableIconDetection ?? baseOptions.enableIconDetection ?? true,
+        enhanceContrast: options.enhanceContrast ?? baseOptions.enhanceContrast ?? true,
+        denoise: options.denoise ?? baseOptions.denoise ?? true,
+        sharpen: options.sharpen ?? baseOptions.sharpen ?? true,
+        maxImageSize: options.maxImageSize ?? baseOptions.maxImageSize ?? 2048
       };
       
       console.log('🔍 Starting card recognition...');
@@ -196,42 +236,84 @@ export class CardRecognitionService {
 
   /**
    * Preprocess image for optimal OCR recognition
+   * Enhanced for Pokemon cards with size-aware processing
    */
   private async preprocessImage(
     imageBuffer: Buffer,
     options: Required<RecognitionOptions>
   ): Promise<Buffer> {
-    console.log('🖼️  Preprocessing image...');
+    console.log('🖼️  Preprocessing image with size-aware optimization...');
     
     let pipeline = sharp(imageBuffer);
     
-    // Resize if too large
+    // Get metadata first
     const metadata = await sharp(imageBuffer).metadata();
-    if (metadata.width && metadata.width > options.maxImageSize) {
-      pipeline = pipeline.resize(options.maxImageSize, null, {
+    const imageWidth = metadata.width || 1000;
+    const imageHeight = metadata.height || 1000;
+    console.log(`📐 Original image: ${imageWidth}x${imageHeight}px`);
+    
+    // Calculate if we need to resize - but keep it large enough for text recognition
+    const targetWidth = Math.min(options.maxImageSize, Math.max(1200, imageWidth));
+    const needsResize = imageWidth > targetWidth;
+    
+    if (needsResize) {
+      pipeline = pipeline.resize(targetWidth, null, {
         withoutEnlargement: true,
-        fit: 'inside'
+        fit: 'inside',
+        kernel: sharp.kernel.lanczos3 // Better resampling for text
       });
-      console.log(`📐 Resized image from ${metadata.width}px to max ${options.maxImageSize}px`);
+      console.log(`📐 Resized image from ${imageWidth}px to ${targetWidth}px for optimal OCR`);
+    } else {
+      console.log(`📐 Keeping original size ${imageWidth}px (good for text recognition)`);
     }
     
-    // Enhance contrast for better text recognition
+    // For Pokemon card name recognition, apply targeted enhancements
+    pipeline = pipeline
+      // Normalize histogram to improve contrast - especially important for large text
+      .normalise({
+        lower: 2, // Slightly more aggressive for large text
+        upper: 98 // Clip highlights to improve text contrast
+      })
+      // Slight saturation boost to make text more distinct from background
+      .modulate({
+        saturation: 1.15, // Slightly higher for large text
+        brightness: 1.08  // Moderate brightness boost
+      });
+    
+    console.log('🌟 Enhanced contrast and clarity with size-optimized settings');
+    
+    // Handle white borders around black text with size-aware sharpening
     if (options.enhanceContrast) {
-      pipeline = pipeline.normalise();
-      console.log('🌟 Enhanced contrast');
+      // Calculate sharpening parameters based on image size
+      const sharpenSigma = Math.max(1.0, Math.min(2.5, imageWidth / 600)); // Scale with image size
+      
+      pipeline = pipeline
+        // Apply size-appropriate unsharp mask
+        .sharpen(sharpenSigma, 2, 3) // sigma scaled with image size
+        // Apply gamma correction optimized for large text
+        .gamma(1.15); // Slightly higher gamma for better large text contrast
+      
+      console.log(`🔍 Applied size-aware edge enhancement (sigma: ${sharpenSigma.toFixed(1)})`);
     }
     
-    // Apply noise reduction
+    // Noise reduction that preserves text detail
     if (options.denoise) {
-      pipeline = pipeline.median(3);
-      console.log('🧹 Applied noise reduction');
+      // Use smaller median filter for large images to preserve text detail
+      const medianSize = imageWidth > 1500 ? 2 : 3;
+      pipeline = pipeline.median(medianSize);
+      console.log(`🧹 Applied gentle noise reduction (kernel: ${medianSize}px)`);
     }
     
-    // Apply sharpening if requested
+    // Additional sharpening if requested - scaled for image size
     if (options.sharpen) {
-      pipeline = pipeline.sharpen();
-      console.log('🔧 Applied sharpening');
+      const additionalSharpen = Math.max(0.8, Math.min(1.5, imageWidth / 800));
+      pipeline = pipeline.sharpen(additionalSharpen, 1, 2);
+      console.log(`🔧 Applied additional text sharpening (${additionalSharpen.toFixed(1)})`);
     }
+    
+    // Convert to grayscale for better OCR on text with complex backgrounds
+    pipeline = pipeline.grayscale();
+    console.log('⚫ Converted to grayscale for optimal text recognition');
     
     // Convert to PNG for consistent OCR processing
     return pipeline.png().toBuffer();
@@ -239,6 +321,7 @@ export class CardRecognitionService {
 
   /**
    * Extract text from preprocessed image using OCR
+   * Enhanced for Pokemon card text with multiple passes for different text sizes
    */
   private async extractText(
     imageBuffer: Buffer,
@@ -248,39 +331,189 @@ export class CardRecognitionService {
       throw new Error('OCR worker not available');
     }
     
-    console.log('📝 Extracting text with OCR...');
+    console.log('📝 Extracting text with size-aware multi-pass OCR...');
+    
+    // Get image dimensions to optimize OCR parameters
+    const metadata = await sharp(imageBuffer).metadata();
+    const imageWidth = metadata.width || 1000;
+    const imageHeight = metadata.height || 1000;
+    
+    console.log(`🖼️  Working with ${imageWidth}x${imageHeight}px image`);
     
     // Set languages for this recognition if different from default
     if (options.languages.length > 0) {
       const languageString = options.languages.join('+');
       await this.ocrWorker.reinitialize(languageString);
     }
-    
-    // Perform OCR recognition
-    const { data } = await this.ocrWorker.recognize(imageBuffer);
-    
-    // Process and filter results
-    const textRegions: RecognizedText[] = [];
-    
-    if (data.words) {
-      for (const word of data.words) {
-        if (word.confidence >= options.confidenceThreshold) {
-          textRegions.push({
-            text: word.text,
-            confidence: word.confidence,
-            bbox: {
-              x: word.bbox.x0,
-              y: word.bbox.y0,
-              width: word.bbox.x1 - word.bbox.x0,
-              height: word.bbox.y1 - word.bbox.y0
-            }
-          });
+
+    const allTextRegions: RecognizedText[] = [];
+
+    // Multiple OCR passes optimized for different text sizes based on image dimensions
+    const ocrPasses = [
+      { 
+        mode: 6, 
+        name: 'Large text (card names)', 
+        params: {
+          tessedit_pageseg_mode: 6 as any,
+          textord_min_linesize: Math.max(8, imageHeight * 0.015).toString(), // ~2% of image height
+          textord_tobias_threshold: '0.4' // Lower threshold for better detection
+        }
+      },
+      { 
+        mode: 3, 
+        name: 'Auto segmentation', 
+        params: {
+          tessedit_pageseg_mode: 3 as any,
+          textord_min_linesize: Math.max(4, imageHeight * 0.008).toString(), // ~0.8% of image height
+          textord_tobias_threshold: '0.4' // Lower threshold
+        }
+      },
+      { 
+        mode: 8, 
+        name: 'Single word (isolated text)', 
+        params: {
+          tessedit_pageseg_mode: 8 as any,
+          textord_min_linesize: Math.max(6, imageHeight * 0.012).toString(), // ~1.2% of image height
+          textord_tobias_threshold: '0.3' // Much lower threshold for single words
+        }
+      },
+      { 
+        mode: 13, 
+        name: 'Raw line (numbers/stats)', 
+        params: {
+          tessedit_pageseg_mode: 13 as any,
+          textord_min_linesize: Math.max(3, imageHeight * 0.005).toString(), // ~0.5% of image height
+          textord_tobias_threshold: '0.5' // Moderate threshold for numbers
         }
       }
+    ];
+
+    for (const pass of ocrPasses) {
+      try {
+        console.log(`🔍 OCR Pass: ${pass.name} (mode ${pass.mode})`);
+        
+        // Set optimized parameters for this pass
+        await this.ocrWorker.setParameters(pass.params);
+        
+        // For large text like Pokemon names, try with different DPI settings
+        if (pass.mode === 6 || pass.mode === 8) {
+          // Higher DPI for better large text recognition
+          await this.ocrWorker.setParameters({
+            ...pass.params,
+            user_defined_dpi: Math.min(300, Math.max(150, imageWidth / 4)).toString()
+          });
+        }
+        
+        // Perform OCR recognition
+        const { data } = await this.ocrWorker.recognize(imageBuffer);
+        
+        // Process results from this pass
+        if (data.words) {
+          for (const word of data.words) {
+            // Use different confidence thresholds based on text characteristics and size
+            let minConfidence = options.confidenceThreshold;
+            
+            // Calculate estimated text size based on bounding box
+            const textHeight = word.bbox.y1 - word.bbox.y0;
+            const textWidth = word.bbox.x1 - word.bbox.x0;
+            const textArea = textWidth * textHeight;
+            const relativeHeight = textHeight / imageHeight;
+            
+            // Adjust confidence based on text size and content
+            if (word.text.length >= 6 && relativeHeight > 0.04) {
+              // Large text like Pokemon names - be more lenient
+              minConfidence = Math.max(15, options.confidenceThreshold - 35); // Further reduced for large Pokemon names
+              console.log(`📏 Large text detected: "${word.text}" (${Math.round(textWidth)}x${Math.round(textHeight)}px, ${(relativeHeight*100).toFixed(1)}% of image height)`);
+            }
+            else if (word.text.length >= 6) {
+              // Long words (likely Pokemon names or attack names)
+              minConfidence = Math.max(20, options.confidenceThreshold - 30); // Reduced for potential Pokemon names
+              console.log(`📝 Long text detected: "${word.text}" (${word.text.length} chars, ${Math.round(word.confidence)}% confidence)`);
+            }
+            // Numbers (card stats, set numbers)
+            else if (/^\d+$/.test(word.text) || /^\d+\/\d+$/.test(word.text)) {
+              minConfidence = Math.max(40, options.confidenceThreshold - 15);
+            }
+            // Medium words
+            else if (word.text.length >= 3) {
+              minConfidence = Math.max(35, options.confidenceThreshold - 10);
+            }
+            
+            // Special case: Pokemon-like names with very low confidence but good characteristics
+            if (word.text.length >= 7 && relativeHeight > 0.05 && 
+                /^[A-Za-z\(\)]+$/.test(word.text) && 
+                word.confidence < minConfidence) {
+              console.log(`🎯 Potential Pokemon name with low confidence: "${word.text}" (${Math.round(word.confidence)}%) - accepting anyway`);
+              minConfidence = Math.min(minConfidence, word.confidence);
+            }
+            
+            if (word.confidence >= minConfidence && word.text.trim().length > 0) {
+              const newRegion = {
+                text: word.text.trim(),
+                confidence: word.confidence,
+                bbox: {
+                  x: word.bbox.x0,
+                  y: word.bbox.y0,
+                  width: word.bbox.x1 - word.bbox.x0,
+                  height: word.bbox.y1 - word.bbox.y0
+                }
+              };
+              
+              // Avoid duplicates from different passes
+              const isDuplicate = allTextRegions.some(existing => 
+                Math.abs(existing.bbox.x - newRegion.bbox.x) < 10 &&
+                Math.abs(existing.bbox.y - newRegion.bbox.y) < 10 &&
+                existing.text.toLowerCase() === newRegion.text.toLowerCase()
+              );
+              
+              if (!isDuplicate) {
+                allTextRegions.push(newRegion);
+                if (newRegion.text.includes('Ganganac')) {
+                  console.log(`✅ "Ganganac)" ADDED to text regions!`);
+                  console.log(`   Text: "${newRegion.text}"`);
+                  console.log(`   Confidence: ${newRegion.confidence}%`);
+                  console.log(`   Position: (${newRegion.bbox.x}, ${newRegion.bbox.y})`);
+                  console.log(`   Size: ${newRegion.bbox.width}x${newRegion.bbox.height}px`);
+                }
+              } else if (newRegion.text.includes('Ganganac')) {
+                console.log(`🚫 "Ganganac)" was FILTERED as duplicate!`);
+                console.log(`   New:`, newRegion);
+                console.log(`   Existing duplicate:`, allTextRegions.find(existing => 
+                  Math.abs(existing.bbox.x - newRegion.bbox.x) < 10 &&
+                  Math.abs(existing.bbox.y - newRegion.bbox.y) < 10 &&
+                  existing.text.toLowerCase() === newRegion.text.toLowerCase()
+                ));
+              }
+            } else if (word.text.includes('Ganganac')) {
+              console.log(`❌ "Ganganac)" REJECTED due to low confidence!`);
+              console.log(`   Text: "${word.text}"`);
+              console.log(`   OCR Confidence: ${word.confidence}%`);
+              console.log(`   Required minimum: ${minConfidence}%`);
+              console.log(`   Length: ${word.text.length} chars`);
+            }
+          }
+        }
+        
+        console.log(`   Found ${data.words?.length || 0} potential words in this pass`);
+        
+      } catch (error) {
+        console.warn(`   OCR pass ${pass.mode} failed:`, error);
+      }
     }
+
+    console.log(`📝 Total unique text regions found: ${allTextRegions.length}`);
+    
+    // Sort by confidence and position for better organization
+    allTextRegions.sort((a, b) => {
+      // First by Y position (top to bottom)
+      const yDiff = a.bbox.y - b.bbox.y;
+      if (Math.abs(yDiff) > 20) return yDiff;
+      // Then by X position (left to right)
+      return a.bbox.x - b.bbox.x;
+    });
     
     // Group nearby words into logical text regions
-    return this.groupTextRegions(textRegions);
+    return this.groupTextRegions(allTextRegions);
   }
 
   /**
@@ -305,36 +538,87 @@ export class CardRecognitionService {
 
   /**
    * Group nearby words into logical text regions
+   * Enhanced for Pokemon card text that may be fragmented
    */
   private groupTextRegions(words: RecognizedText[]): RecognizedText[] {
     if (words.length === 0) return [];
     
+    console.log(`🔗 Grouping ${words.length} text fragments into logical regions...`);
+    
+    // Debug: Check if Ganganac) is in the input
+    const ganganacWord = words.find(w => w.text.includes('Ganganac'));
+    if (ganganacWord) {
+      console.log(`🎯 FOUND "Ganganac)" in input words:`, ganganacWord);
+      console.log(`   Text: "${ganganacWord.text}"`);
+      console.log(`   Confidence: ${ganganacWord.confidence}%`);
+      console.log(`   Position: (${ganganacWord.bbox.x}, ${ganganacWord.bbox.y})`);
+      console.log(`   Size: ${ganganacWord.bbox.width}x${ganganacWord.bbox.height}px`);
+    }
+    
+    // Sort words by position (top to bottom, left to right)
+    const sortedWords = [...words].sort((a, b) => {
+      const yDiff = a.bbox.y - b.bbox.y;
+      if (Math.abs(yDiff) > 20) return yDiff; // Different lines
+      return a.bbox.x - b.bbox.x; // Same line, left to right
+    });
+    
     const grouped: RecognizedText[] = [];
     const processed = new Set<number>();
     
-    for (let i = 0; i < words.length; i++) {
+    for (let i = 0; i < sortedWords.length; i++) {
       if (processed.has(i)) continue;
       
-      const group = [words[i]];
+      const group = [sortedWords[i]];
       processed.add(i);
       
-      // Find nearby words (simple distance-based grouping)
-      for (let j = i + 1; j < words.length; j++) {
+      // Debug: Track if this is the Ganganac) word
+      const isGanganacGroup = sortedWords[i].text.includes('Ganganac');
+      if (isGanganacGroup) {
+        console.log(`🎯 Processing Ganganac) word: "${sortedWords[i].text}"`);
+      }
+      
+      // Look for nearby words to group together
+      for (let j = i + 1; j < sortedWords.length; j++) {
         if (processed.has(j)) continue;
         
-        const distance = this.calculateDistance(words[i].bbox, words[j].bbox);
-        if (distance < 50) { // 50px threshold for grouping
-          group.push(words[j]);
+        const currentWord = sortedWords[i];
+        const candidateWord = sortedWords[j];
+        
+        // Check if words should be grouped
+        if (this.shouldGroupWords(currentWord, candidateWord, group)) {
+          group.push(candidateWord);
           processed.add(j);
+          
+          if (isGanganacGroup) {
+            console.log(`  🔗 Grouped with: "${candidateWord.text}"`);
+          }
         }
       }
       
       // Create combined text region
       if (group.length === 1) {
         grouped.push(group[0]);
+        if (isGanganacGroup) {
+          console.log(`  ✅ Ganganac) kept as single word: "${group[0].text}"`);
+        }
       } else {
-        const combinedText = group.map(w => w.text).join(' ');
+        // Sort group members by position for proper text order
+        group.sort((a, b) => {
+          const yDiff = a.bbox.y - b.bbox.y;
+          if (Math.abs(yDiff) > 15) return yDiff;
+          return a.bbox.x - b.bbox.x;
+        });
+        
+        // Combine text intelligently
+        const combinedText = this.combineTextFragments(group);
         const avgConfidence = group.reduce((sum, w) => sum + w.confidence, 0) / group.length;
+        
+        if (isGanganacGroup) {
+          console.log(`  🔄 Ganganac) combined into: "${combinedText}"`);
+          console.log(`     From fragments:`, group.map(g => g.text));
+        }
+        
+        // Calculate bounding box
         const minX = Math.min(...group.map(w => w.bbox.x));
         const minY = Math.min(...group.map(w => w.bbox.y));
         const maxX = Math.max(...group.map(w => w.bbox.x + w.bbox.width));
@@ -353,7 +637,115 @@ export class CardRecognitionService {
       }
     }
     
+    console.log(`🔗 Grouped into ${grouped.length} logical regions`);
+    
+    // Debug: Check if Ganganac) made it to the output
+    const ganganacResult = grouped.find(w => w.text.includes('Ganganac'));
+    if (ganganacResult) {
+      console.log(`🎯 "Ganganac)" SURVIVED grouping:`, ganganacResult);
+    } else {
+      console.log(`❌ "Ganganac)" was LOST during grouping`);
+    }
+    
     return grouped;
+  }
+
+  /**
+   * Determine if two words should be grouped together
+   */
+  private shouldGroupWords(
+    baseWord: RecognizedText, 
+    candidateWord: RecognizedText,
+    currentGroup: RecognizedText[]
+  ): boolean {
+    // Protect important Pokemon names from being over-grouped
+    const isPokemonName = (text: string) => text.length >= 6 && /^[A-Za-z\(\)]+$/.test(text);
+    if (isPokemonName(baseWord.text) || isPokemonName(candidateWord.text)) {
+      // Be more conservative with Pokemon names - only group if very close
+      const horizontalDistance = Math.abs(candidateWord.bbox.x - (baseWord.bbox.x + baseWord.bbox.width));
+      const verticalDistance = Math.abs(candidateWord.bbox.y - baseWord.bbox.y);
+      
+      if (verticalDistance <= 10 && horizontalDistance <= 15) {
+        return true;
+      } else {
+        console.log(`🛡️  Protecting Pokemon name "${baseWord.text}" from grouping with "${candidateWord.text}" (dist: h${horizontalDistance}px, v${verticalDistance}px)`);
+        return false;
+      }
+    }
+    
+    // Calculate distances
+    const horizontalDistance = Math.abs(candidateWord.bbox.x - (baseWord.bbox.x + baseWord.bbox.width));
+    const verticalDistance = Math.abs(candidateWord.bbox.y - baseWord.bbox.y);
+    
+    // Group if words are on the same line and close horizontally
+    if (verticalDistance <= 15 && horizontalDistance <= 30) {
+      return true;
+    }
+    
+    // Group if words are vertically aligned (same column) and close vertically
+    const horizontalOverlap = this.calculateHorizontalOverlap(baseWord.bbox, candidateWord.bbox);
+    if (horizontalOverlap > 0.3 && verticalDistance <= 40) {
+      return true;
+    }
+    
+    // Special case for Pokemon card text patterns
+    // Group single characters or short fragments that might be part of a larger word
+    if ((baseWord.text.length <= 2 || candidateWord.text.length <= 2) && 
+        verticalDistance <= 25 && horizontalDistance <= 50) {
+      return true;
+    }
+    
+    return false;
+  }
+
+  /**
+   * Calculate horizontal overlap between two bounding boxes
+   */
+  private calculateHorizontalOverlap(bbox1: RecognizedText['bbox'], bbox2: RecognizedText['bbox']): number {
+    const left1 = bbox1.x;
+    const right1 = bbox1.x + bbox1.width;
+    const left2 = bbox2.x; 
+    const right2 = bbox2.x + bbox2.width;
+    
+    const overlapStart = Math.max(left1, left2);
+    const overlapEnd = Math.min(right1, right2);
+    const overlapWidth = Math.max(0, overlapEnd - overlapStart);
+    
+    const minWidth = Math.min(bbox1.width, bbox2.width);
+    return minWidth > 0 ? overlapWidth / minWidth : 0;
+  }
+
+  /**
+   * Intelligently combine text fragments
+   */
+  private combineTextFragments(fragments: RecognizedText[]): string {
+    if (fragments.length === 1) return fragments[0].text;
+    
+    // Combine fragments with appropriate spacing
+    let combinedText = '';
+    
+    for (let i = 0; i < fragments.length; i++) {
+      const fragment = fragments[i].text.trim();
+      if (!fragment) continue;
+      
+      if (combinedText) {
+        // Determine if we need a space
+        const lastChar = combinedText[combinedText.length - 1];
+        const firstChar = fragment[0];
+        
+        // Don't add space before punctuation or if last char is punctuation
+        if (!/[.,!?:;]/.test(firstChar) && !/[.,!?:;]/.test(lastChar)) {
+          // Add space if both are letters/numbers
+          if (/[a-zA-Z0-9]/.test(lastChar) && /[a-zA-Z0-9]/.test(firstChar)) {
+            combinedText += ' ';
+          }
+        }
+      }
+      
+      combinedText += fragment;
+    }
+    
+    return combinedText.trim();
   }
 
   /**
