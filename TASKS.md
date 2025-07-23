@@ -136,6 +136,36 @@ Restructure the codebase to separate user data from reference data (scraped data
   - [x] Update import paths throughout codebase
   - [x] Add proper data separation in database services
 
+## 9. Computer Vision Card Recognition
+Implement computer vision capabilities to automatically identify text and icons from Pokemon TCG card images using local processing.
+
+### Subtasks
+- [ ] Core Infrastructure:
+  - [ ] Install computer vision dependencies (tesseract.js, sharp, multer)
+  - [ ] Create CardRecognitionService with OCR and image processing
+  - [ ] Define TypeScript interfaces for recognition results
+  - [ ] Implement image preprocessing pipeline
+- [ ] Text Recognition (OCR):
+  - [ ] Multi-language OCR support (English, Japanese, Korean, Chinese, etc.)
+  - [ ] Text confidence scoring and filtering
+  - [ ] Text region grouping and positioning
+  - [ ] Language detection from recognized text
+- [ ] Icon Recognition:
+  - [ ] Template matching for Pokemon TCG icons (energy types, rarity, etc.)
+  - [ ] Icon confidence thresholds and positioning
+  - [ ] Expandable icon template system
+- [ ] API Implementation:
+  - [ ] POST /api/vision/recognize-card (full recognition)
+  - [ ] POST /api/vision/recognize-text-only (OCR only, faster)
+  - [ ] GET /api/vision/supported-languages
+  - [ ] GET /api/vision/supported-icons
+  - [ ] GET /api/vision/health
+- [ ] Integration Features:
+  - [ ] Cross-reference recognized text with Pokemon TCG database
+  - [ ] Automatic card identification and data population
+  - [ ] Quality assessment and confidence reporting
+  - [ ] Error handling and fallback mechanisms
+
 ## Priority Order
 1. Theme Management (most isolated, good starting point) 🔜
 2. ~~Routing Implementation~~ ✓ (Completed)
@@ -144,7 +174,8 @@ Restructure the codebase to separate user data from reference data (scraped data
 5. API Layer (enhance our backend API infrastructure)
 6. Pokémon TCG Integration (add card lookup and pricing features)
 7. Error Handling (cross-cutting concern)
-8. Reference Data Management (organize data architecture) 🔜
+8. ~~Reference Data Management~~ ✓ (Completed)
+9. Computer Vision Card Recognition (advanced feature for automated card identification)
 
 ## Guidelines
 - Each task should be completed in isolation when possible
