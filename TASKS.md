@@ -140,11 +140,11 @@ Restructure the codebase to separate user data from reference data (scraped data
 Implement computer vision capabilities to automatically identify text and icons from Pokemon TCG card images using local processing.
 
 ### Subtasks
-- [ ] Core Infrastructure:
+- [x] Core Infrastructure:
   - [x] Install computer vision dependencies (tesseract.js, sharp)
-  - [ ] Create CardRecognitionService with OCR and image processing
-  - [ ] Define TypeScript interfaces for recognition results
-  - [ ] Implement image preprocessing pipeline
+  - [x] Create CardRecognitionService with OCR and image processing
+  - [x] Define TypeScript interfaces for recognition results
+  - [x] Implement image preprocessing pipelineization
 - [ ] Text Recognition (OCR):
   - [ ] Multi-language OCR support (English, Japanese, Korean, Chinese, etc.)
   - [ ] Text confidence scoring and filtering
