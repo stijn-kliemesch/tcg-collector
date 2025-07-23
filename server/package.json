@@ -9,6 +9,7 @@
     "test": "jest --testPathIgnorePatterns=integration",
     "test:watch": "jest --watch",
     "test:integration": "jest --testPathPatterns=integration",
+    "test:vision": "tsx src/__tests__/vision/card-recognition.test.ts",
     "bootstrap": "tsx src/scripts/bootstrap.ts"
   },
   "dependencies": {
