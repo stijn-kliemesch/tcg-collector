@@ -41,6 +41,7 @@ server/
 - **Hardcoded Reference Data**: Pokemon TCG set structures are maintained as hardcoded data rather than dynamic scraping for reliability and performance.
 - **File-Based Storage**: Uses JSON files with LowDB for simple, lightweight data persistence.
 - **Singleton Pattern**: Database services use singleton pattern for consistent state management.
+- **Local-First Processing**: Avoid cloud service dependencies where possible (e.g., using Tesseract.js for OCR instead of cloud APIs) to maintain privacy and reduce external dependencies.
 
 ## Code Conventions
 
