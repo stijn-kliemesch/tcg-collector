@@ -10,6 +10,7 @@ import type {
   SupportedLanguage,
   IconTemplate
 } from '../../types/vision/recognition.js';
+import { PokemonCardAnalyzer, type PokemonCardAnalysis, type PokemonNameCandidate, type TargetSearchOptions } from './pokemon-card-analyzer.service.js';
 
 /**
  * CardRecognitionService
@@ -85,7 +86,6 @@ export class CardRecognitionService {
    */
   private async initializeOCRWorker(): Promise<void> {
     console.log('📝 Setting up OCR worker...');
-    console.log('🔧 [DEBUG] Using RADICALLY DIFFERENT OCR configuration');
     
     // Create basic worker first
     this.ocrWorker = await createWorker();
@@ -97,42 +97,37 @@ export class CardRecognitionService {
     // @ts-ignore - Using deprecated but functional methods  
     await this.ocrWorker.initialize(languageString);
     
-    // Apply EXTREME settings that should definitely change confidence
-    console.log('🔧 [DEBUG] Applying EXTREME OCR settings for testing...');
+    // Apply optimized OCR settings for Pokemon cards
+    console.log('🔧 Applying optimized OCR settings for Pokemon cards...');
     await this.ocrWorker.setParameters({
-      // Use completely different segmentation mode
-      tessedit_pageseg_mode: 8 as any, // Single word mode (vs default 3)
+      // Use standard segmentation mode
+      tessedit_pageseg_mode: 3 as any, // Auto segmentation
       
-      // Make OCR extremely permissive
-      textord_tobias_threshold: '0.1', // EXTREMELY low (vs default 0.7)
-      textord_min_linesize: '1.0', // Very low minimum line size
+      // Balanced thresholds for card text
+      textord_tobias_threshold: '0.4', // Moderate threshold
+      textord_min_linesize: '4.0',
       
-      // Disable ALL correction mechanisms
-      tessedit_enable_dict_correction: '0',
-      tessedit_enable_bigram_correction: '0', 
-      tessedit_enable_doc_dict: '0',
+      // Enable helpful corrections but not overly aggressive
+      tessedit_enable_dict_correction: '1',
+      tessedit_enable_bigram_correction: '1', 
+      tessedit_enable_doc_dict: '0', // Disable document dictionary for cards
       
-      // Make character recognition very loose
-      classify_char_norm_adj_midpoint: '32', // Very different from default 96
-      classify_char_norm_adj_curl: '8', // Very different from default 2
+      // Character recognition settings
+      classify_char_norm_adj_midpoint: '96', // Default value
+      classify_char_norm_adj_curl: '2', // Default value
       
-      // Extremely permissive thresholds
-      edges_max_children_per_outline: '100', // Much higher than default
-      textord_noise_area_ratio: '0.9', // Very high noise tolerance
+      // Reasonable noise tolerance
+      textord_noise_area_ratio: '0.7',
       
-      // Character whitelist (this should definitely work)
-      tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ./,-:()',
-      
-      // Preserve spaces
+      // Preserve spaces for multi-word text
       preserve_interword_spaces: '1',
       
-      // Don't auto-invert or write images
+      // Standard settings
       tessedit_do_invert: '0',
       tessedit_write_images: '0'
     });
     
-    console.log(`📝 OCR worker ready with EXTREME settings`);
-    console.log('🎯 [DEBUG] If confidence STILL doesn\'t change, something else is going on');
+    console.log(`📝 OCR worker ready with Pokemon card optimizations`);
   }
 
   /**
@@ -832,6 +827,87 @@ export class CardRecognitionService {
    */
   isReady(): boolean {
     return this.isInitialized && this.ocrWorker !== null;
+  }
+
+  /**
+   * Enhanced Pokemon card recognition with intelligent analysis
+   */
+  async recognizePokemonCard(
+    imageBuffer: Buffer,
+    options: RecognitionOptions = {}
+  ): Promise<CardRecognitionResult & { pokemonAnalysis: PokemonCardAnalysis }> {
+    // First run standard recognition
+    const baseResult = await this.recognizeCard(imageBuffer, options);
+    
+    // Then run Pokemon-specific analysis
+    const pokemonAnalysis = PokemonCardAnalyzer.analyzePokemonCard(baseResult.textRegions);
+    
+    return {
+      ...baseResult,
+      pokemonAnalysis
+    };
+  }
+
+  /**
+   * Search for specific Pokemon card elements
+   */
+  async searchPokemonCardElements(
+    imageBuffer: Buffer,
+    targets: Array<{ text: string; type: string; required?: boolean }>,
+    options: RecognitionOptions = {}
+  ): Promise<{ 
+    results: Array<{ target: string; type: string; matches: Array<{ region: RecognizedText; score: number }> }>;
+    totalFound: number;
+    recognitionResult: CardRecognitionResult;
+  }> {
+    const recognitionResult = await this.recognizeCard(imageBuffer, options);
+    
+    const searchOptions: TargetSearchOptions = {
+      targets: targets.map(t => ({ text: t.text, type: t.type as any, required: t.required })),
+      fuzzyMatchThreshold: 50,
+      includePartialMatches: false
+    };
+    
+    const results = PokemonCardAnalyzer.searchForTargets(recognitionResult.textRegions, searchOptions);
+    const totalFound = results.filter(r => r.matches.length > 0).length;
+    
+    return {
+      results,
+      totalFound,
+      recognitionResult
+    };
+  }
+
+  /**
+   * Find Pokemon name candidates with OCR correction
+   */
+  async findPokemonName(
+    imageBuffer: Buffer,
+    targetName?: string,
+    options: RecognitionOptions = {}
+  ): Promise<{
+    candidates: PokemonNameCandidate[];
+    bestCandidate: PokemonNameCandidate | null;
+    recognitionResult: CardRecognitionResult;
+  }> {
+    // Use aggressive settings for Pokemon name detection
+    const pokemonOptions: RecognitionOptions = {
+      confidenceThreshold: 5, // Very low for catching poorly recognized names
+      enhanceContrast: true,
+      denoise: true,
+      sharpen: true,
+      ...options
+    };
+    
+    const recognitionResult = await this.recognizeCard(imageBuffer, pokemonOptions);
+    const candidates = PokemonCardAnalyzer.findPokemonNameCandidates(recognitionResult.textRegions, targetName);
+    const bestCandidate = PokemonCardAnalyzer.getBestPokemonName(candidates);
+    
+    return {
+      candidates,
+      bestCandidate,
+      recognitionResult
+    };
   }
 
   /**
