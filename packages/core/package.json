@@ -1,0 +1,21 @@
+{
+  "name": "@tcg-collector/core",
+  "version": "0.1.0",
+  "description": "Core business logic and utilities for TCG Collector",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@tcg-collector/api-types": "file:../api-types"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

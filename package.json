@@ -2,16 +2,26 @@
   "name": "tcg-collector",
   "version": "1.0.0",
   "description": "Trading Card Game Collection Manager",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "client",
+    "server"
+  ],
   "scripts": {
+    "build:packages": "npm run build --workspace=@tcg-collector/api-types && npm run build --workspace=@tcg-collector/core && npm run build --workspace=@tcg-collector/vision",
+    "watch:packages": "concurrently \"npm run watch --workspace=@tcg-collector/api-types\" \"npm run watch --workspace=@tcg-collector/core\" \"npm run watch --workspace=@tcg-collector/vision\"",
     "client:dev": "cd client && npm run dev",
     "client:build": "cd client && npm run build",
     "server:dev": "cd server && npm run dev",
-    "server:build": "cd server && npm run build",
-    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
-    "build": "concurrently \"npm run server:build\" \"npm run client:build\"",
-    "postinstall": "cd client && npm install && cd ../server && npm install"
+    "server:build": "cd server && npm run build", 
+    "dev": "concurrently \"npm run watch:packages\" \"npm run server:dev\" \"npm run client:dev\"",
+    "build": "npm run build:packages && concurrently \"npm run server:build\" \"npm run client:build\"",
+    "clean": "npm run clean --workspaces",
+    "postinstall": "npm install --workspaces"
   },
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.0",
+    "typescript": "^5.0.0"
   }
 }
