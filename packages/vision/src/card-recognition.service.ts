@@ -33,6 +33,7 @@ export class CardRecognitionService {
   private isInitialized = false;
   private config: Required<VisionServiceConfig>;
   private textRegionFinder: TextRegionFinder;
+  private lastOCRConfig: string = ''; // Track last config to avoid unnecessary parameter changes
 
   /**
    * Default configuration for the vision service
@@ -206,6 +207,7 @@ export class CardRecognitionService {
         denoise: options.denoise ?? baseOptions.denoise ?? true,
         sharpen: options.sharpen ?? baseOptions.sharpen ?? true,
         maxImageSize: options.maxImageSize ?? baseOptions.maxImageSize ?? 2048,
+        enableLayoutAnalysis: options.enableLayoutAnalysis ?? false, // Added missing property
       };
 
       console.log('🔍 Starting card recognition...');
@@ -291,7 +293,7 @@ export class CardRecognitionService {
         textRegions
       );
 
-      // Step 3: Process each region independently with OCR
+      // Step 3: Process each region independently with optimized OCR per region type
       const allRecognizedText: RecognizedText[] = [];
 
       for (let i = 0; i < regionImages.length; i++) {
@@ -302,13 +304,14 @@ export class CardRecognitionService {
         );
 
         try {
-          // Use single text block mode for each region (mode 7)
-          await this.ocrWorker!.setParameters({
-            tessedit_pageseg_mode: 7 as any, // Single text block
-            preserve_interword_spaces: '1',
-            tessedit_char_whitelist:
-              'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×÷()[]{}/',
-          });
+          // Apply region-specific OCR configuration (only if changed)
+          const ocrConfig = this.getOCRConfigForRegion(region.name || 'unknown');
+          const configKey = JSON.stringify(ocrConfig);
+          
+          if (configKey !== this.lastOCRConfig) {
+            await this.ocrWorker!.setParameters(ocrConfig);
+            this.lastOCRConfig = configKey;
+          }
 
           const { data } = await this.ocrWorker!.recognize(regionBuffer);
 
@@ -476,6 +479,229 @@ export class CardRecognitionService {
 
     // Convert to PNG for consistent OCR processing
     return pipeline.png().toBuffer();
+  }
+
+  /**
+   * Get optimized OCR configuration for specific region types
+   */
+  private getOCRConfigForRegion(regionName: string): Record<string, any> {
+    const baseConfig = {
+      preserve_interword_spaces: '1',
+      // Removed tessedit_ocr_engine_mode - can only be set during initialization
+    };
+
+    switch (regionName) {
+      // === POKEMON NAME ===
+      case 'pokemon-name':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word - Pokemon names are usually one word
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'',
+          classify_bln_numeric_mode: '0', // Disable numeric mode for names
+        };
+
+      // === HP SECTION ===
+      case 'hp-number':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for numbers
+          tessedit_char_whitelist: '0123456789',
+          classify_bln_numeric_mode: '1', // Enable numeric mode
+          tessedit_enable_numeric_mode: '1',
+        };
+
+      case 'hp-text':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for "HP"
+          tessedit_char_whitelist: 'HP',
+          classify_bln_numeric_mode: '0',
+        };
+
+      // === EVOLUTION INFO ===
+      case 'evolution-stage':
+      case 'evolves-from':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7, // Single text line
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -',
+          classify_bln_numeric_mode: '0',
+        };
+
+      // === ABILITY SECTION ===
+      case 'ability-label':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for "Ability"
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'ability-name':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7, // Single text line for ability names
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'ability-text':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 6, // Uniform block of text (may contain icons)
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
+          classify_bln_numeric_mode: '0',
+        };
+
+      // === ATTACK SECTIONS ===
+      case 'attack1-name':
+      case 'attack2-name':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7, // Single text line for attack names
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'attack1-damage':
+      case 'attack2-damage':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for damage numbers
+          tessedit_char_whitelist: '0123456789+×',
+          classify_bln_numeric_mode: '1',
+          tessedit_enable_numeric_mode: '1',
+        };
+
+      case 'attack1-text':
+      case 'attack2-text':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 6, // Block of text for attack descriptions
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'attack1-energy':
+      case 'attack2-energy':
+      case 'energy-cost-general':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word/symbol for energy costs
+          tessedit_char_whitelist: '0123456789+×[]{}()',
+          classify_bln_numeric_mode: '1',
+        };
+
+      // === STATS SECTION ===
+      case 'weakness-label':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for "Weakness"
+          tessedit_char_whitelist: 'Weakness',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'resistance-label':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for "Resistance" 
+          tessedit_char_whitelist: 'Resistance',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'retreat-label':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for "Retreat"
+          tessedit_char_whitelist: 'Retreat',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'weakness-value':
+      case 'resistance-value':
+      case 'retreat-value':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word/symbol for stat values
+          tessedit_char_whitelist: '0123456789-+×',
+          classify_bln_numeric_mode: '1',
+        };
+
+      // === CARD INFO ===
+      case 'set-number':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8, // Single word for set numbers like "202/182"
+          tessedit_char_whitelist: '0123456789/',
+          classify_bln_numeric_mode: '1',
+        };
+
+      case 'card-type':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7, // Single text line for card type/rarity
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          classify_bln_numeric_mode: '0',
+        };
+
+      // === FALLBACK REGIONS ===
+      case 'stats-general':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 6, // Block of text for general stats area
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×/',
+          classify_bln_numeric_mode: '0',
+        };
+
+      // === LEGACY COMPATIBILITY ===
+      case 'hp':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8,
+          tessedit_char_whitelist: '0123456789HP',
+          classify_bln_numeric_mode: '1',
+        };
+
+      case 'attack-name':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7,
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'attack-damage':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8,
+          tessedit_char_whitelist: '0123456789+×',
+          classify_bln_numeric_mode: '1',
+        };
+
+      case 'stats':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 6,
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×',
+          classify_bln_numeric_mode: '0',
+        };
+
+      case 'energy-cost':
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 8,
+          tessedit_char_whitelist: '0123456789+×[]{}()',
+          classify_bln_numeric_mode: '1',
+        };
+
+      default:
+        // Generic configuration for unknown regions
+        return {
+          ...baseConfig,
+          tessedit_pageseg_mode: 7, // Single text block
+          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×÷()[]{}/',
+        };
+    }
   }
 
   /**
