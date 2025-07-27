@@ -278,8 +278,12 @@ export class CardRecognitionService {
       const metadata = await sharp(imageBuffer).metadata();
 
       // Step 1: Find text regions in the image
-      const textRegions =
-        await this.textRegionFinder.findTextRegions(imageBuffer);
+      const textRegions = await this.textRegionFinder.findTextRegions(
+        imageBuffer,
+        {
+          enableLayoutAnalysis: options.enableLayoutAnalysis || false,
+        }
+      );
 
       // Step 2: Extract individual region images
       const regionImages = await this.textRegionFinder.extractRegionImages(

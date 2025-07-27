@@ -83,6 +83,7 @@ export interface RecognitionOptions {
   denoise?: boolean;
   sharpen?: boolean;
   maxImageSize?: number;
+  enableLayoutAnalysis?: boolean; // Enable actual layout analysis vs predefined regions
 }
 
 // Extended types for the vision service

@@ -9,6 +9,28 @@ import { CardRecognitionService } from '../src/card-recognition.service';
 // Get current directory for CommonJS tests
 const currentDir = __dirname;
 
+// Helper function for accuracy calculation
+function calculateAccuracy(textRegions: any[], expectedTexts: string[]) {
+  const foundTexts: string[] = [];
+
+  for (const expectedText of expectedTexts) {
+    const found = textRegions.some(text =>
+      text.text.toLowerCase().includes(expectedText.toLowerCase())
+    );
+
+    if (found) {
+      foundTexts.push(expectedText);
+    }
+  }
+
+  return {
+    found: foundTexts.length,
+    total: expectedTexts.length,
+    percentage: (foundTexts.length / expectedTexts.length) * 100,
+    foundTexts,
+  };
+}
+
 describe('CardRecognitionService', () => {
   let service: CardRecognitionService;
 
@@ -132,6 +154,92 @@ describe('CardRecognitionService', () => {
       // Ideal goal: Find at least some of the expected texts (we'll improve this over time)
       // expect(foundTexts.length).toBeGreaterThan(0);
     }, 30000);
+
+    test('should analyze card layout and compare with predefined regions', async () => {
+      const imagePath = join(currentDir, '../data/example-card-1.png');
+      const imageBuffer = readFileSync(imagePath);
+
+      // Test layout analysis approach
+      const layoutResult = await service.recognizeCardByRegions(imageBuffer, {
+        languages: ['eng'],
+        confidenceThreshold: 10,
+        enhanceContrast: true,
+        denoise: true,
+        sharpen: true,
+        enableLayoutAnalysis: true, // Enable actual layout analysis
+      });
+
+      // Test predefined regions approach (current)
+      const predefinedResult = await service.recognizeCardByRegions(
+        imageBuffer,
+        {
+          languages: ['eng'],
+          confidenceThreshold: 10,
+          enhanceContrast: true,
+          denoise: true,
+          sharpen: true,
+          enableLayoutAnalysis: false, // Use predefined regions
+        }
+      );
+
+      console.log('🔬 Layout Analysis Results:');
+      console.log(
+        `  Found ${layoutResult.textRegions.length} regions via layout analysis`
+      );
+      layoutResult.textRegions.forEach((text, index) => {
+        console.log(
+          `  ${index + 1}. [${text.regionName || 'unknown'}] "${text.text}" (confidence: ${Math.round(text.confidence)}%)`
+        );
+      });
+
+      console.log('\n📏 Predefined Regions Results:');
+      console.log(
+        `  Found ${predefinedResult.textRegions.length} regions via predefined layout`
+      );
+      predefinedResult.textRegions.forEach((text, index) => {
+        console.log(
+          `  ${index + 1}. [${text.regionName || 'unknown'}] "${text.text}" (confidence: ${Math.round(text.confidence)}%)`
+        );
+      });
+
+      // Expected text elements on the Garganacl card
+      const expectedTexts = [
+        'Garganacl',
+        '160',
+        'Ability',
+        'Energizing Rock Salt',
+        'Land Crush',
+        '140',
+        'Weakness',
+        'Resistance',
+        'Retreat',
+        '202/182',
+      ];
+
+      // Compare accuracy between approaches
+      const layoutAccuracy = calculateAccuracy(
+        layoutResult.textRegions,
+        expectedTexts
+      );
+      const predefinedAccuracy = calculateAccuracy(
+        predefinedResult.textRegions,
+        expectedTexts
+      );
+
+      console.log(`\n📊 Accuracy Comparison:`);
+      console.log(
+        `  Layout Analysis: ${layoutAccuracy.found}/${expectedTexts.length} (${Math.round(layoutAccuracy.percentage)}%)`
+      );
+      console.log(
+        `  Predefined Regions: ${predefinedAccuracy.found}/${expectedTexts.length} (${Math.round(predefinedAccuracy.percentage)}%)`
+      );
+
+      // Both approaches should at least run successfully
+      expect(layoutResult.textRegions.length).toBeGreaterThan(0);
+      expect(predefinedResult.textRegions.length).toBeGreaterThan(0);
+      expect(layoutResult.processingTime).toBeGreaterThan(0);
+      expect(predefinedResult.processingTime).toBeGreaterThan(0);
+    }, 45000);
 
     test('should recognize "Aegislash" from example-card-2.png', async () => {
       const imagePath = join(currentDir, '../data/example-card-2.png');
