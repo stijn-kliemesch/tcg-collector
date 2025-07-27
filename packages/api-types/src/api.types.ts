@@ -3,7 +3,6 @@
  */
 
 import type { Card, CardSet } from './card.types';
-import type { Collection, CollectionCard, Wishlist } from './collection.types';
 import type { User } from './user.types';
 
 // Common API response wrapper

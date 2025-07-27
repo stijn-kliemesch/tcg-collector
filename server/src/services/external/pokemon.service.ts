@@ -4,15 +4,15 @@ export class PokemonTCGService {
     //process.env.POKEMON_TCG_API_KEY
   }
 
-  async searchCards(query: string) {
+  async searchCards(_query: string) {
     //TODO
   }
 
-  async getSet(setId: string) {
+  async getSet(_setId: string) {
     //TODO
   }
 
-  async getCard(cardId: string) {
+  async getCard(_cardId: string) {
     //TODO
   }
 }

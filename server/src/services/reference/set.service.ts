@@ -1,15 +1,14 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { POKEMON_TCG_SET_STRUCTURE } from '../../data/reference/pokemon-tcg-structure.js';
 import type {
-  Set,
   Generation,
-  SetGroup,
   SetData,
+  SetGroup,
   SetServiceConfig,
 } from '../../types/reference/set.js';
-import { POKEMON_TCG_SET_STRUCTURE } from '../../data/reference/pokemon-tcg-structure.js';
-import { SetExtractor } from '../../utils/set-processing.js';
 import { Logger } from '../../utils/logger.js';
+import { SetExtractor } from '../../utils/set-processing.js';
 
 /**
  * Service for scraping and processing Pokemon Trading Card Game set data

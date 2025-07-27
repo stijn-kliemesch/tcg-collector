@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const cards = await db.getAllCards();
     res.json(cards);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to fetch cards' });
   }
 });
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const card = await db.addCard(req.body);
     res.status(201).json(card);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to add card' });
   }
 });
@@ -31,7 +31,7 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ error: 'Card not found' });
     }
     res.json(card);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to update card' });
   }
 });
@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ error: 'Card not found' });
     }
     res.status(204).send();
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to delete card' });
   }
 });
@@ -58,7 +58,7 @@ router.post('/load-example', async (req, res) => {
     }
     const cards = await db.getAllCards();
     res.status(201).json(cards);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to load example data' });
   }
 });
@@ -71,7 +71,7 @@ router.delete('/', async (req, res) => {
       await db.deleteCard(card.id);
     }
     res.status(204).send();
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to clear database' });
   }
 });

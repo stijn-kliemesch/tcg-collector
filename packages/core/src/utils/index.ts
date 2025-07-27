@@ -167,7 +167,7 @@ export class ArrayUtils {
    */
   static groupBy<T>(
     array: T[],
-    keyFn: (item: T) => string
+    keyFn: (_item: T) => string
   ): Record<string, T[]> {
     return array.reduce(
       (groups, item) => {
@@ -190,7 +190,10 @@ export class ArrayUtils {
   /**
    * Sort array by multiple criteria
    */
-  static sortBy<T>(array: T[], ...keyFns: Array<(item: T) => any>): T[] {
+  static sortBy<T>(
+    array: T[],
+    ...keyFns: Array<(_item: T) => string | number>
+  ): T[] {
     return array.sort((a, b) => {
       for (const keyFn of keyFns) {
         const aVal = keyFn(a);

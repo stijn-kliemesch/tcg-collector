@@ -1,5 +1,6 @@
 import { type Low } from 'lowdb';
-import { browser } from 'lowdb/lib';
+import { JSONFile } from 'lowdb/node';
+import { join } from 'path';
 
 // Define your database structure
 interface Card {

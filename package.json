@@ -2,6 +2,7 @@
   "name": "tcg-collector",
   "version": "1.0.0",
   "description": "Trading Card Game Collection Manager",
+  "type": "module",
   "private": true,
   "workspaces": [
     "packages/*",

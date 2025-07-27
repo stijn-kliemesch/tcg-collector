@@ -1,16 +1,16 @@
-import { createWorker, type Worker } from 'tesseract.js';
-import sharp from 'sharp';
 import type {
   CardRecognitionResult,
-  RecognitionOptions,
-  RecognizedText,
-  RecognizedIcon,
-  PokemonCardAnalysis,
-  VisionServiceConfig,
-  VisionError,
-  SupportedLanguage,
   IconTemplate,
+  PokemonCardAnalysis,
+  RecognitionOptions,
+  RecognizedIcon,
+  RecognizedText,
+  SupportedLanguage,
+  VisionError,
+  VisionServiceConfig,
 } from '@tcg-collector/api-types';
+import sharp from 'sharp';
+import { createWorker, type Worker } from 'tesseract.js';
 import {
   PokemonCardAnalyzer,
   type PokemonNameCandidate,
@@ -159,7 +159,7 @@ export class CardRecognitionService {
     ];
 
     // Simulate loading (in real implementation, we'd read actual image files)
-    for (const iconId of placeholderIcons) {
+    for (const _iconId of placeholderIcons) {
       // Placeholder: would load actual template image
       // this.iconTemplates.set(iconId, await fs.readFile(`${this.config.iconTemplatePath}/${iconId}.png`));
     }
@@ -453,7 +453,7 @@ export class CardRecognitionService {
             // Calculate estimated text size based on bounding box
             const textHeight = word.bbox.y1 - word.bbox.y0;
             const textWidth = word.bbox.x1 - word.bbox.x0;
-            const textArea = textWidth * textHeight;
+            const _textArea = textWidth * textHeight;
             const relativeHeight = textHeight / imageHeight;
 
             // Adjust confidence based on text size and content
@@ -483,7 +483,7 @@ export class CardRecognitionService {
             if (
               word.text.length >= 7 &&
               relativeHeight > 0.05 &&
-              /^[A-Za-z\(\)]+$/.test(word.text) &&
+              /^[A-Za-z()]+$/.test(word.text) &&
               word.confidence < minConfidence
             ) {
               console.log(
@@ -579,8 +579,8 @@ export class CardRecognitionService {
    * Detect icons in the image (placeholder implementation)
    */
   private async detectIcons(
-    imageBuffer: Buffer,
-    options: Required<RecognitionOptions>
+    _imageBuffer: Buffer,
+    _options: Required<RecognitionOptions>
   ): Promise<RecognizedIcon[]> {
     console.log('🎯 Detecting icons...');
 
@@ -725,11 +725,11 @@ export class CardRecognitionService {
   private shouldGroupWords(
     baseWord: RecognizedText,
     candidateWord: RecognizedText,
-    currentGroup: RecognizedText[]
+    _currentGroup: RecognizedText[]
   ): boolean {
     // Protect important Pokemon names from being over-grouped
     const isPokemonName = (text: string) =>
-      text.length >= 6 && /^[A-Za-z\(\)]+$/.test(text);
+      text.length >= 6 && /^[A-Za-z()]+$/.test(text);
     if (isPokemonName(baseWord.text) || isPokemonName(candidateWord.text)) {
       // Be more conservative with Pokemon names - only group if very close
       const horizontalDistance = Math.abs(

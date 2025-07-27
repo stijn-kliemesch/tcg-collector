@@ -1,7 +1,4 @@
-import type {
-  RecognizedText,
-  CardRecognitionResult,
-} from '../../types/vision/recognition.js';
+import type { RecognizedText } from '../../types/vision/recognition.js';
 
 /**
  * Pokemon-specific card analysis and text correction service
@@ -165,7 +162,7 @@ export class PokemonCardAnalyzer {
     for (const region of textRegions) {
       const originalText = region.text
         .toLowerCase()
-        .replace(/[^a-z0-9\(\)\|]/g, '');
+        .replace(/[^a-z0-9()|]/g, '');
 
       // Only consider substantial text that could be Pokemon names
       if (originalText.length >= 4) {
@@ -349,7 +346,7 @@ export class PokemonCardAnalyzer {
     region: RecognizedText
   ): PokemonCardElement | null {
     const text = region.text.trim();
-    const cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const _cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, '');
 
     let type: PokemonCardElement['type'] = 'unknown';
     let correctedText = text;
@@ -373,7 +370,7 @@ export class PokemonCardAnalyzer {
     // Long text likely to be Pokemon names (in upper area, substantial size)
     else if (
       text.length >= 6 &&
-      /^[A-Za-z\(\)\|]+$/.test(text) &&
+      /^[A-Za-z()|]+$/.test(text) &&
       region.bbox.y < 350 &&
       region.bbox.width > 150
     ) {
@@ -392,7 +389,7 @@ export class PokemonCardAnalyzer {
       type = 'attack_name';
     }
     // Energy symbols or costs (short text, could be numbers or symbols)
-    else if (text.length <= 3 && /^[\d\[\]]+$/.test(text)) {
+    else if (text.length <= 3 && /^[\d[\]]+$/.test(text)) {
       type = 'energy_cost';
     }
 
