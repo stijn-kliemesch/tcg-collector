@@ -185,6 +185,42 @@ Implement computer vision capabilities to automatically identify text and icons 
   - [ ] Quality assessment and confidence reporting
   - [ ] Error handling and fallback mechanisms
 
+## 10. OCR Quality Optimization (Vision Package)
+
+Improve the accuracy and reliability of text recognition in the vision package based on region-based OCR testing results.
+
+### Background
+
+Current status: Region-based OCR approach implemented and working (9 regions processed in ~1.5 seconds), but text recognition accuracy is poor (0/10 expected texts found from Garganacl card test). Text output is heavily corrupted (e.g., "BTL ER" instead of "ABILITY", "ue" instead of "160").
+
+### Subtasks
+
+- [ ] Region-Specific Image Preprocessing:
+  - [ ] Implement different enhancement strategies for text types (names, numbers, descriptions)
+  - [ ] Add contrast and sharpening optimization per region type
+  - [ ] Test grayscale vs binary thresholding per region
+  - [ ] Implement noise reduction specific to card text
+- [ ] OCR Parameter Optimization:
+  - [ ] Configure Tesseract settings per region type (PSM modes, OEM modes)
+  - [ ] Test different language models and character whitelists
+  - [ ] Optimize confidence thresholds per region type
+  - [ ] Add custom Tesseract configuration per text category
+- [ ] Region Positioning Fine-tuning:
+  - [ ] Analyze actual card layout vs current percentage-based coordinates
+  - [ ] Adjust region boundaries based on test card analysis
+  - [ ] Add dynamic region detection to handle card variations
+  - [ ] Implement region validation and fallback positioning
+- [ ] Text Validation and Scoring:
+  - [ ] Add expected text pattern validation per region (e.g., HP should be numbers)
+  - [ ] Implement confidence scoring and quality assessment
+  - [ ] Add text post-processing and cleaning algorithms
+  - [ ] Create fallback OCR strategies for low-confidence regions
+- [ ] Testing and Validation:
+  - [ ] Expand test suite with multiple card types and layouts
+  - [ ] Add performance benchmarking for OCR accuracy
+  - [ ] Implement automated quality assessment metrics
+  - [ ] Document optimal settings per region type
+
 ## Priority Order
 
 1. Theme Management (most isolated, good starting point) 🔜
@@ -196,6 +232,7 @@ Implement computer vision capabilities to automatically identify text and icons 
 7. Error Handling (cross-cutting concern)
 8. ~~Reference Data Management~~ ✓ (Completed)
 9. Computer Vision Card Recognition (advanced feature for automated card identification)
+10. OCR Quality Optimization (improve vision package accuracy based on testing results)
 
 ## Guidelines
 
