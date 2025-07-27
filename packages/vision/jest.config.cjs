@@ -1,5 +1,5 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
-export default {
+module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/src', '<rootDir>/__tests__'],
@@ -10,7 +10,7 @@ export default {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@tcg-collector/(.*)$': '<rootDir>/../$1/src',
   },
   // Longer timeout for OCR operations
