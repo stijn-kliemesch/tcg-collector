@@ -29,6 +29,19 @@ The application consists of two main components:
 - **Reference data browsing** for Pokemon TCG sets and expansions
 - **Mobile-friendly responsive design**
 
+### Packages (`/packages`)
+
+- **Shared TypeScript modules** with native .ts imports (no build step)
+- **API Types**: Type definitions shared between client and server
+- **Core**: Business logic utilities and validation
+- **Vision**: Computer vision services for card recognition
+
+### Project Documentation
+
+- **ARCHITECTURE.md**: Detailed technical architecture and native TypeScript setup
+- **TASKS.md**: Development task list and feature roadmap
+- **packages/README.md**: Modular package architecture guide
+
 ## Getting Started
 
 ### Prerequisites
