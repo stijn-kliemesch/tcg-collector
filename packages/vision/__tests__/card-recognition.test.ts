@@ -86,9 +86,9 @@ describe('CardRecognitionService', () => {
         'Land Crush',
         '140',
         'Weakness',
-        'Resistance', 
+        'Resistance',
         'Retreat',
-        '202/182'
+        '202/182',
       ];
 
       // Log all found text for debugging
@@ -107,7 +107,7 @@ describe('CardRecognitionService', () => {
         const found = result.textRegions.some(text =>
           text.text.toLowerCase().includes(expectedText.toLowerCase())
         );
-        
+
         if (found) {
           foundTexts.push(expectedText);
         } else {
@@ -115,9 +115,11 @@ describe('CardRecognitionService', () => {
         }
       }
 
-      console.log(`✅ Found ${foundTexts.length}/${expectedTexts.length} expected texts:`);
+      console.log(
+        `✅ Found ${foundTexts.length}/${expectedTexts.length} expected texts:`
+      );
       foundTexts.forEach(text => console.log(`   ✓ ${text}`));
-      
+
       if (missingTexts.length > 0) {
         console.log(`⚠️  Missing ${missingTexts.length} expected texts:`);
         missingTexts.forEach(text => console.log(`   ✗ ${text}`));
@@ -126,7 +128,7 @@ describe('CardRecognitionService', () => {
       // For now, we'll just verify that OCR ran successfully and found some text
       expect(result.textRegions.length).toBeGreaterThan(0);
       expect(result.processingTime).toBeGreaterThan(0);
-      
+
       // Ideal goal: Find at least some of the expected texts (we'll improve this over time)
       // expect(foundTexts.length).toBeGreaterThan(0);
     }, 30000);
