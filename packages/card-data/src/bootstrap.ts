@@ -2,18 +2,18 @@
 
 /**
  * Card Data Bootstrap
- * 
+ *
  * This script bootstraps the Pokemon Trading Card Game reference data
  * by fetching expansion and set information from Bulbapedia.
- * 
+ *
  * Usage: npm run bootstrap
  */
 
+import { mkdirSync, writeFileSync } from 'fs';
+import { join } from 'path';
 import { ExpansionService } from './services/expansion.service.js';
 import { SetService } from './services/set.service.js';
 import { Logger } from './utils/logger.js';
-import { writeFileSync, mkdirSync } from 'fs';
-import { join } from 'path';
 
 export interface BootstrapOptions {
   outputDir?: string;
@@ -30,11 +30,13 @@ export interface BootstrapResult {
 /**
  * Bootstrap reference data for Pokemon Trading Card Game
  */
-async function bootstrap(options: BootstrapOptions = {}): Promise<BootstrapResult> {
-  const { 
-    outputDir = join(process.cwd(), 'data'), 
-    includeSets = true, 
-    verbose = true 
+async function bootstrap(
+  options: BootstrapOptions = {}
+): Promise<BootstrapResult> {
+  const {
+    outputDir = join(process.cwd(), 'data'),
+    includeSets = true,
+    verbose = true,
   } = options;
 
   if (verbose) {
@@ -66,7 +68,9 @@ async function bootstrap(options: BootstrapOptions = {}): Promise<BootstrapResul
     outputFiles.push(expansionFile);
 
     if (verbose) {
-      Logger.success(`Successfully bootstrapped ${expansions.length} expansions`);
+      Logger.success(
+        `Successfully bootstrapped ${expansions.length} expansions`
+      );
       Logger.file(`Data stored in: ${expansionFile}`);
     }
 
@@ -109,7 +113,9 @@ async function bootstrap(options: BootstrapOptions = {}): Promise<BootstrapResul
           setData.groups.forEach(group => {
             console.log(`${group.name}:`);
             group.generations.forEach(generation => {
-              console.log(`  ${generation.name}: ${generation.sets.length} sets`);
+              console.log(
+                `  ${generation.name}: ${generation.sets.length} sets`
+              );
               // Show first few sets as examples
               generation.sets.slice(0, 2).forEach(set => {
                 console.log(`    - ${set.name}`);
@@ -154,8 +160,11 @@ async function bootstrap(options: BootstrapOptions = {}): Promise<BootstrapResul
 }
 
 // Run bootstrap if this file is executed directly
-if (process.argv[1].endsWith('bootstrap.ts') || process.argv[1].endsWith('bootstrap.js')) {
-  bootstrap().catch((error) => {
+if (
+  process.argv[1].endsWith('bootstrap.ts') ||
+  process.argv[1].endsWith('bootstrap.js')
+) {
+  bootstrap().catch(error => {
     console.error(error);
     process.exit(1);
   });

@@ -5,8 +5,8 @@
  * Usage: npx @tcg-collector/card-data [options]
  */
 
-import bootstrap from './bootstrap.js';
 import { parseArgs } from 'util';
+import bootstrap from './bootstrap.js';
 
 const { values } = parseArgs({
   args: process.argv.slice(2),
@@ -20,12 +20,12 @@ const { values } = parseArgs({
       type: 'boolean',
       default: false,
     },
-    'quiet': {
+    quiet: {
       type: 'boolean',
       short: 'q',
       default: false,
     },
-    'help': {
+    help: {
       type: 'boolean',
       short: 'h',
       default: false,

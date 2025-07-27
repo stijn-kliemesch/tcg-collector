@@ -1,5 +1,5 @@
-import type { Set, SetStructureValue } from '../types/set.js';
 import * as cheerio from 'cheerio';
+import type { Set, SetStructureValue } from '../types/set.js';
 
 /**
  * Utility class for processing and extracting sets from hardcoded structure

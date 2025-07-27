@@ -21,13 +21,16 @@ npm install @tcg-collector/card-data
 ### Programmatic Usage
 
 ```typescript
-import bootstrap, { ExpansionService, SetService } from '@tcg-collector/card-data';
+import bootstrap, {
+  ExpansionService,
+  SetService,
+} from '@tcg-collector/card-data';
 
 // Full bootstrap
 const result = await bootstrap({
   outputDir: './data',
   includeSets: true,
-  verbose: true
+  verbose: true,
 });
 
 // Individual services
@@ -74,6 +77,7 @@ The package generates the following files:
 ## Architecture
 
 This package follows the TypeScript-only directive from the main project:
+
 - No build step required
 - Direct TypeScript execution using `tsx`
 - Source files consumed directly
