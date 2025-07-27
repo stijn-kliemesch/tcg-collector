@@ -1,0 +1,1787 @@
+{
+  "expansionName": "Pokémon Trading Card Game",
+  "groups": [
+    {
+      "name": "International sets",
+      "generations": [
+        {
+          "name": "Generation I",
+          "sets": [
+            {
+              "name": "Base Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_(TCG)"
+            },
+            {
+              "name": "Jungle",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)"
+            },
+            {
+              "name": "Fossil",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fossil_(TCG)"
+            },
+            {
+              "name": "Base Set 2",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_2_(TCG)"
+            },
+            {
+              "name": "Team Rocket",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket_(TCG)"
+            },
+            {
+              "name": "Gym Heroes",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Gym_Heroes_(TCG)"
+            },
+            {
+              "name": "Gym Challenge",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Gym_Challenge_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation II",
+          "sets": [
+            {
+              "name": "Neo Genesis",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Neo_Genesis_(TCG)"
+            },
+            {
+              "name": "Neo Discovery",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Neo_Discovery_(TCG)"
+            },
+            {
+              "name": "Neo Revelation",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Neo_Revelation_(TCG)"
+            },
+            {
+              "name": "Neo Destiny",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Neo_Destiny_(TCG)"
+            },
+            {
+              "name": "Legendary Collection",
+              "link": "https://bulbapedia.bulbagarden.net#Legendary_Collection_Series"
+            },
+            {
+              "name": "Expedition Base Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Expedition_Base_Set_(TCG)"
+            },
+            {
+              "name": "Aquapolis",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Aquapolis_(TCG)"
+            },
+            {
+              "name": "Skyridge",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Skyridge_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Promotional series (Wizards of the Coasts era)",
+          "sets": [
+            {
+              "name": "Southern Islands",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_(TCG)"
+            },
+            {
+              "name": "Sample Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sample_Set_(TCG)"
+            },
+            {
+              "name": "Best of Game Cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Best_of_Game_Cards_(TCG)"
+            },
+            {
+              "name": "Wizards Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "W Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/W_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Miscellaneous Promotional cards 1999-2002",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miscellaneous_Promotional_cards_(TCG)/1999-2008#Miscellaneous_Promotional_cards_1999-2002"
+            },
+            {
+              "name": "Error cards (until e-Card Series)",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Error_cards_(until_e-Card_Series)"
+            }
+          ]
+        },
+        {
+          "name": "Unreleased sets",
+          "sets": [
+            {
+              "name": "Crosstrainer",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Crosstrainer_(TCG)"
+            },
+            {
+              "name": "Unnamed Wizards Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unnamed_Wizards_Set_(TCG)"
+            },
+            {
+              "name": "Jamboree",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Jamboree_(TCG)"
+            },
+            {
+              "name": "Legendary Collection 2",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_2_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation III",
+          "sets": [
+            {
+              "name": "EX Ruby & Sapphire",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Ruby_%26_Sapphire_(TCG)"
+            },
+            {
+              "name": "EX Sandstorm",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Sandstorm_(TCG)"
+            },
+            {
+              "name": "EX Dragon",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Dragon_(TCG)"
+            },
+            {
+              "name": "EX Team Magma vs Team Aqua",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Team_Magma_vs_Team_Aqua_(TCG)"
+            },
+            {
+              "name": "EX Hidden Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Hidden_Legends_(TCG)"
+            },
+            {
+              "name": "EX FireRed & LeafGreen",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_FireRed_%26_LeafGreen_(TCG)"
+            },
+            {
+              "name": "EX Team Rocket Returns",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Team_Rocket_Returns_(TCG)"
+            },
+            {
+              "name": "EX Deoxys",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Deoxys_(TCG)"
+            },
+            {
+              "name": "EX Emerald",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Emerald_(TCG)"
+            },
+            {
+              "name": "EX Unseen Forces",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Unseen_Forces_(TCG)"
+            },
+            {
+              "name": "EX Delta Species",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Delta_Species_(TCG)"
+            },
+            {
+              "name": "EX Legend Maker",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Legend_Maker_(TCG)"
+            },
+            {
+              "name": "EX Holon Phantoms",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Holon_Phantoms_(TCG)"
+            },
+            {
+              "name": "EX Crystal Guardians",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Crystal_Guardians_(TCG)"
+            },
+            {
+              "name": "EX Dragon Frontiers",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Dragon_Frontiers_(TCG)"
+            },
+            {
+              "name": "EX Power Keepers",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Power_Keepers_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation IV",
+          "sets": [
+            {
+              "name": "Diamond & Pearl",
+              "link": "https://bulbapedia.bulbagarden.net#Diamond_&_Pearl_Series"
+            },
+            {
+              "name": "Mysterious Treasures",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Mysterious_Treasures_(TCG)"
+            },
+            {
+              "name": "Secret Wonders",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Secret_Wonders_(TCG)"
+            },
+            {
+              "name": "Great Encounters",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Great_Encounters_(TCG)"
+            },
+            {
+              "name": "Majestic Dawn",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Majestic_Dawn_(TCG)"
+            },
+            {
+              "name": "Legends Awakened",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Legends_Awakened_(TCG)"
+            },
+            {
+              "name": "Stormfront",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Stormfront_(TCG)"
+            },
+            {
+              "name": "Platinum",
+              "link": "https://bulbapedia.bulbagarden.net#Platinum_Series"
+            },
+            {
+              "name": "Rising Rivals",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rising_Rivals_(TCG)"
+            },
+            {
+              "name": "Supreme Victors",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Supreme_Victors_(TCG)"
+            },
+            {
+              "name": "Arceus",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Pokémon_Legends:_Arceus"
+            },
+            {
+              "name": "HeartGold & SoulSilver",
+              "link": "https://bulbapedia.bulbagarden.net#HeartGold_&_SoulSilver_Series"
+            },
+            {
+              "name": "Unleashed",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unleashed_(TCG)"
+            },
+            {
+              "name": "Undaunted",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Undaunted_(TCG)"
+            },
+            {
+              "name": "Triumphant",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Triumphant_(TCG)"
+            },
+            {
+              "name": "Call of Legends",
+              "link": "https://bulbapedia.bulbagarden.net#Call_of_Legends_Series"
+            }
+          ]
+        },
+        {
+          "name": "Generation V",
+          "sets": [
+            {
+              "name": "Black & White",
+              "link": "https://bulbapedia.bulbagarden.net#Black_&_White_Series"
+            },
+            {
+              "name": "Emerging Powers",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Emerging_Powers_(TCG)"
+            },
+            {
+              "name": "Noble Victories",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Noble_Victories_(TCG)"
+            },
+            {
+              "name": "Next Destinies",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Next_Destinies_(TCG)"
+            },
+            {
+              "name": "Dark Explorers",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dark_Explorers_(TCG)"
+            },
+            {
+              "name": "Dragons Exalted",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragons_Exalted_(TCG)"
+            },
+            {
+              "name": "Dragon Vault",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Vault_(TCG)"
+            },
+            {
+              "name": "Boundaries Crossed",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Boundaries_Crossed_(TCG)"
+            },
+            {
+              "name": "Plasma Storm",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Plasma_Storm_(TCG)"
+            },
+            {
+              "name": "Plasma Freeze",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Plasma_Freeze_(TCG)"
+            },
+            {
+              "name": "Plasma Blast",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Plasma_Blast_(TCG)"
+            },
+            {
+              "name": "Legendary Treasures",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Treasures_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation VI",
+          "sets": [
+            {
+              "name": "Kalos Starter Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Kalos_Starter_Set_(TCG)"
+            },
+            {
+              "name": "XY",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_(TCG)"
+            },
+            {
+              "name": "Flashfire",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Flashfire_(TCG)"
+            },
+            {
+              "name": "Furious Fists",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Furious_Fists_(TCG)"
+            },
+            {
+              "name": "Phantom Forces",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Phantom_Forces_(TCG)"
+            },
+            {
+              "name": "Primal Clash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Primal_Clash_(TCG)"
+            },
+            {
+              "name": "Double Crisis",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Double_Crisis_(TCG)"
+            },
+            {
+              "name": "Roaring Skies",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Roaring_Skies_(TCG)"
+            },
+            {
+              "name": "Ancient Origins",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ancient_Origins_(TCG)"
+            },
+            {
+              "name": "BREAKthrough",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/BREAKthrough_(TCG)"
+            },
+            {
+              "name": "BREAKpoint",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/BREAKpoint_(TCG)"
+            },
+            {
+              "name": "Generations",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Generations_(TCG)"
+            },
+            {
+              "name": "Fates Collide",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fates_Collide_(TCG)"
+            },
+            {
+              "name": "Steam Siege",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Steam_Siege_(TCG)"
+            },
+            {
+              "name": "Evolutions",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Evolution"
+            }
+          ]
+        },
+        {
+          "name": "Generation VII",
+          "sets": [
+            {
+              "name": "Sun & Moon",
+              "link": "https://bulbapedia.bulbagarden.net#Sun_&_Moon_Series"
+            },
+            {
+              "name": "Guardians Rising",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Guardians_Rising_(TCG)"
+            },
+            {
+              "name": "Burning Shadows",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Burning_Shadows_(TCG)"
+            },
+            {
+              "name": "Shining Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shining_Legends_(TCG)"
+            },
+            {
+              "name": "Crimson Invasion",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Crimson_Invasion_(TCG)"
+            },
+            {
+              "name": "Ultra Prism",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ultra_Prism_(TCG)"
+            },
+            {
+              "name": "Forbidden Light",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Forbidden_Light_(TCG)"
+            },
+            {
+              "name": "Celestial Storm",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Celestial_Storm_(TCG)"
+            },
+            {
+              "name": "Dragon Majesty",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Majesty_(TCG)"
+            },
+            {
+              "name": "Lost Thunder",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Lost_Thunder_(TCG)"
+            },
+            {
+              "name": "Team Up",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Team_Up_(TCG)"
+            },
+            {
+              "name": "Detective Pikachu",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Detective_Pikachu_(TCG)"
+            },
+            {
+              "name": "Unbroken Bonds",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unbroken_Bonds_(TCG)"
+            },
+            {
+              "name": "Unified Minds",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unified_Minds_(TCG)"
+            },
+            {
+              "name": "Hidden Fates",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Hidden_Fates_(TCG)"
+            },
+            {
+              "name": "Cosmic Eclipse",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Cosmic_Eclipse_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation VIII",
+          "sets": [
+            {
+              "name": "Sword & Shield",
+              "link": "https://bulbapedia.bulbagarden.net#Sword_&_Shield_Series"
+            },
+            {
+              "name": "Rebel Clash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rebel_Clash_(TCG)"
+            },
+            {
+              "name": "Darkness Ablaze",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Darkness_Ablaze_(TCG)"
+            },
+            {
+              "name": "Champion's Path",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Champion%27s_Path_(TCG)"
+            },
+            {
+              "name": "Vivid Voltage",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Vivid_Voltage_(TCG)"
+            },
+            {
+              "name": "Shining Fates",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shining_Fates_(TCG)"
+            },
+            {
+              "name": "Battle Styles",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Battle_Styles_(TCG)"
+            },
+            {
+              "name": "Chilling Reign",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Chilling_Reign_(TCG)"
+            },
+            {
+              "name": "Evolving Skies",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Evolving_Skies_(TCG)"
+            },
+            {
+              "name": "Celebrations",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Celebrations_(TCG)"
+            },
+            {
+              "name": "Fusion Strike",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fusion_Strike_(TCG)"
+            },
+            {
+              "name": "Brilliant Stars",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Brilliant_Stars_(TCG)"
+            },
+            {
+              "name": "Astral Radiance",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Astral_Radiance_(TCG)"
+            },
+            {
+              "name": "Pokémon GO",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Category:Pok%C3%A9mon_GO"
+            },
+            {
+              "name": "Lost Origin",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Lost_Origin_(TCG)"
+            },
+            {
+              "name": "Silver Tempest",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Silver_Tempest_(TCG)"
+            },
+            {
+              "name": "Crown Zenith",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Crown_Zenith_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation IX",
+          "sets": [
+            {
+              "name": "Scarlet & Violet",
+              "link": "https://bulbapedia.bulbagarden.net#Scarlet_&_Violet_Series"
+            },
+            {
+              "name": "Paldea Evolved",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Paldea_Evolved_(TCG)"
+            },
+            {
+              "name": "Obsidian Flames",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Obsidian_Flames_(TCG)"
+            },
+            {
+              "name": "151",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/151_(TCG)"
+            },
+            {
+              "name": "Paradox Rift",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Paradox_Rift_(TCG)"
+            },
+            {
+              "name": "Paldean Fates",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Paldean_Fates_(TCG)"
+            },
+            {
+              "name": "Temporal Forces",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Temporal_Forces_(TCG)"
+            },
+            {
+              "name": "Twilight Masquerade",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Twilight_Masquerade_(TCG)"
+            },
+            {
+              "name": "Shrouded Fable",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Shrouded_Fable_(TCG)"
+            },
+            {
+              "name": "Stellar Crown",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Stellar_Crown_(TCG)"
+            },
+            {
+              "name": "Surging Sparks",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Surging_Sparks_(TCG)"
+            },
+            {
+              "name": "Prismatic Evolutions",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Prismatic_Evolutions_(TCG)"
+            },
+            {
+              "name": "Journey Together",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Journey_Together_(TCG)"
+            },
+            {
+              "name": "Destined Rivals",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Destined_Rivals_(TCG)"
+            },
+            {
+              "name": "Black Bolt",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Black_Bolt_(TCG)"
+            },
+            {
+              "name": "White Flare",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/White_Flare_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "World Championships Decks",
+          "sets": [
+            {
+              "name": "2004 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2004_World_Championships"
+            },
+            {
+              "name": "2005 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2005_World_Championships"
+            },
+            {
+              "name": "2006 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2006_World_Championships"
+            },
+            {
+              "name": "2007 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2007_World_Championships"
+            },
+            {
+              "name": "2008 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2008_World_Championships"
+            },
+            {
+              "name": "2009 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2009_World_Championships"
+            },
+            {
+              "name": "2010 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2010_World_Championships"
+            },
+            {
+              "name": "2011 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2011_World_Championships"
+            },
+            {
+              "name": "2012 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2012_World_Championships"
+            },
+            {
+              "name": "2013 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2013_World_Championships"
+            },
+            {
+              "name": "2014 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2014_World_Championships"
+            },
+            {
+              "name": "2015 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2015_World_Championships"
+            },
+            {
+              "name": "2016 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2016_World_Championships"
+            },
+            {
+              "name": "2017 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2017_World_Championships"
+            },
+            {
+              "name": "2018 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2018_World_Championships"
+            },
+            {
+              "name": "2019 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2019_World_Championships"
+            },
+            {
+              "name": "2022 World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2022_World_Championships"
+            },
+            {
+              "name": "2023 Pokémon World Championships",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Championships_Deck_(TCG)#2023_Pokémon_World_Championships"
+            }
+          ]
+        },
+        {
+          "name": "Trainer Kits",
+          "sets": [
+            {
+              "name": "EX Trainer Kit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Trainer_Kit_(TCG)"
+            },
+            {
+              "name": "EX Trainer Kit 2",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Trainer_Kit_2_(TCG)"
+            },
+            {
+              "name": "Diamond & Pearl Trainer Kit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Diamond_%26_Pearl_Trainer_Kit_(TCG)"
+            },
+            {
+              "name": "HS Trainer Kit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/HS_Trainer_Kit_(TCG)"
+            },
+            {
+              "name": "Black & White Trainer Kit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Black_%26_White_Trainer_Kit_(TCG)"
+            },
+            {
+              "name": "XY Trainer Kit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_Trainer_Kit_(TCG)"
+            },
+            {
+              "name": "XY Trainer Kit: Bisharp & Wigglytuff",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_Trainer_Kit:_Bisharp_%26_Wigglytuff_(TCG)"
+            },
+            {
+              "name": "XY Trainer Kit: Latias & Latios",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_Trainer_Kit:_Latias_%26_Latios_(TCG)"
+            },
+            {
+              "name": "XY Trainer Kit: Pikachu Libre & Suicune",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_Trainer_Kit:_Pikachu_Libre_%26_Suicune_(TCG)"
+            },
+            {
+              "name": "Sun & Moon Trainer Kit: Lycanroc & Alolan Raichu",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sun_%26_Moon_Trainer_Kit:_Lycanroc_%26_Alolan_Raichu_(TCG)"
+            },
+            {
+              "name": "Sun & Moon Trainer Kit: Alolan Sandslash & Alolan Ninetales",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sun_%26_Moon_Trainer_Kit:_Alolan_Sandslash_%26_Alolan_Ninetales_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Promotional series (Nintendo sets era)",
+          "sets": [
+            {
+              "name": "Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "Nintendo Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Nintendo_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "DP Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/DP_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "HGSS Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/HGSS_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "BW Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/BW_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "XY Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "SM Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SM_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "SWSH Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SWSH_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "SVP Black Star Promos",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SVP_Black_Star_Promos_(TCG)"
+            },
+            {
+              "name": "POP Series 1",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_1_(TCG)"
+            },
+            {
+              "name": "POP Series 2",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_2_(TCG)"
+            },
+            {
+              "name": "POP Series 3",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_3_(TCG)"
+            },
+            {
+              "name": "POP Series 4",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_4_(TCG)"
+            },
+            {
+              "name": "POP Series 5",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_5_(TCG)"
+            },
+            {
+              "name": "POP Series 6",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_6_(TCG)"
+            },
+            {
+              "name": "POP Series 7",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_7_(TCG)"
+            },
+            {
+              "name": "POP Series 8",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_8_(TCG)"
+            },
+            {
+              "name": "POP Series 9",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/POP_Series_9_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2011",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2011_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2012",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2012_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2013",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2013_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2014",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2014_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2015",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2015_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2016",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2016_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2017",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2017_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2018",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2018_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2019",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2019_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2021",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2021_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2022",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2022_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2023",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2023_(TCG)"
+            },
+            {
+              "name": "McDonald's Collection 2024",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2024_(TCG)"
+            },
+            {
+              "name": "Winner cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Winner_cards_(TCG)"
+            },
+            {
+              "name": "Poké Card Creator Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9_Card_Creator_Pack_(TCG)"
+            },
+            {
+              "name": "Pokémon Rumble",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Rumble_(TCG)"
+            },
+            {
+              "name": "Yellow A Alternate cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Yellow_A_Alternate_cards_(TCG)"
+            },
+            {
+              "name": "Pokémon Futsal",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Futsal_(TCG)"
+            },
+            {
+              "name": "Prerelease cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Prerelease_cards_(TCG)"
+            },
+            {
+              "name": "Jumbo cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Jumbo_cards_(TCG)"
+            },
+            {
+              "name": "Miscellaneous Promotional cards 2003-2008",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miscellaneous_Promotional_cards_(TCG)/1999-2008#2003"
+            },
+            {
+              "name": "Miscellaneous Promotional cards 2009-2014",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miscellaneous_Promotional_cards_(TCG)/2009-2014#Miscellaneous_Promotional_cards_2009-2014"
+            },
+            {
+              "name": "Miscellaneous Promotional cards 2015-2018",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miscellaneous_Promotional_cards_(TCG)/2015-2018#Miscellaneous_Promotional_cards_2015-2018"
+            },
+            {
+              "name": "Miscellaneous Promotional cards 2019-2024",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miscellaneous_Promotional_cards_(TCG)#2019"
+            },
+            {
+              "name": "Error cards (since EX Series)",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#EX_Series"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Japanese sets",
+      "generations": [
+        {
+          "name": "Exclusive sets",
+          "sets": [
+            {
+              "name": "Vending Machine cards Series 1 (Blue)",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)#Vending_Machine_cards_Series_1_(Blue)"
+            },
+            {
+              "name": "Vending Machine cards Series 2 (Red)",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)#Vending_Machine_cards_Series_2_(Red)"
+            },
+            {
+              "name": "Vending Machine cards Series 3 (Green)",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)#Vending_Machine_cards_Series_3_(Green)"
+            },
+            {
+              "name": "Pokémon VS",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_VSTAR_(TCG)"
+            },
+            {
+              "name": "Pokémon Web",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Web_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation I",
+          "sets": [
+            {
+              "name": "Expansion Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Expansion_Pack_(TCG)"
+            },
+            {
+              "name": "Pokémon Jungle",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Jungle_(TCG)"
+            },
+            {
+              "name": "Mystery of the Fossils",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Mystery_of_the_Fossils_(TCG)"
+            },
+            {
+              "name": "Rocket Gang",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rocket_Gang_(TCG)"
+            },
+            {
+              "name": "Leaders' Stadium",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Leaders%27_Stadium_(TCG)"
+            },
+            {
+              "name": "Challenge from the Darkness",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Challenge_from_the_Darkness_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation II",
+          "sets": [
+            {
+              "name": "Gold, Silver, to a New World...",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Gold,_Silver,_to_a_New_World..._(TCG)"
+            },
+            {
+              "name": "Crossing the Ruins...",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Crossing_the_Ruins..._(TCG)"
+            },
+            {
+              "name": "Awakening Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Awakening_Legends_(TCG)"
+            },
+            {
+              "name": "Darkness, and to Light...",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Darkness,_and_to_Light..._(TCG)"
+            },
+            {
+              "name": "Base Expansion Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Base_Expansion_Pack_(TCG)"
+            },
+            {
+              "name": "The Town on No Map",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/The_Town_on_No_Map_(TCG)"
+            },
+            {
+              "name": "Wind from the Sea",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Wind_from_the_Sea_(TCG)"
+            },
+            {
+              "name": "Split Earth",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Split_Earth_(TCG)"
+            },
+            {
+              "name": "Mysterious Mountains",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Mysterious_Mountains_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation III",
+          "sets": [
+            {
+              "name": "ADV Expansion Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/ADV_Expansion_Pack_(TCG)"
+            },
+            {
+              "name": "Miracle of the Desert",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miracle_of_the_Desert_(TCG)"
+            },
+            {
+              "name": "Rulers of the Heavens",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rulers_of_the_Heavens_(TCG)"
+            },
+            {
+              "name": "Magma VS Aqua: Two Ambitions",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Magma_VS_Aqua:_Two_Ambitions_(TCG)"
+            },
+            {
+              "name": "Undone Seal",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Undone_Seal_(TCG)"
+            },
+            {
+              "name": "Flight of Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Flight_of_Legends_(TCG)"
+            },
+            {
+              "name": "Clash of the Blue Sky",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Clash_of_the_Blue_Sky_(TCG)"
+            },
+            {
+              "name": "Rocket Gang Strikes Back",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rocket_Gang_Strikes_Back_(TCG)"
+            },
+            {
+              "name": "Golden Sky, Silvery Ocean",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Golden_Sky,_Silvery_Ocean_(TCG)"
+            },
+            {
+              "name": "Mirage Forest",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Mirage_Forest_(TCG)"
+            },
+            {
+              "name": "Holon Research Tower",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Holon_Research_Tower_(TCG)"
+            },
+            {
+              "name": "Holon Phantom",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Holon_Phantoms_(TCG)"
+            },
+            {
+              "name": "Miracle Crystal",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miracle_Crystal_(TCG)"
+            },
+            {
+              "name": "Offense and Defense of the Furthest Ends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Offense_and_Defense_of_the_Furthest_Ends_(TCG)"
+            },
+            {
+              "name": "World Champions Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Champions_Pack_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation IV",
+          "sets": [
+            {
+              "name": "Space-Time Creation",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Space-Time_Creation_(TCG)"
+            },
+            {
+              "name": "Secret of the Lakes",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Secret_of_the_Lakes_(TCG)"
+            },
+            {
+              "name": "Shining Darkness",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shining_Darkness_(TCG)"
+            },
+            {
+              "name": "Moonlit Pursuit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Moonlit_Pursuit_(TCG)"
+            },
+            {
+              "name": "Dawn Dash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dawn_Dash_(TCG)"
+            },
+            {
+              "name": "Cry from the Mysterious",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Cry_from_the_Mysterious_(TCG)"
+            },
+            {
+              "name": "Temple of Anger",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Temple_of_Anger_(TCG)"
+            },
+            {
+              "name": "Intense Fight in the Destroyed Sky",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Intense_Fight_in_the_Destroyed_Sky_(TCG)"
+            },
+            {
+              "name": "Galactic's Conquest",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Galactic%27s_Conquest_(TCG)"
+            },
+            {
+              "name": "Bonds to the End of Time",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Bonds_to_the_End_of_Time_(TCG)"
+            },
+            {
+              "name": "Beat of the Frontier",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Beat_of_the_Frontier_(TCG)"
+            },
+            {
+              "name": "Advent of Arceus",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Advent_of_Arceus_(TCG)"
+            },
+            {
+              "name": "HeartGold Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/HeartGold_Collection_(TCG)"
+            },
+            {
+              "name": "SoulSilver Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SoulSilver_Collection_(TCG)"
+            },
+            {
+              "name": "Reviving Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Reviving_Legends_(TCG)"
+            },
+            {
+              "name": "Lost Link",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Lost_Link_(TCG)"
+            },
+            {
+              "name": "Clash at the Summit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Clash_at_the_Summit_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation V",
+          "sets": [
+            {
+              "name": "Black Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Black_Collection_(TCG)"
+            },
+            {
+              "name": "White Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/White_Collection_(TCG)"
+            },
+            {
+              "name": "Red Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Red_Collection_(TCG)"
+            },
+            {
+              "name": "Psycho Drive",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Psycho_Drive_(TCG)"
+            },
+            {
+              "name": "Hail Blizzard",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Hail_Blizzard_(TCG)"
+            },
+            {
+              "name": "Dark Rush",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dark_Rush_(TCG)"
+            },
+            {
+              "name": "Dragon Selection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Selection_(TCG)"
+            },
+            {
+              "name": "Dragon Blast",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Blast_(TCG)"
+            },
+            {
+              "name": "Dragon Blade",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Blade_(TCG)"
+            },
+            {
+              "name": "Freeze Bolt",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Freeze_Bolt_(TCG)"
+            },
+            {
+              "name": "Cold Flare",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Cold_Flare_(TCG)"
+            },
+            {
+              "name": "Plasma Gale",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Plasma_Gale_(TCG)"
+            },
+            {
+              "name": "Spiral Force",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Spiral_Force_(TCG)"
+            },
+            {
+              "name": "Thunder Knuckle",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Thunder_Knuckle_(TCG)"
+            },
+            {
+              "name": "Shiny Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shiny_Collection_(TCG)"
+            },
+            {
+              "name": "Megalo Cannon",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Megalo_Cannon_(TCG)"
+            },
+            {
+              "name": "EX Battle Boost",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/EX_Battle_Boost_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation VI",
+          "sets": [
+            {
+              "name": "Collection X",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Collection_X_(TCG)"
+            },
+            {
+              "name": "Collection Y",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Collection_Y_(TCG)"
+            },
+            {
+              "name": "Wild Blaze",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Wild_Blaze_(TCG)"
+            },
+            {
+              "name": "Rising Fist",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rising_Fist_(TCG)"
+            },
+            {
+              "name": "Phantom Gate",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Phantom_Gate_(TCG)"
+            },
+            {
+              "name": "Gaia Volcano",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Gaia_Volcano_(TCG)"
+            },
+            {
+              "name": "Tidal Storm",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Tidal_Storm_(TCG)"
+            },
+            {
+              "name": "Magma Gang vs Aqua Gang: Double Crisis",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Magma_Gang_vs_Aqua_Gang:_Double_Crisis_(TCG)"
+            },
+            {
+              "name": "Emerald Break",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Emerald_Break_(TCG)"
+            },
+            {
+              "name": "Bandit Ring",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Bandit_Ring_(TCG)"
+            },
+            {
+              "name": "Legendary Shine Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Shine_Collection_(TCG)"
+            },
+            {
+              "name": "Blue Shock",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Blue_Shock_(TCG)"
+            },
+            {
+              "name": "Red Flash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Red_Flash_(TCG)"
+            },
+            {
+              "name": "Rage of the Broken Heavens",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rage_of_the_Broken_Heavens_(TCG)"
+            },
+            {
+              "name": "PokéKyun Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9Kyun_Collection_(TCG)"
+            },
+            {
+              "name": "Starter Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Generations_(TCG)"
+            },
+            {
+              "name": "Awakening Psychic King",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Awakening_Psychic_King_(TCG)"
+            },
+            {
+              "name": "Premium Champion Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Premium_Champion_Pack_(TCG)"
+            },
+            {
+              "name": "Fever-Burst Fighter",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fever-Burst_Fighter_(TCG)"
+            },
+            {
+              "name": "Cruel Traitor",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Cruel_Traitor_(TCG)"
+            },
+            {
+              "name": "Mythical & Legendary Dream Shine Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Mythical_%26_Legendary_Dream_Shine_Collection_(TCG)"
+            },
+            {
+              "name": "Expansion Pack 20th Anniversary",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Expansion_Pack_20th_Anniversary_(TCG)"
+            },
+            {
+              "name": "The Best of XY",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/The_Best_of_XY_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation VII",
+          "sets": [
+            {
+              "name": "Collection Sun",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Collection_Sun_(TCG)"
+            },
+            {
+              "name": "Collection Moon",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Collection_Moon_(TCG)"
+            },
+            {
+              "name": "Sun & Moon",
+              "link": "https://bulbapedia.bulbagarden.net#Sun_&_Moon_Series"
+            },
+            {
+              "name": "Islands Await You",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Islands_Await_You_(TCG)"
+            },
+            {
+              "name": "Alolan Moonlight",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Alolan_Moonlight_(TCG)"
+            },
+            {
+              "name": "Facing a New Trial",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Facing_a_New_Trial_(TCG)"
+            },
+            {
+              "name": "To Have Seen the Battle Rainbow",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/To_Have_Seen_the_Battle_Rainbow_(TCG)"
+            },
+            {
+              "name": "Darkness that Consumes Light",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Darkness_that_Consumes_Light_(TCG)"
+            },
+            {
+              "name": "Shining Legends",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shining_Legends_(TCG)"
+            },
+            {
+              "name": "Awakened Heroes",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Awakened_Heroes_(TCG)"
+            },
+            {
+              "name": "Ultradimensional Beasts",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ultradimensional_Beasts_(TCG)"
+            },
+            {
+              "name": "GX Battle Boost",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/GX_Battle_Boost_(TCG)"
+            },
+            {
+              "name": "Ultra Sun",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ultra_Sun_(TCG)"
+            },
+            {
+              "name": "Ultra Moon",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ultra_Moon_(TCG)"
+            },
+            {
+              "name": "Ultra Force",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ultra_Force_(TCG)"
+            },
+            {
+              "name": "Forbidden Light",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Forbidden_Light_(TCG)"
+            },
+            {
+              "name": "Dragon Storm",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dragon_Storm_(TCG)"
+            },
+            {
+              "name": "Champion Road",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Champion_Road_(TCG)"
+            },
+            {
+              "name": "Sky-Splitting Charisma",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sky-Splitting_Charisma_(TCG)"
+            },
+            {
+              "name": "Thunderclap Spark",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Thunderclap_Spark_(TCG)"
+            },
+            {
+              "name": "Fairy Rise",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fairy_Rise_(TCG)"
+            },
+            {
+              "name": "Super-Burst Impact",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Super-Burst_Impact_(TCG)"
+            },
+            {
+              "name": "Dark Order",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dark_Order_(TCG)"
+            },
+            {
+              "name": "GX Ultra Shiny",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/GX_Ultra_Shiny_(TCG)"
+            },
+            {
+              "name": "Tag Bolt",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Tag_Bolt_(TCG)"
+            },
+            {
+              "name": "Night Unison",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Night_Unison_(TCG)"
+            },
+            {
+              "name": "Full Metal Wall",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Full_Metal_Wall_(TCG)"
+            },
+            {
+              "name": "Double Blaze",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Double_Blaze_(TCG)"
+            },
+            {
+              "name": "GG End",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/GG_End_(TCG)"
+            },
+            {
+              "name": "Sky Legend",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sky_Legend_(TCG)"
+            },
+            {
+              "name": "Miracle Twin",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Miracle_Twin_(TCG)"
+            },
+            {
+              "name": "Remix Bout",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Remix_Bout_(TCG)"
+            },
+            {
+              "name": "Dream League",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dream_League_(TCG)"
+            },
+            {
+              "name": "Alter Genesis",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Alter_Genesis_(TCG)"
+            },
+            {
+              "name": "Tag All Stars",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Tag_All_Stars_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation VIII",
+          "sets": [
+            {
+              "name": "Sword",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Sword_%26_Shield_(TCG)"
+            },
+            {
+              "name": "Shield",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Category:Pok%C3%A9mon_Sword_and_Shield"
+            },
+            {
+              "name": "VMAX Rising",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/VMAX_Rising_(TCG)"
+            },
+            {
+              "name": "Rebellion Crash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rebellion_Crash_(TCG)"
+            },
+            {
+              "name": "Explosive Walker",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Explosive_Walker_(TCG)"
+            },
+            {
+              "name": "Infinity Zone",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Infinity_Zone_(TCG)"
+            },
+            {
+              "name": "Legendary Heartbeat",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Heartbeat_(TCG)"
+            },
+            {
+              "name": "Amazing Volt Tackle",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Amazing_Volt_Tackle_(TCG)"
+            },
+            {
+              "name": "Shiny Star V",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shiny_Star_V_(TCG)"
+            },
+            {
+              "name": "Single Strike Master",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Single_Strike_Master_(TCG)"
+            },
+            {
+              "name": "Rapid Strike Master",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Rapid_Strike_Master_(TCG)"
+            },
+            {
+              "name": "Peerless Fighters",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Peerless_Fighters_(TCG)"
+            },
+            {
+              "name": "Silver Lance",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Silver_Lance_(TCG)"
+            },
+            {
+              "name": "Jet-Black Spirit",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Jet-Black_Spirit_(TCG)"
+            },
+            {
+              "name": "Eevee Heroes",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Eevee_Heroes_(TCG)"
+            },
+            {
+              "name": "Skyscraping Perfection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Skyscraping_Perfection_(TCG)"
+            },
+            {
+              "name": "Blue Sky Stream",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Blue_Sky_Stream_(TCG)"
+            },
+            {
+              "name": "Fusion Arts",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Fusion_Arts_(TCG)"
+            },
+            {
+              "name": "25th Anniversary Collection",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/25th_Anniversary_Collection_(TCG)"
+            },
+            {
+              "name": "VMAX Climax",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/VMAX_Climax_(TCG)"
+            },
+            {
+              "name": "Star Birth",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Star_Birth_(TCG)"
+            },
+            {
+              "name": "Battle Region",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Battle_Region_(TCG)"
+            },
+            {
+              "name": "Time Gazer",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Time_Gazer_(TCG)"
+            },
+            {
+              "name": "Space Juggler",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Space_Juggler_(TCG)"
+            },
+            {
+              "name": "Dark Phantasma",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Dark_Phantasma_(TCG)"
+            },
+            {
+              "name": "Pokémon GO",
+              "link": "https://bulbapedia.bulbagarden.nethttps://bulbapedia.bulbagarden.net/wiki/Category:Pok%C3%A9mon_GO"
+            },
+            {
+              "name": "Lost Abyss",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Lost_Abyss_(TCG)"
+            },
+            {
+              "name": "Incandescent Arcana",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Incandescent_Arcana_(TCG)"
+            },
+            {
+              "name": "Paradigm Trigger",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Paradigm_Trigger_(TCG)"
+            },
+            {
+              "name": "VSTAR Universe",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/VSTAR_Universe_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Generation IX",
+          "sets": [
+            {
+              "name": "Scarlet ex",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Scarlet_ex_(TCG)"
+            },
+            {
+              "name": "Violet ex",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Violet_ex_(TCG)"
+            },
+            {
+              "name": "Triplet Beat",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Triplet_Beat_(TCG)"
+            },
+            {
+              "name": "Snow Hazard",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Snow_Hazard_(TCG)"
+            },
+            {
+              "name": "Clay Burst",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Clay_Burst_(TCG)"
+            },
+            {
+              "name": "Pokémon Card 151",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_151_(TCG)"
+            },
+            {
+              "name": "Ruler of the Black Flame",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ruler_of_the_Black_Flame_(TCG)"
+            },
+            {
+              "name": "Raging Surf",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Raging_Surf_(TCG)"
+            },
+            {
+              "name": "Ancient Roar",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Ancient_Roar_(TCG)"
+            },
+            {
+              "name": "Future Flash",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Future_Flash_(TCG)"
+            },
+            {
+              "name": "Shiny Treasure ex",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Shiny_Treasure_ex_(TCG)"
+            },
+            {
+              "name": "Wild Force",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Wild_Force_(TCG)"
+            },
+            {
+              "name": "Cyber Judge",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Cyber_Judge_(TCG)"
+            },
+            {
+              "name": "Crimson Haze",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Crimson_Haze_(TCG)"
+            },
+            {
+              "name": "Transformation Mask",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Transformation_Mask_(TCG)"
+            },
+            {
+              "name": "Night Wanderer",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Night_Wanderer_(TCG)"
+            },
+            {
+              "name": "Stellar Miracle",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Stellar_Miracle_(TCG)"
+            },
+            {
+              "name": "Paradise Dragona",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Paradise_Dragona_(TCG)"
+            },
+            {
+              "name": "Super Electric Breaker",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Super_Electric_Breaker_(TCG)"
+            }
+          ]
+        },
+        {
+          "name": "Promotional sets",
+          "sets": [
+            {
+              "name": "Unnumbered Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Expansion Sheet",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)"
+            },
+            {
+              "name": "Southern Islands",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_(TCG)"
+            },
+            {
+              "name": "P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "T Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/T_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "J Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/J_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "McDonald's Pokémon-e Minimum Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Pok%C3%A9mon-e_Minimum_Pack_(TCG)"
+            },
+            {
+              "name": "ADV-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/ADV-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "PLAY Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/PLAY_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "PCG-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/PCG-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "PokéPark Blue",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9Park_Blue_(TCG)"
+            },
+            {
+              "name": "PokéPark Forest",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9Park_Forest_(TCG)"
+            },
+            {
+              "name": "DP-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/DP-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "PPP Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/PPP_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "10th Movie Commemoration Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/10th_Movie_Commemoration_Set_(TCG)"
+            },
+            {
+              "name": "11th Movie Commemoration Set",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/11th_Movie_Commemoration_Set_(TCG)"
+            },
+            {
+              "name": "DPt-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/DPt-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Melee! Pokémon Scramble",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Melee!_Pok%C3%A9mon_Scramble_(TCG)"
+            },
+            {
+              "name": "Movie Commemoration Random Pack",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Movie_Commemoration_Random_Pack_(TCG)"
+            },
+            {
+              "name": "L-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/L-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "World Collection - Pikachu World 2010",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/World_Collection_(TCG)"
+            },
+            {
+              "name": "BW-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/BW-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Journey Partners",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Journey_Partners_(TCG)"
+            },
+            {
+              "name": "XY-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/XY-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "SM-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SM-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Great Detective Pikachu",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Great_Detective_Pikachu_(TCG)"
+            },
+            {
+              "name": "S-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/S-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "SV-P Promotional cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/SV-P_Promotional_cards_(TCG)"
+            },
+            {
+              "name": "Unreleased cards",
+              "link": "https://bulbapedia.bulbagarden.net/wiki/Unreleased_cards_(TCG)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totalSets": 411,
+  "lastUpdated": "2025-07-27T19:09:42.058Z",
+  "version": "1.0.0"
+}
