@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const searchQuery = ref('')
-const loading = ref(false)
+const searchQuery = ref('');
+const loading = ref(false);
 
 // Placeholder function for future implementation
 const searchCards = () => {
-  loading.value = true
+  loading.value = true;
   // Simulate API call
   setTimeout(() => {
-    loading.value = false
-  }, 1000)
-}
+    loading.value = false;
+  }, 1000);
+};
 </script>
 
 <template>
@@ -46,13 +46,15 @@ const searchCards = () => {
 
             <v-list lines="two">
               <v-list-subheader>Coming Soon</v-list-subheader>
-              
+
               <v-list-item>
                 <template v-slot:prepend>
                   <v-icon icon="mdi-database-search" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Comprehensive Database</v-list-item-title>
-                <v-list-item-subtitle>Search across multiple TCG databases</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Search across multiple TCG databases</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -60,7 +62,9 @@ const searchCards = () => {
                   <v-icon icon="mdi-image-search" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Image Recognition</v-list-item-title>
-                <v-list-item-subtitle>Search by uploading card images</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Search by uploading card images</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -68,7 +72,10 @@ const searchCards = () => {
                   <v-icon icon="mdi-format-list-text" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Detailed Information</v-list-item-title>
-                <v-list-item-subtitle>Card details, rulings, and price history</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Card details, rulings, and price
+                  history</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -76,7 +83,10 @@ const searchCards = () => {
                   <v-icon icon="mdi-compare" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Card Comparison</v-list-item-title>
-                <v-list-item-subtitle>Compare different versions and printings</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Compare different versions and
+                  printings</v-list-item-subtitle
+                >
               </v-list-item>
             </v-list>
           </v-card-text>

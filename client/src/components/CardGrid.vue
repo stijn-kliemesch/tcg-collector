@@ -32,7 +32,7 @@
               { title: 'Name', key: 'name' },
               { title: 'Set', key: 'set' },
               { title: 'Condition', key: 'condition' },
-              { title: 'Quantity', key: 'quantity' }
+              { title: 'Quantity', key: 'quantity' },
             ]"
             :items="cards"
             :items-per-page="10"
@@ -44,31 +44,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import type { Card } from '@/types/card'
+import { defineComponent } from 'vue';
+import type { Card } from '@/types/card';
 
 export default defineComponent({
   name: 'CardGrid',
   props: {
     cards: {
       type: Array as () => Card[],
-      required: true
+      required: true,
     },
     loading: {
       type: Boolean,
-      required: true
+      required: true,
     },
     hasCards: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['load-example', 'clear'],
   setup(props, { emit }) {
     return {
       loadExampleData: () => emit('load-example'),
-      clearDatabase: () => emit('clear')
-    }
-  }
-})
+      clearDatabase: () => emit('clear'),
+    };
+  },
+});
 </script>

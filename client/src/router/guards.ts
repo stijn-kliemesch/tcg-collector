@@ -1,15 +1,15 @@
-import type { NavigationGuard, Router } from 'vue-router'
+import type { NavigationGuard, Router } from 'vue-router';
 
 /**
  * Prepare for route title management
  */
 export const titleGuard: NavigationGuard = (to, from, next) => {
   // Set document title based on route
-  const baseTitle = 'TCG Collector'
-  const pageTitle = to.name as string
-  document.title = pageTitle ? `${baseTitle} - ${pageTitle}` : baseTitle
-  next()
-}
+  const baseTitle = 'TCG Collector';
+  const pageTitle = to.name as string;
+  document.title = pageTitle ? `${baseTitle} - ${pageTitle}` : baseTitle;
+  next();
+};
 
 /**
  * Prepare for future authentication needs
@@ -21,11 +21,11 @@ export const authGuard: NavigationGuard = (to, from, next) => {
   //   next({ name: 'login' })
   //   return
   // }
-  next()
-}
+  next();
+};
 
 // Combine all guards into a single guard for the router
 export const setupGuards = (router: Router) => {
-  router.beforeEach(titleGuard)
-  router.beforeEach(authGuard)
-}
+  router.beforeEach(titleGuard);
+  router.beforeEach(authGuard);
+};

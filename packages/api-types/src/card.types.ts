@@ -59,9 +59,9 @@ export interface CardLegalities {
   unlimited?: string;
 }
 
-export type CardRarity = 
+export type CardRarity =
   | 'Common'
-  | 'Uncommon' 
+  | 'Uncommon'
   | 'Rare'
   | 'Rare Holo'
   | 'Rare Holo EX'
@@ -72,10 +72,7 @@ export type CardRarity =
   | 'Rare Rainbow'
   | 'Promo';
 
-export type CardType = 
-  | 'Pokémon'
-  | 'Trainer'
-  | 'Energy';
+export type CardType = 'Pokémon' | 'Trainer' | 'Energy';
 
 export interface CardSet {
   id: string;

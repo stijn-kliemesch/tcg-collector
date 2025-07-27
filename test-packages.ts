@@ -14,8 +14,10 @@ async function testPackages() {
   // Test 1: Core utilities
   console.log('1️⃣ Testing Core Package (Native TypeScript)');
   const titleCased = StringUtils.titleCase('pikachu lightning bolt');
-  console.log(`   String formatting: "pikachu lightning bolt" → "${titleCased}" ✅`);
-  
+  console.log(
+    `   String formatting: "pikachu lightning bolt" → "${titleCased}" ✅`
+  );
+
   const emailValidation = Validator.email('test@example.com');
   console.log(`   Email validation: ${emailValidation.isValid ? '✅' : '❌'}`);
 
@@ -25,12 +27,12 @@ async function testPackages() {
     name: 'Pikachu',
     set: 'Base Set',
     setNumber: '25/102',
-    rarity: 'Common'
+    rarity: 'Common',
   };
-  
+
   const apiResponse: ApiResponse<Card[]> = {
     success: true,
-    data: [testCard as Card]
+    data: [testCard as Card],
   };
   console.log(`   API Response structure: ✅`);
   console.log(`   Type safety working: ${apiResponse.success ? '✅' : '❌'}`);
@@ -40,7 +42,9 @@ async function testPackages() {
   try {
     const visionService = new CardRecognitionService();
     console.log(`   Vision service creation: ✅`);
-    console.log(`   Service ready check: ${visionService.isReady() ? '❌ (not initialized)' : '✅ (correctly not ready)'}`);
+    console.log(
+      `   Service ready check: ${visionService.isReady() ? '❌ (not initialized)' : '✅ (correctly not ready)'}`
+    );
   } catch (error) {
     console.log(`   Vision service creation: ❌ ${error}`);
   }

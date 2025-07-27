@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const selectedGame = ref('')
-const searchQuery = ref('')
+const selectedGame = ref('');
+const searchQuery = ref('');
 
 // Placeholder data for future implementation
 const games = [
@@ -10,8 +10,8 @@ const games = [
   'Pokémon',
   'Yu-Gi-Oh!',
   'Flesh and Blood',
-  'Dragon Ball Super'
-]
+  'Dragon Ball Super',
+];
 
 const sets = ref([
   {
@@ -20,7 +20,7 @@ const sets = ref([
     year: '2025',
     cards: 245,
     collected: 0,
-    progress: 0
+    progress: 0,
   },
   {
     name: 'Example Set 2',
@@ -28,9 +28,9 @@ const sets = ref([
     year: '2025',
     cards: 180,
     collected: 0,
-    progress: 0
-  }
-])
+    progress: 0,
+  },
+]);
 </script>
 
 <template>
@@ -65,17 +65,17 @@ const sets = ref([
             <!-- Sets List -->
             <v-list lines="two">
               <template v-if="sets.length > 0">
-                <v-list-item
-                  v-for="set in sets"
-                  :key="set.name"
-                >
+                <v-list-item v-for="set in sets" :key="set.name">
                   <template v-slot:prepend>
                     <v-icon icon="mdi-book" color="primary"></v-icon>
                   </template>
-                  
+
                   <v-list-item-title>{{ set.name }}</v-list-item-title>
                   <v-list-item-subtitle>
-                    {{ set.game }} • {{ set.year }} • {{ set.collected }}/{{ set.cards }} cards
+                    {{ set.game }} • {{ set.year }} • {{ set.collected }}/{{
+                      set.cards
+                    }}
+                    cards
                   </v-list-item-subtitle>
 
                   <template v-slot:append>
@@ -95,13 +95,15 @@ const sets = ref([
             <!-- Coming Soon Features -->
             <v-list lines="two">
               <v-list-subheader>Coming Soon</v-list-subheader>
-              
+
               <v-list-item>
                 <template v-slot:prepend>
                   <v-icon icon="mdi-book-multiple" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Set Management</v-list-item-title>
-                <v-list-item-subtitle>Track your progress for each TCG set</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Track your progress for each TCG set</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -109,7 +111,10 @@ const sets = ref([
                   <v-icon icon="mdi-chart-box" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Collection Analytics</v-list-item-title>
-                <v-list-item-subtitle>View completion stats and set value estimates</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >View completion stats and set value
+                  estimates</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -117,7 +122,9 @@ const sets = ref([
                   <v-icon icon="mdi-checklist" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Checklists</v-list-item-title>
-                <v-list-item-subtitle>Detailed checklists for each set</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Detailed checklists for each set</v-list-item-subtitle
+                >
               </v-list-item>
 
               <v-list-item>
@@ -125,7 +132,10 @@ const sets = ref([
                   <v-icon icon="mdi-bell" color="primary"></v-icon>
                 </template>
                 <v-list-item-title>Set Alerts</v-list-item-title>
-                <v-list-item-subtitle>Get notified about new sets and releases</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  >Get notified about new sets and
+                  releases</v-list-item-subtitle
+                >
               </v-list-item>
             </v-list>
           </v-card-text>

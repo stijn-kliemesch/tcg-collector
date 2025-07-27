@@ -3,7 +3,12 @@
  */
 
 import type { CardCondition, CardRarity } from '@tcg-collector/api-types';
-import { CARD_CONDITIONS, CARD_RARITIES, SUPPORTED_IMAGE_FORMATS, MAX_IMAGE_SIZE } from '../constants';
+import {
+  CARD_CONDITIONS,
+  CARD_RARITIES,
+  SUPPORTED_IMAGE_FORMATS,
+  MAX_IMAGE_SIZE,
+} from '../constants';
 
 export interface ValidationResult {
   isValid: boolean;
@@ -16,13 +21,13 @@ export class Validator {
    */
   static email(email: string): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!email) {
       errors.push('Email is required');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.push('Invalid email format');
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -31,7 +36,7 @@ export class Validator {
    */
   static password(password: string): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!password) {
       errors.push('Password is required');
     } else {
@@ -48,7 +53,7 @@ export class Validator {
         errors.push('Password must contain at least one number');
       }
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -57,13 +62,15 @@ export class Validator {
    */
   static cardCondition(condition: string): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!condition) {
       errors.push('Card condition is required');
     } else if (!CARD_CONDITIONS.includes(condition as CardCondition)) {
-      errors.push(`Invalid card condition. Must be one of: ${CARD_CONDITIONS.join(', ')}`);
+      errors.push(
+        `Invalid card condition. Must be one of: ${CARD_CONDITIONS.join(', ')}`
+      );
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -72,13 +79,15 @@ export class Validator {
    */
   static cardRarity(rarity: string): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!rarity) {
       errors.push('Card rarity is required');
     } else if (!CARD_RARITIES.includes(rarity as CardRarity)) {
-      errors.push(`Invalid card rarity. Must be one of: ${CARD_RARITIES.join(', ')}`);
+      errors.push(
+        `Invalid card rarity. Must be one of: ${CARD_RARITIES.join(', ')}`
+      );
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -87,19 +96,23 @@ export class Validator {
    */
   static imageFile(file: File): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!file) {
       errors.push('Image file is required');
     } else {
       if (!SUPPORTED_IMAGE_FORMATS.includes(file.type)) {
-        errors.push(`Unsupported image format. Supported formats: ${SUPPORTED_IMAGE_FORMATS.join(', ')}`);
+        errors.push(
+          `Unsupported image format. Supported formats: ${SUPPORTED_IMAGE_FORMATS.join(', ')}`
+        );
       }
-      
+
       if (file.size > MAX_IMAGE_SIZE) {
-        errors.push(`Image file too large. Maximum size: ${MAX_IMAGE_SIZE / (1024 * 1024)}MB`);
+        errors.push(
+          `Image file too large. Maximum size: ${MAX_IMAGE_SIZE / (1024 * 1024)}MB`
+        );
       }
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -108,7 +121,7 @@ export class Validator {
    */
   static collectionName(name: string): ValidationResult {
     const errors: string[] = [];
-    
+
     if (!name?.trim()) {
       errors.push('Collection name is required');
     } else if (name.length < 2) {
@@ -116,7 +129,7 @@ export class Validator {
     } else if (name.length > 100) {
       errors.push('Collection name must be less than 100 characters long');
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 
@@ -125,7 +138,7 @@ export class Validator {
    */
   static quantity(quantity: number): ValidationResult {
     const errors: string[] = [];
-    
+
     if (quantity === undefined || quantity === null) {
       errors.push('Quantity is required');
     } else if (!Number.isInteger(quantity)) {
@@ -135,7 +148,7 @@ export class Validator {
     } else if (quantity > 9999) {
       errors.push('Quantity cannot exceed 9999');
     }
-    
+
     return { isValid: errors.length === 0, errors };
   }
 }

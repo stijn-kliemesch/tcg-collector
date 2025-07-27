@@ -1,6 +1,11 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import type { SetData, SetGroup, Generation, Set } from '../../types/reference/set.js';
+import type {
+  SetData,
+  SetGroup,
+  Generation,
+  Set,
+} from '../../types/reference/set.js';
 
 export interface SetCacheInfo {
   totalSets: number;
@@ -11,7 +16,12 @@ export interface SetCacheInfo {
 }
 
 export class SimpleSetDataService {
-  private static readonly DATA_FILE = join(process.cwd(), 'data', 'reference', 'sets.json');
+  private static readonly DATA_FILE = join(
+    process.cwd(),
+    'data',
+    'reference',
+    'sets.json'
+  );
   private cachedData: SetData | null = null;
 
   /**
@@ -54,21 +64,28 @@ export class SimpleSetDataService {
     const data = await this.getSetsData();
     if (!data) return null;
 
-    return data.groups.find(group => 
-      group.name.toLowerCase().includes(groupName.toLowerCase())
-    ) || null;
+    return (
+      data.groups.find(group =>
+        group.name.toLowerCase().includes(groupName.toLowerCase())
+      ) || null
+    );
   }
 
   /**
    * Get sets by generation within a group
    */
-  async getSetsByGeneration(groupName: string, generationName: string): Promise<Generation | null> {
+  async getSetsByGeneration(
+    groupName: string,
+    generationName: string
+  ): Promise<Generation | null> {
     const group = await this.getSetsByGroup(groupName);
     if (!group) return null;
 
-    return group.generations.find(gen => 
-      gen.name.toLowerCase().includes(generationName.toLowerCase())
-    ) || null;
+    return (
+      group.generations.find(gen =>
+        gen.name.toLowerCase().includes(generationName.toLowerCase())
+      ) || null
+    );
   }
 
   /**
@@ -80,9 +97,10 @@ export class SimpleSetDataService {
     try {
       const rawData = readFileSync(SimpleSetDataService.DATA_FILE, 'utf-8');
       const data = JSON.parse(rawData);
-      
-      const totalGenerations = data.groups.reduce((total: number, group: SetGroup) => 
-        total + group.generations.length, 0
+
+      const totalGenerations = data.groups.reduce(
+        (total: number, group: SetGroup) => total + group.generations.length,
+        0
       );
 
       return {
@@ -90,7 +108,7 @@ export class SimpleSetDataService {
         groups: data.groups?.length || 0,
         generations: totalGenerations,
         lastUpdated: data.lastUpdated || 'unknown',
-        version: data.version || 'unknown'
+        version: data.version || 'unknown',
       };
     } catch (error) {
       console.error('Error reading sets cache info:', error);
@@ -107,11 +125,11 @@ export class SimpleSetDataService {
     try {
       const rawData = readFileSync(SimpleSetDataService.DATA_FILE, 'utf-8');
       const data = JSON.parse(rawData);
-      
+
       this.cachedData = {
         expansionName: data.expansionName,
         groups: data.groups || [],
-        totalSets: data.totalSets || 0
+        totalSets: data.totalSets || 0,
       };
     } catch (error) {
       console.error('Error loading sets data:', error);

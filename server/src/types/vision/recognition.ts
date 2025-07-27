@@ -1,6 +1,6 @@
 /**
  * TypeScript interfaces for computer vision card recognition results
- * 
+ *
  * @author AI Agent
  * @semantic Vision recognition result types and configuration interfaces
  */
@@ -76,13 +76,13 @@ export interface RecognitionOptions {
   ocrMode?: 'auto' | 'single_block' | 'single_column' | 'single_word';
   /** Minimum confidence threshold for text acceptance (0-100) */
   confidenceThreshold?: number;
-  
+
   // Icon Detection Configuration
   /** Minimum confidence threshold for icon matches (0-1) */
   iconMatchThreshold?: number;
   /** Whether to enable icon detection (can be disabled for faster text-only processing) */
   enableIconDetection?: boolean;
-  
+
   // Image Processing Configuration
   /** Enhance image contrast for better OCR */
   enhanceContrast?: boolean;
@@ -141,7 +141,11 @@ export interface VisionServiceConfig {
  */
 export interface VisionError {
   /** Error type */
-  type: 'INITIALIZATION_ERROR' | 'OCR_ERROR' | 'IMAGE_PROCESSING_ERROR' | 'ICON_DETECTION_ERROR';
+  type:
+    | 'INITIALIZATION_ERROR'
+    | 'OCR_ERROR'
+    | 'IMAGE_PROCESSING_ERROR'
+    | 'ICON_DETECTION_ERROR';
   /** Human-readable error message */
   message: string;
   /** Additional error details */

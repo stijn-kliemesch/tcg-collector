@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useTheme } from 'vuetify'
-import SettingsTheme from '@/components/SettingsTheme.vue'
-import { defaultPalette, type PaletteType } from '@/config/palettes'
+import { ref } from 'vue';
+import { useTheme } from 'vuetify';
+import SettingsTheme from '@/components/SettingsTheme.vue';
+import { defaultPalette, type PaletteType } from '@/config/palettes';
 
-const theme = useTheme()
-const selectedPalette = ref<PaletteType>(defaultPalette)
-const tab = ref('appearance')
+const theme = useTheme();
+const selectedPalette = ref<PaletteType>(defaultPalette);
+const tab = ref('appearance');
 
 const tabs = [
   { value: 'appearance', title: 'Appearance', icon: 'mdi-palette' },
   { value: 'collection', title: 'Collection', icon: 'mdi-cards' },
   { value: 'notifications', title: 'Notifications', icon: 'mdi-bell' },
-  { value: 'advanced', title: 'Advanced', icon: 'mdi-cog' }
-]
+  { value: 'advanced', title: 'Advanced', icon: 'mdi-cog' },
+];
 </script>
 
 <template>
@@ -56,17 +56,25 @@ const tabs = [
               <v-list lines="two">
                 <v-list-item>
                   <template v-slot:prepend>
-                    <v-icon icon="mdi-format-list-checks" color="primary"></v-icon>
+                    <v-icon
+                      icon="mdi-format-list-checks"
+                      color="primary"
+                    ></v-icon>
                   </template>
                   <v-list-item-title>Default View Options</v-list-item-title>
-                  <v-list-item-subtitle>Configure how your collection is displayed</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Configure how your collection is
+                    displayed</v-list-item-subtitle
+                  >
                 </v-list-item>
                 <v-list-item>
                   <template v-slot:prepend>
                     <v-icon icon="mdi-filter-variant" color="primary"></v-icon>
                   </template>
                   <v-list-item-title>Default Filters</v-list-item-title>
-                  <v-list-item-subtitle>Set up default filtering options</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Set up default filtering options</v-list-item-subtitle
+                  >
                 </v-list-item>
               </v-list>
             </v-card-text>
@@ -85,14 +93,18 @@ const tabs = [
                     <v-icon icon="mdi-bell-ring" color="primary"></v-icon>
                   </template>
                   <v-list-item-title>Price Alerts</v-list-item-title>
-                  <v-list-item-subtitle>Get notified about price changes</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Get notified about price changes</v-list-item-subtitle
+                  >
                 </v-list-item>
                 <v-list-item>
                   <template v-slot:prepend>
                     <v-icon icon="mdi-new-box" color="primary"></v-icon>
                   </template>
                   <v-list-item-title>New Set Alerts</v-list-item-title>
-                  <v-list-item-subtitle>Stay updated about new set releases</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Stay updated about new set releases</v-list-item-subtitle
+                  >
                 </v-list-item>
               </v-list>
             </v-card-text>
@@ -111,14 +123,19 @@ const tabs = [
                     <v-icon icon="mdi-database" color="primary"></v-icon>
                   </template>
                   <v-list-item-title>Data Management</v-list-item-title>
-                  <v-list-item-subtitle>Import, export, and backup your collection data</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Import, export, and backup your collection
+                    data</v-list-item-subtitle
+                  >
                 </v-list-item>
                 <v-list-item>
                   <template v-slot:prepend>
                     <v-icon icon="mdi-api" color="primary"></v-icon>
                   </template>
                   <v-list-item-title>API Configuration</v-list-item-title>
-                  <v-list-item-subtitle>Configure external API integrations</v-list-item-subtitle>
+                  <v-list-item-subtitle
+                    >Configure external API integrations</v-list-item-subtitle
+                  >
                 </v-list-item>
               </v-list>
             </v-card-text>

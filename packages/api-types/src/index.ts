@@ -1,6 +1,6 @@
 /**
  * API Types package exports
- * 
+ *
  * Shared TypeScript type definitions for TCG Collector
  */
 

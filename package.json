@@ -9,7 +9,19 @@
     "server"
   ],
   "scripts": {
+    "httptool:install": "npm i -g http-server",
+    "httptool:run": "http-server",
     "test:packages": "tsx test-packages.ts",
+    "lint": "eslint . --ext .ts,.js",
+    "lint:fix": "eslint . --ext .ts,.js --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:open": "vitest run --coverage && open coverage/index.html",
+    "test:run": "vitest run",
+    "quality": "npm run lint && npm run format:check && npm run test:run",
     "client:dev": "cd client && npm run dev",
     "client:build": "cd client && npm run build",
     "server:dev": "cd server && npm run dev",
@@ -18,9 +30,18 @@
     "build": "concurrently \"npm run server:build\" \"npm run client:build\""
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "concurrently": "^8.2.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
   }
 }

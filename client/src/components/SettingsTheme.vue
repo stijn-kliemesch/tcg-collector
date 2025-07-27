@@ -21,12 +21,8 @@
             </div>
           </template>
         </v-radio>
-        
-        <v-radio
-          label="Collector's Premium"
-          value="premium"
-          color="primary"
-        >
+
+        <v-radio label="Collector's Premium" value="premium" color="primary">
           <template v-slot:label>
             <div>
               Collector's Premium
@@ -38,12 +34,8 @@
             </div>
           </template>
         </v-radio>
-        
-        <v-radio
-          label="Clean & Accessible"
-          value="clean"
-          color="primary"
-        >
+
+        <v-radio label="Clean & Accessible" value="clean" color="primary">
           <template v-slot:label>
             <div>
               Clean & Accessible
@@ -59,15 +51,13 @@
         <v-divider class="my-4"></v-divider>
         <p class="text-subtitle-2 mb-4">Colorblind-Friendly Themes</p>
 
-        <v-radio
-          label="High Contrast"
-          value="highContrast"
-          color="primary"
-        >
+        <v-radio label="High Contrast" value="highContrast" color="primary">
           <template v-slot:label>
             <div>
               High Contrast
-              <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+              <v-chip size="x-small" color="primary" class="ml-2"
+                >Colorblind Friendly</v-chip
+              >
               <div class="d-flex gap-2 mt-1">
                 <v-chip size="small" color="#0077C2">Primary</v-chip>
                 <v-chip size="small" color="#424242">Secondary</v-chip>
@@ -85,7 +75,9 @@
           <template v-slot:label>
             <div>
               Safe Distinction
-              <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+              <v-chip size="x-small" color="primary" class="ml-2"
+                >Colorblind Friendly</v-chip
+              >
               <div class="d-flex gap-2 mt-1">
                 <v-chip size="small" color="#006BA6">Primary</v-chip>
                 <v-chip size="small" color="#595959">Secondary</v-chip>
@@ -95,15 +87,13 @@
           </template>
         </v-radio>
 
-        <v-radio
-          label="Universal"
-          value="universal"
-          color="primary"
-        >
+        <v-radio label="Universal" value="universal" color="primary">
           <template v-slot:label>
             <div>
               Universal
-              <v-chip size="x-small" color="primary" class="ml-2">Colorblind Friendly</v-chip>
+              <v-chip size="x-small" color="primary" class="ml-2"
+                >Colorblind Friendly</v-chip
+              >
               <div class="d-flex gap-2 mt-1">
                 <v-chip size="small" color="#2E5C8A">Primary</v-chip>
                 <v-chip size="small" color="#4F4F4F">Secondary</v-chip>
@@ -118,58 +108,58 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useTheme } from 'vuetify'
-import { palettes, type PaletteType } from '@/config/palettes'
+import { defineComponent, computed } from 'vue';
+import { useTheme } from 'vuetify';
+import { palettes, type PaletteType } from '@/config/palettes';
 
 export default defineComponent({
   name: 'SettingsTheme',
   props: {
     modelValue: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const theme = useTheme()
+    const theme = useTheme();
 
     const selectedPalette = computed({
       get: () => props.modelValue,
       set: (value: string) => {
-        emit('update:modelValue', value)
-        applyPalette(value)
-      }
-    })
+        emit('update:modelValue', value);
+        applyPalette(value);
+      },
+    });
 
     const applyPalette = (value: string) => {
-      const colors = palettes[value as PaletteType]
+      const colors = palettes[value as PaletteType];
       theme.themes.value.light = {
         ...theme.themes.value.light,
         colors: {
           ...theme.themes.value.light.colors,
           primary: colors.primary,
           secondary: colors.secondary,
-          accent: colors.accent
-        }
-      }
+          accent: colors.accent,
+        },
+      };
       theme.themes.value.dark = {
         ...theme.themes.value.dark,
         colors: {
           ...theme.themes.value.dark.colors,
           primary: colors.primary,
           secondary: colors.secondary,
-          accent: colors.accent
-        }
-      }
-    }
+          accent: colors.accent,
+        },
+      };
+    };
 
     // Apply initial theme on mount
-    applyPalette(props.modelValue)
+    applyPalette(props.modelValue);
 
     return {
-      selectedPalette
-    }
-  }
-})
+      selectedPalette,
+    };
+  },
+});
 </script>

@@ -1,6 +1,6 @@
 /**
  * Vision package exports
- * 
+ *
  * Computer vision and OCR services for TCG card recognition
  */
 

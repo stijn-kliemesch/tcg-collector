@@ -1,6 +1,6 @@
 /**
  * Vision and card recognition types
- * 
+ *
  * Note: These are simpler versions of the vision types for API communication.
  * The full vision types with more detailed interfaces remain in the vision package.
  */
@@ -40,7 +40,15 @@ export interface CardRecognitionResult {
 }
 
 export interface PokemonCardElement {
-  type: 'pokemon_name' | 'hp' | 'attack_name' | 'attack_damage' | 'set_number' | 'energy_cost' | 'description' | 'unknown';
+  type:
+    | 'pokemon_name'
+    | 'hp'
+    | 'attack_name'
+    | 'attack_damage'
+    | 'set_number'
+    | 'energy_cost'
+    | 'description'
+    | 'unknown';
   originalText: string;
   correctedText: string;
   confidence: number;
@@ -62,7 +70,12 @@ export interface PokemonCardAnalysis {
 
 export interface RecognitionOptions {
   languages?: string[];
-  ocrMode?: 'auto' | 'single_column' | 'single_block' | 'single_line' | 'single_word';
+  ocrMode?:
+    | 'auto'
+    | 'single_column'
+    | 'single_block'
+    | 'single_line'
+    | 'single_word';
   confidenceThreshold?: number;
   iconMatchThreshold?: number;
   enableIconDetection?: boolean;
@@ -81,7 +94,11 @@ export interface VisionServiceConfig {
 }
 
 export interface VisionError {
-  type: 'INITIALIZATION_ERROR' | 'OCR_ERROR' | 'IMAGE_PROCESSING_ERROR' | 'VALIDATION_ERROR';
+  type:
+    | 'INITIALIZATION_ERROR'
+    | 'OCR_ERROR'
+    | 'IMAGE_PROCESSING_ERROR'
+    | 'VALIDATION_ERROR';
   message: string;
   originalError?: Error;
 }

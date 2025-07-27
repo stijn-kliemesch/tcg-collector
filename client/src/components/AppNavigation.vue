@@ -22,12 +22,12 @@
 
 <script setup lang="ts">
 defineProps<{
-  modelValue: boolean
-}>()
+  modelValue: boolean;
+}>();
 
 defineEmits<{
-  'update:modelValue': [value: boolean]
-}>()
+  'update:modelValue': [value: boolean];
+}>();
 
 const menuItems = [
   { icon: 'mdi-view-grid', title: 'Collection', value: 'collection' },
@@ -35,6 +35,6 @@ const menuItems = [
   { icon: 'mdi-magnify', title: 'Lookup', value: 'lookup' },
   { icon: 'mdi-cards', title: 'Sets', value: 'sets' },
   { icon: 'mdi-information', title: 'About', value: 'about' },
-  { icon: 'mdi-cog', title: 'Settings', value: 'settings' }
-]
+  { icon: 'mdi-cog', title: 'Settings', value: 'settings' },
+];
 </script>

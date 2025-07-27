@@ -50,7 +50,7 @@ export interface RarityStats {
   percentage: number;
 }
 
-export type CardCondition = 
+export type CardCondition =
   | 'Mint'
   | 'Near Mint'
   | 'Lightly Played'

@@ -26,9 +26,11 @@ tcg-collector/
 ## 📦 Package Overview
 
 ### `@tcg-collector/api-types`
+
 **Purpose**: Shared TypeScript type definitions (native .ts files)
 
 **Configuration**:
+
 ```json
 {
   "type": "module",
@@ -42,6 +44,7 @@ tcg-collector/
 ```
 
 **Key Types**:
+
 - `Card` - Pokemon card data structure
 - `Collection` - User collection management
 - `User` - User account and preferences
@@ -49,17 +52,21 @@ tcg-collector/
 - `VisionTypes` - Computer vision recognition types
 
 ### `@tcg-collector/core`
+
 **Purpose**: Shared business logic utilities (native .ts files)
 
 **Key Modules**:
+
 - `Validator` - Email, password, card condition validation
 - `StringUtils` - Text formatting utilities (title case, etc.)
 - `Constants` - Application-wide constants
 
 ### `@tcg-collector/vision`
+
 **Purpose**: Computer vision services for Pokemon card recognition (native .ts files)
 
 **Key Services**:
+
 - `CardRecognitionService` - Main OCR and analysis coordinator
 - `PokemonCardAnalyzer` - Pokemon-specific card analysis
 - Image processing utilities
@@ -67,6 +74,7 @@ tcg-collector/
 ## 🔧 Native TypeScript Configuration
 
 ### Root TypeScript Config
+
 ```json
 {
   "compilerOptions": {
@@ -82,7 +90,9 @@ tcg-collector/
 ```
 
 ### Package TypeScript Configs
+
 Each package uses `noEmit: true` - no compilation, pure TypeScript checking:
+
 ```json
 {
   "compilerOptions": {
@@ -97,6 +107,7 @@ Each package uses `noEmit: true` - no compilation, pure TypeScript checking:
 ## 💡 Usage Examples
 
 ### In Server Code
+
 ```typescript
 import { Validator, StringUtils } from '@tcg-collector/core';
 import type { Card, ApiResponse } from '@tcg-collector/api-types';
@@ -108,6 +119,7 @@ const formattedName = StringUtils.titleCase(cardName);
 ```
 
 ### In Client Code
+
 ```typescript
 import type { Card, Collection } from '@tcg-collector/api-types';
 import { StringUtils } from '@tcg-collector/core';
@@ -141,6 +153,7 @@ const displayName = StringUtils.titleCase(card.name);
 **After**: Pure TypeScript, direct imports, zero build time
 
 **Native TypeScript Benefits**:
+
 - ✅ No `npm run build:packages` needed
 - ✅ No dist/ folders to manage
 - ✅ Direct .ts imports in server/client

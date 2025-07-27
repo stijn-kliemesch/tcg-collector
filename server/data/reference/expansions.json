@@ -3,76 +3,56 @@
     {
       "name": "Pocket Monsters Carddass Trading Cards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pocket_Monsters_Carddass_Trading_Cards",
-      "languages": [
-        "Japanese"
-      ],
+      "languages": ["Japanese"],
       "cardSetCount": 3,
       "promoSetCount": 0
     },
     {
       "name": "Pokémon Card Game",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Trading_Card_Game",
-      "languages": [
-        "Japanese"
-      ],
+      "languages": ["Japanese"],
       "cardSetCount": 90,
       "promoSetCount": 26
     },
     {
       "name": "Pokémon Topsun cards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Topsun_cards",
-      "languages": [
-        "Japanese"
-      ],
+      "languages": ["Japanese"],
       "cardSetCount": 3,
       "promoSetCount": 0
     },
     {
       "name": "Pokémon Trading Card Game",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Trading_Card_Game",
-      "languages": [
-        "English"
-      ],
+      "languages": ["English"],
       "cardSetCount": 112,
       "promoSetCount": 41
     },
     {
       "name": "Pokémon Topps trading cards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Topps",
-      "languages": [
-        "English"
-      ],
+      "languages": ["English"],
       "cardSetCount": 9,
       "promoSetCount": 2
     },
     {
       "name": "Pokémon Dunkin Boomer cards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Dunkin_Boomer_cards",
-      "languages": [
-        "English"
-      ],
+      "languages": ["English"],
       "cardSetCount": 3,
       "promoSetCount": 0
     },
     {
       "name": "Pokémon Merlin cards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Merlin_cards",
-      "languages": [
-        "English"
-      ],
+      "languages": ["English"],
       "cardSetCount": 7,
       "promoSetCount": 0
     },
     {
       "name": "Pokémon Lamincards",
       "link": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Lamincards",
-      "languages": [
-        "Italian",
-        "Spanish",
-        "French",
-        "German",
-        "English"
-      ],
+      "languages": ["Italian", "Spanish", "French", "German", "English"],
       "cardSetCount": 6,
       "promoSetCount": 0
     }

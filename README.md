@@ -15,13 +15,15 @@ A comprehensive Pokemon Trading Card Game collection management application with
 The application consists of two main components:
 
 ### Server (`/server`)
+
 - **Node.js/TypeScript backend** with Express.js API
 - **Reference data services** for Pokemon TCG expansions and sets (411 total sets)
 - **User collection management** with full CRUD operations
 - **Wikipedia scraping** for comprehensive Pokemon TCG data
 - **File-based storage** using LowDB for simplicity
 
-### Client (`/client`) 
+### Client (`/client`)
+
 - **Vue.js frontend** with modern UI/UX
 - **Collection management interface** for user's cards
 - **Reference data browsing** for Pokemon TCG sets and expansions
@@ -30,6 +32,7 @@ The application consists of two main components:
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18 or newer
 - npm
 
@@ -48,13 +51,15 @@ Note: Each command below assumed your CWD (Current Working Directory) is in the 
    If you're not running this from a Github Codespace, configure your environment variables.
 
    Create `.env.local` files in both directories:
-   
+
    **client/.env.local:**
+
    ```
    VITE_API_URL=http://localhost:3000/api
    ```
 
    **server/.env.local:**
+
    ```
    PORT=3000
    ```
@@ -81,6 +86,7 @@ Note: Each command below assumed your CWD (Current Working Directory) is in the 
 ## Current Features
 
 ### Reference Data Management
+
 - **8 Pokemon TCG Expansions** with comprehensive metadata
 - **411 Pokemon TCG Sets** across all generations (International + Japanese)
 - **Automated scraping** from reliable sources with link discovery
@@ -88,6 +94,7 @@ Note: Each command below assumed your CWD (Current Working Directory) is in the 
 - **Bootstrap script** for easy reference data setup
 
 ### User Collection Management
+
 - **Add/Edit/Delete cards** in your personal collection
 - **Search and filter** your collection by name, set, or tags
 - **Card details tracking** including condition, quantity, and notes
@@ -95,6 +102,7 @@ Note: Each command below assumed your CWD (Current Working Directory) is in the 
 - **Collection statistics** and organization tools
 
 ### Technical Features
+
 - **TypeScript throughout** for type safety and better developer experience
 - **Service-oriented architecture** with clear separation of concerns
 - **Direct imports** (no barrel files) for better tree-shaking and debugging
@@ -104,25 +112,30 @@ Note: Each command below assumed your CWD (Current Working Directory) is in the 
 ## Development
 
 ### Server Development
+
 See detailed documentation in `/server/README.md` including:
+
 - Architecture decisions and explicit conventions
 - Semantic naming guidelines for consistent code
 - Service patterns and development guidelines
 - AI agent instructions for future development
 
 ### Key Technologies
+
 - **Backend**: Node.js, TypeScript, Express.js, Cheerio, Axios
 - **Frontend**: Vue.js, TypeScript, Vite
 - **Data**: LowDB (JSON file-based), hardcoded Pokemon TCG structures
 - **Scraping**: Wikipedia/Bulbapedia integration with smart link matching
 
 ### Project Status
+
 - 🔄 **Reference Data**: Complete Pokemon TCG database (411 sets) in progress
 - 🔄 **Collection Management**: Full CRUD operations for user cards in progress
 - 🔄 **Frontend Enhancement**: UI/UX improvements in progress
 - ✅ **Documentation**: Comprehensive development guidelines
 
 ### Future Enhancements
+
 - Implemented Collection Management
 - Card information lookup system
 - Card market price tracking and monitoring
