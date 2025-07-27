@@ -16,6 +16,7 @@ import {
   type PokemonNameCandidate,
   type TargetSearchOptions,
 } from './pokemon-card-analyzer.service';
+import { TextRegionFinder } from './text-region-finder.service';
 
 /**
  * CardRecognitionService
@@ -31,6 +32,7 @@ export class CardRecognitionService {
   private iconTemplates: Map<string, Buffer> = new Map();
   private isInitialized = false;
   private config: Required<VisionServiceConfig>;
+  private textRegionFinder: TextRegionFinder;
 
   /**
    * Default configuration for the vision service
@@ -54,6 +56,7 @@ export class CardRecognitionService {
 
   constructor(config: VisionServiceConfig = {}) {
     this.config = { ...CardRecognitionService.DEFAULT_CONFIG, ...config };
+    this.textRegionFinder = new TextRegionFinder();
   }
 
   /**
@@ -246,6 +249,124 @@ export class CardRecognitionService {
       const visionError: VisionError = {
         type: 'OCR_ERROR',
         message: 'Failed to recognize card',
+        originalError:
+          error instanceof Error ? error : new Error(String(error)),
+      };
+      throw visionError;
+    }
+  }
+
+  /**
+   * Recognize text using region-based approach - better for scattered text on cards
+   */
+  async recognizeCardByRegions(
+    imageBuffer: Buffer,
+    options: RecognitionOptions = {}
+  ): Promise<CardRecognitionResult> {
+    if (!this.isInitialized) {
+      throw new Error(
+        'CardRecognitionService not initialized. Call initialize() first.'
+      );
+    }
+
+    const startTime = Date.now();
+
+    try {
+      console.log('🔍 Starting region-based card recognition...');
+
+      // Get image metadata first
+      const metadata = await sharp(imageBuffer).metadata();
+
+      // Step 1: Find text regions in the image
+      const textRegions =
+        await this.textRegionFinder.findTextRegions(imageBuffer);
+
+      // Step 2: Extract individual region images
+      const regionImages = await this.textRegionFinder.extractRegionImages(
+        imageBuffer,
+        textRegions
+      );
+
+      // Step 3: Process each region independently with OCR
+      const allRecognizedText: RecognizedText[] = [];
+
+      for (let i = 0; i < regionImages.length; i++) {
+        const { region, imageBuffer: regionBuffer } = regionImages[i];
+
+        console.log(
+          `🔍 Processing region ${i + 1}/${regionImages.length}: ${region.name || 'unnamed'} at (${region.x},${region.y})`
+        );
+
+        try {
+          // Use single text block mode for each region (mode 7)
+          await this.ocrWorker!.setParameters({
+            tessedit_pageseg_mode: 7 as any, // Single text block
+            preserve_interword_spaces: '1',
+            tessedit_char_whitelist:
+              'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×÷()[]{}/',
+          });
+
+          const { data } = await this.ocrWorker!.recognize(regionBuffer);
+
+          if (data.text && data.text.trim()) {
+            const recognizedText: RecognizedText = {
+              text: data.text.trim(),
+              confidence: data.confidence || 0,
+              bbox: {
+                x: region.x,
+                y: region.y,
+                width: region.width,
+                height: region.height,
+              },
+            };
+
+            // Only include text with reasonable confidence or length
+            if (
+              recognizedText.confidence > 10 ||
+              recognizedText.text.length > 2
+            ) {
+              allRecognizedText.push(recognizedText);
+              console.log(
+                `   ✅ Found: "${recognizedText.text}" (confidence: ${Math.round(recognizedText.confidence)}%)`
+              );
+            }
+          }
+        } catch (error) {
+          console.warn(`⚠️ Failed to process region ${i + 1}:`, error);
+        }
+      }
+
+      // Step 4: Icon detection (placeholder for now)
+      const detectedIcons: RecognizedIcon[] = [];
+
+      // Step 5: Language detection
+      const detectedLanguages = ['English']; // Simplified for now
+
+      const processingTime = Date.now() - startTime;
+
+      console.log(
+        `✅ Region-based recognition completed in ${processingTime}ms`
+      );
+      console.log(
+        `📝 Found ${allRecognizedText.length} text elements from ${textRegions.length} regions`
+      );
+      console.log(`🎯 Found ${detectedIcons.length} icons`);
+
+      return {
+        textRegions: allRecognizedText,
+        detectedIcons,
+        detectedLanguages,
+        processingTime,
+        imageMetadata: {
+          width: metadata.width || 0,
+          height: metadata.height || 0,
+          format: metadata.format || 'unknown',
+        },
+      };
+    } catch (error) {
+      const visionError: VisionError = {
+        type: 'OCR_ERROR',
+        message: 'Failed to recognize card using region-based approach',
         originalError:
           error instanceof Error ? error : new Error(String(error)),
       };
