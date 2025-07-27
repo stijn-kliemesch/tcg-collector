@@ -199,7 +199,7 @@ Layout analysis testing revealed: Predefined regions work better structurally (6
 
 - [ ] Layout Analysis Improvements (In Progress):
   - [x] Improve text density detection algorithm to find more regions
-  - [x] Adjust grid sampling parameters for better text area detection  
+  - [x] Adjust grid sampling parameters for better text area detection
   - [x] Fix region merging to avoid creating tiny unusable regions
   - [ ] ⚠️ Balance merging algorithm - currently too restrictive (rejecting 960x1272 region as too large)
   - [ ] Validate region positioning against actual card coordinates

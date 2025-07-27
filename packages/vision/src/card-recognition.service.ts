@@ -305,9 +305,11 @@ export class CardRecognitionService {
 
         try {
           // Apply region-specific OCR configuration (only if changed)
-          const ocrConfig = this.getOCRConfigForRegion(region.name || 'unknown');
+          const ocrConfig = this.getOCRConfigForRegion(
+            region.name || 'unknown'
+          );
           const configKey = JSON.stringify(ocrConfig);
-          
+
           if (configKey !== this.lastOCRConfig) {
             await this.ocrWorker!.setParameters(ocrConfig);
             this.lastOCRConfig = configKey;
@@ -496,7 +498,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 8, // Single word - Pokemon names are usually one word
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-\'',
+          tessedit_char_whitelist:
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-'",
           classify_bln_numeric_mode: '0', // Disable numeric mode for names
         };
 
@@ -524,7 +527,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7, // Single text line
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -',
           classify_bln_numeric_mode: '0',
         };
 
@@ -533,7 +537,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 8, // Single word for "Ability"
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
           classify_bln_numeric_mode: '0',
         };
 
@@ -541,7 +546,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7, // Single text line for ability names
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
           classify_bln_numeric_mode: '0',
         };
 
@@ -549,7 +555,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 6, // Uniform block of text (may contain icons)
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
           classify_bln_numeric_mode: '0',
         };
 
@@ -559,7 +566,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7, // Single text line for attack names
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
           classify_bln_numeric_mode: '0',
         };
 
@@ -578,7 +586,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 6, // Block of text for attack descriptions
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,()-+',
           classify_bln_numeric_mode: '0',
         };
 
@@ -604,7 +613,7 @@ export class CardRecognitionService {
       case 'resistance-label':
         return {
           ...baseConfig,
-          tessedit_pageseg_mode: 8, // Single word for "Resistance" 
+          tessedit_pageseg_mode: 8, // Single word for "Resistance"
           tessedit_char_whitelist: 'Resistance',
           classify_bln_numeric_mode: '0',
         };
@@ -640,7 +649,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7, // Single text line for card type/rarity
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
           classify_bln_numeric_mode: '0',
         };
 
@@ -649,7 +659,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 6, // Block of text for general stats area
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×/',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×/',
           classify_bln_numeric_mode: '0',
         };
 
@@ -666,7 +677,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7,
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
           classify_bln_numeric_mode: '0',
         };
 
@@ -682,7 +694,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 6,
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×',
           classify_bln_numeric_mode: '0',
         };
 
@@ -699,7 +712,8 @@ export class CardRecognitionService {
         return {
           ...baseConfig,
           tessedit_pageseg_mode: 7, // Single text block
-          tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×÷()[]{}/',
+          tessedit_char_whitelist:
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -+×÷()[]{}/',
         };
     }
   }
@@ -1060,11 +1074,24 @@ export class CardRecognitionService {
     console.log(`🔗 Grouped into ${grouped.length} logical regions`);
 
     // Debug: Check if Ganganac) made it to the output
-    const ganganacResult = grouped.find(w => w.text.includes('Ganganac'));
+    const ganganacResult = grouped.find(
+      w => w.text.includes('Ganganac') || w.text.includes('Gangandc')
+    );
     if (ganganacResult) {
-      console.log(`🎯 "Ganganac)" SURVIVED grouping:`, ganganacResult);
+      console.log(`🎯 "Ganganac*" SURVIVED grouping:`, ganganacResult);
     } else {
-      console.log(`❌ "Ganganac)" was LOST during grouping`);
+      console.log(`❌ "Ganganac*" was LOST during grouping`);
+
+      // Debug: Check if it was in the input
+      const ganganacInput = words.find(
+        w => w.text.includes('Ganganac') || w.text.includes('Gangandc')
+      );
+      if (ganganacInput) {
+        console.log(
+          `🔍 Found "Ganganac*" in input but lost during grouping:`,
+          ganganacInput
+        );
+      }
     }
 
     return grouped;
@@ -1078,10 +1105,21 @@ export class CardRecognitionService {
     candidateWord: RecognizedText,
     _currentGroup: RecognizedText[]
   ): boolean {
-    // Protect important Pokemon names from being over-grouped
-    const isPokemonName = (text: string) =>
-      text.length >= 6 && /^[A-Za-z()]+$/.test(text);
-    if (isPokemonName(baseWord.text) || isPokemonName(candidateWord.text)) {
+    // Enhanced Pokemon name detection - look for actual Pokemon-like patterns
+    const isPokemonName = (text: string) => {
+      // Must be 6+ characters, mostly letters, reasonable confidence
+      return (
+        text.length >= 6 &&
+        /^[A-Za-z\]\[)(]{6,}/.test(text) && // Allow some OCR errors like ] instead of l
+        !/^[|=\-~+;:<>{}\[\]\/\\]{3,}/.test(text) && // Exclude obvious line artifacts (3+ special chars)
+        text.split('').filter(c => /[A-Za-z]/.test(c)).length >= 4
+      ); // At least 4 actual letters
+    };
+
+    const isLikelyPokemonName =
+      isPokemonName(baseWord.text) || isPokemonName(candidateWord.text);
+
+    if (isLikelyPokemonName) {
       // Be more conservative with Pokemon names - only group if very close
       const horizontalDistance = Math.abs(
         candidateWord.bbox.x - (baseWord.bbox.x + baseWord.bbox.width)
