@@ -193,7 +193,15 @@ Improve the accuracy and reliability of text recognition in the vision package b
 
 Current status: Region-based OCR approach implemented and working (9 regions processed in ~1.5 seconds), but text recognition accuracy is poor (0/10 expected texts found from Garganacl card test). Text output is heavily corrupted (e.g., "BTL ER" instead of "ABILITY", "ue" instead of "160").
 
+Layout analysis testing revealed: Predefined regions work better structurally (6/9 regions found text vs 1/1 for image analysis), but image analysis only detects 1 tiny region (2x36 pixels) causing "Image too small to scale" errors. Both approaches achieve 0% accuracy on expected texts.
+
 ### Subtasks
+
+- [ ] Layout Analysis Improvements (In Progress):
+  - [ ] Improve text density detection algorithm to find more regions
+  - [ ] Adjust grid sampling parameters for better text area detection  
+  - [ ] Fix region merging to avoid creating tiny unusable regions
+  - [ ] Validate region positioning against actual card coordinates
 
 - [ ] Region-Specific Image Preprocessing:
   - [ ] Implement different enhancement strategies for text types (names, numbers, descriptions)
