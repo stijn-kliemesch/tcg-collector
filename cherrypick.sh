@@ -7,6 +7,8 @@ git log wip --pretty=format:"%H" --not main | cat - <(echo "") | tac | while rea
     git commit -m "$(git log --format=%B -n 1 $hash | xargs)"
 done
 
+git push
+
 git checkout wip
 
 git reset --hard main
