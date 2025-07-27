@@ -1,8 +1,8 @@
 /**
- * Collection and user inventory types
+ * Collection-related type definitions
  */
 
-import type { Card } from './card.types.js';
+import type { Card } from './card.types';
 
 export interface Collection {
   id: string;

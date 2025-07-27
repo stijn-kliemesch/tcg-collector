@@ -1,13 +1,12 @@
 /**
- * Shared API types for TCG Collector
+ * API Types package exports
  * 
- * This package contains all the type definitions that are shared between
- * the client and server, preventing duplication and ensuring consistency.
+ * Shared TypeScript type definitions for TCG Collector
  */
 
-// Re-export all types
-export * from './card.types.js';
-export * from './collection.types.js';
-export * from './api.types.js';
-export * from './user.types.js';
-export * from './vision.types.js';
+// Export all type definitions
+export * from './card.types';
+export * from './collection.types';
+export * from './api.types';
+export * from './user.types';
+export * from './vision.types';

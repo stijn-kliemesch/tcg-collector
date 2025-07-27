@@ -11,7 +11,7 @@ import type {
   SupportedLanguage,
   IconTemplate
 } from '@tcg-collector/api-types';
-import { PokemonCardAnalyzer, type PokemonNameCandidate, type TargetSearchOptions } from './pokemon-card-analyzer.service.js';
+import { PokemonCardAnalyzer, type PokemonNameCandidate, type TargetSearchOptions } from './pokemon-card-analyzer.service';
 
 /**
  * CardRecognitionService

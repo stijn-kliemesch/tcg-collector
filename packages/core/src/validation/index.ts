@@ -3,7 +3,7 @@
  */
 
 import type { CardCondition, CardRarity } from '@tcg-collector/api-types';
-import { CARD_CONDITIONS, CARD_RARITIES, SUPPORTED_IMAGE_FORMATS, MAX_IMAGE_SIZE } from '../constants/index.js';
+import { CARD_CONDITIONS, CARD_RARITIES, SUPPORTED_IMAGE_FORMATS, MAX_IMAGE_SIZE } from '../constants';
 
 export interface ValidationResult {
   isValid: boolean;

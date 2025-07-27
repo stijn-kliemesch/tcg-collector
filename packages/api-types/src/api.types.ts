@@ -1,10 +1,10 @@
 /**
- * API request/response types and common HTTP types
+ * API response and request types
  */
 
-import type { Card, CardSet } from './card.types.js';
-import type { Collection, CollectionCard, Wishlist } from './collection.types.js';
-import type { User } from './user.types.js';
+import type { Card, CardSet } from './card.types';
+import type { Collection, CollectionCard, Wishlist } from './collection.types';
+import type { User } from './user.types';
 
 // Common API response wrapper
 export interface ApiResponse<T = any> {

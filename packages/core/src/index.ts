@@ -3,6 +3,6 @@
  */
 
 // Re-export all modules
-export * from './validation/index.js';
-export * from './utils/index.js';
-export * from './constants/index.js';
+export * from './validation';
+export * from './utils';
+export * from './constants';

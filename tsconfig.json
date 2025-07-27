@@ -11,6 +11,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["packages/*/src/**/*", "*.ts"],
+  "exclude": ["node_modules", "client", "server"]
 }
