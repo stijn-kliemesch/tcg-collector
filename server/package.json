@@ -15,7 +15,7 @@
     "@tcg-collector/api-types": "*",
     "@tcg-collector/core": "*",
     "@tcg-collector/vision": "*",
-    "axios": "^1.4.0",
+    "axios": "^1.13.5",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "express": "^4.18.2",
